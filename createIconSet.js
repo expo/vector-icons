@@ -7,7 +7,7 @@ import createIconButtonComponent from 'react-native-vector-icons/lib/icon-button
 export default function(glyphMap, fontName, exponentAssetId) {
   const exponentFontName = Font.style(fontName, {ignoreWarning: true}).fontFamily;
   const font = {[fontName]: exponentAssetId};
-  const RNVIconComponent = createIconSet(glyphMap, exponentFontName, 'n/a');
+  const RNVIconComponent = createIconSet(glyphMap, exponentFontName);
 
   class Icon extends React.Component {
     static propTypes = RNVIconComponent.propTypes;
