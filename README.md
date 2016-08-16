@@ -9,5 +9,5 @@ maybe [check out Exponent](https://getexponent.com/).
 ## Resources
 
 - [@exponent/vector-icons directory](https://exponentjs.github.io/vector-icons/) - a searchable list of all included icons.
-![Screenshot of website](https://github.com/exponentjs/vector-icons/blob/master/website-screenshot.png)
+![Screenshot of website](https://raw.githubusercontent.com/exponentjs/vector-icons/master/website-screenshot.png)
 - [Exponent documentation](http://docs.getexponent.com/)
