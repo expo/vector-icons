@@ -1,12 +1,12 @@
 {
   "name": "@exponent/vector-icons",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Built-in support for 8 popular icon fonts and the tooling to create your own Icon components from your font and glyph map. This is a wrapper around react-native-vector-icons to make it compatible with Exponent.",
   "main": "index.js",
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "https://github.com/exponentjs/exponent-vector-icons.git"
+    "url": "https://github.com/exponentjs/vector-icons.git"
   },
   "keywords": [
     "exponent"
@@ -14,7 +14,7 @@
   "author": "Brent Vatne",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/exponentjs/exponent-vector-icons/issues"
+    "url": "https://github.com/exponentjs/vector-icons/issues"
   },
   "homepage": "https://exponentjs.github.io/vector-icons",
   "dependencies": {
