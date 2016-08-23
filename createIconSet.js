@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Text } from 'react-native';
 import { Font } from 'exponent';
 import createIconSet from 'react-native-vector-icons/lib/create-icon-set';
 import createIconButtonComponent from 'react-native-vector-icons/lib/icon-button';
@@ -32,7 +32,7 @@ export default function(glyphMap, fontName, exponentAssetId) {
 
     render() {
       if (!this.state.fontIsLoaded) {
-        return <View />;
+        return <Text />;
       }
 
       return (
