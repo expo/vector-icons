@@ -38,6 +38,11 @@
   src: url('./fonts/Zocial.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'SimpleLineIcons';
+  src: url('./fonts/SimpleLineIcons.ttf') format('truetype');
+}
+
 .App {
   width: 100%;
 }

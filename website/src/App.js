@@ -11,6 +11,7 @@ const IconFamilies = {
   MaterialIcons: require('./glyph-maps/material-icons'),
   Octicons: require('./glyph-maps/octicons'),
   Zocial: require('./glyph-maps/zocial'),
+  SimpleLineIcons: require('./glyph-maps/simple-line-icons'),
 }
 
 class Icon extends Component {
