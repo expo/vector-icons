@@ -9,7 +9,8 @@
   "dependencies": {
     "lodash": "^4.14.0",
     "react": "^15.2.1",
-    "react-dom": "^15.2.1"
+    "react-dom": "^15.2.1",
+    "react-native-vector-icons": "^3.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -34,6 +34,11 @@
 }
 
 @font-face {
+  font-family: 'SimpleLineIcons';
+  src: url('./fonts/SimpleLineIcons.ttf') format('truetype');
+}
+
+@font-face {
   font-family: 'Zocial';
   src: url('./fonts/Zocial.ttf') format('truetype');
 }

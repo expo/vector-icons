@@ -3,14 +3,15 @@ import './App.css';
 import _ from 'lodash';
 
 const IconFamilies = {
-  Entypo: require('./glyph-maps/entypo'),
-  EvilIcons: require('./glyph-maps/evil-icons'),
-  FontAwesome: require('./glyph-maps/font-awesome'),
-  Foundation: require('./glyph-maps/foundation'),
-  Ionicons: require('./glyph-maps/ionicons'),
-  MaterialIcons: require('./glyph-maps/material-icons'),
-  Octicons: require('./glyph-maps/octicons'),
-  Zocial: require('./glyph-maps/zocial'),
+  Entypo: require('react-native-vector-icons/glyphmaps/Entypo.json'),
+  EvilIcons: require('react-native-vector-icons/glyphmaps/EvilIcons.json'),
+  FontAwesome: require('react-native-vector-icons/glyphmaps/FontAwesome.json'),
+  Foundation: require('react-native-vector-icons/glyphmaps/Foundation.json'),
+  Ionicons: require('react-native-vector-icons/glyphmaps/Ionicons.json'),
+  MaterialIcons: require('react-native-vector-icons/glyphmaps/MaterialIcons.json'),
+  SimpleLineIcons: require('react-native-vector-icons/glyphmaps/SimpleLineIcons.json'),
+  Octicons: require('react-native-vector-icons/glyphmaps/Octicons.json'),
+  Zocial: require('react-native-vector-icons/glyphmaps/Zocial.json'),
 }
 
 class Icon extends Component {
