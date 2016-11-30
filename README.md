@@ -1,6 +1,6 @@
 # @exponent/vector-icons
 
-This library is a compatability layer around
+This library is a compatibility layer around
 [@oblador/react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)
 to work with the Exponent asset system. If you're using React Native
 without Exponent, you have no need for this library -- carry on! (or
