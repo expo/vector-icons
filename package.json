@@ -6,7 +6,7 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "https://github.com/exponentjs/vector-icons.git"
+    "url": "https://github.com/exponent/vector-icons.git"
   },
   "keywords": [
     "exponent"
@@ -14,9 +14,9 @@
   "author": "Brent Vatne",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/exponentjs/vector-icons/issues"
+    "url": "https://github.com/exponent/vector-icons/issues"
   },
-  "homepage": "https://exponentjs.github.io/vector-icons",
+  "homepage": "https://exponent.github.io/vector-icons",
   "dependencies": {
     "react-native-vector-icons": "3.0.0"
   },
