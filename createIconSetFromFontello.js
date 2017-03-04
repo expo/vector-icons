@@ -1,6 +1,11 @@
-import { Font } from 'exponent';
-import createIconSetFromFontello from 'react-native-vector-icons/lib/create-icon-set-from-fontello';
+import { Font } from 'expo';
+import createIconSetFromFontello
+  from 'react-native-vector-icons/lib/create-icon-set-from-fontello';
 
-export default function(config, exponentFontName, exponentAssetId) {
-  return createIconSetFromFontello(config, Font.style(exponentFontName).fontFamily, exponentAssetId);
+export default function(config, expoFontName, expoAssetId) {
+  return createIconSetFromFontello(
+    config,
+    Font.style(expoFontName).fontFamily,
+    expoAssetId
+  );
 }

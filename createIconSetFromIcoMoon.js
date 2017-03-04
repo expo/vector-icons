@@ -1,6 +1,11 @@
-import { Font } from 'exponent';
-import createIconSetFromIcoMoon from 'react-native-vector-icons/lib/create-icon-set-from-icomoon';
+import { Font } from 'expo';
+import createIconSetFromIcoMoon
+  from 'react-native-vector-icons/lib/create-icon-set-from-icomoon';
 
-export default function(config, exponentFontName, exponentAssetId) {
-  return createIconSetFromIcoMoon(config, Font.style(exponentFontName).fontFamily, exponentAssetId);
+export default function(config, expoFontName, expoAssetId) {
+  return createIconSetFromIcoMoon(
+    config,
+    Font.style(expoFontName).fontFamily,
+    expoAssetId
+  );
 }

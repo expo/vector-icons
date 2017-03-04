@@ -1,13 +1,16 @@
 import React from 'react';
 import { Text } from 'react-native';
-import { Font } from 'exponent';
+import { Font } from 'expo';
 import createIconSet from 'react-native-vector-icons/lib/create-icon-set';
-import createIconButtonComponent from 'react-native-vector-icons/lib/icon-button';
+import createIconButtonComponent
+  from 'react-native-vector-icons/lib/icon-button';
 
-export default function(glyphMap, fontName, exponentAssetId) {
-  const exponentFontName = Font.style(fontName, {ignoreWarning: true}).fontFamily;
-  const font = {[fontName]: exponentAssetId};
-  const RNVIconComponent = createIconSet(glyphMap, exponentFontName);
+export default function(glyphMap, fontName, expoAssetId) {
+  const expoFontName = Font.style(fontName, {
+    ignoreWarning: true,
+  }).fontFamily;
+  const font = { [fontName]: expoAssetId };
+  const RNVIconComponent = createIconSet(glyphMap, expoFontName);
 
   class Icon extends React.Component {
     static propTypes = RNVIconComponent.propTypes;
@@ -15,12 +18,12 @@ export default function(glyphMap, fontName, exponentAssetId) {
 
     state = {
       fontIsLoaded: Font.isLoaded(fontName),
-    }
+    };
 
     async componentWillMount() {
       if (!this.state.fontIsLoaded) {
         await Font.loadAsync(font);
-        this.setState({fontIsLoaded: true});
+        this.setState({ fontIsLoaded: true });
       }
     }
 
@@ -37,7 +40,9 @@ export default function(glyphMap, fontName, exponentAssetId) {
 
       return (
         <RNVIconComponent
-          ref={view => { this._icon = view; }}
+          ref={view => {
+            this._icon = view;
+          }}
           {...this.props}
         />
       );
