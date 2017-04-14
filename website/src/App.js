@@ -8,15 +8,9 @@ const IconFamilies = {
   FontAwesome: require('react-native-vector-icons/glyphmaps/FontAwesome.json'),
   Foundation: require('react-native-vector-icons/glyphmaps/Foundation.json'),
   Ionicons: require('react-native-vector-icons/glyphmaps/Ionicons.json'),
-  MaterialIcons: require(
-    'react-native-vector-icons/glyphmaps/MaterialIcons.json'
-  ),
-  MaterialCommunityIcons: require(
-    'react-native-vector-icons/glyphmaps/MaterialCommunityIcons.json'
-  ),
-  SimpleLineIcons: require(
-    'react-native-vector-icons/glyphmaps/SimpleLineIcons.json'
-  ),
+  MaterialIcons: require('react-native-vector-icons/glyphmaps/MaterialIcons.json'),
+  MaterialCommunityIcons: require('react-native-vector-icons/glyphmaps/MaterialCommunityIcons.json'),
+  SimpleLineIcons: require('react-native-vector-icons/glyphmaps/SimpleLineIcons.json'),
   Octicons: require('react-native-vector-icons/glyphmaps/Octicons.json'),
   Zocial: require('react-native-vector-icons/glyphmaps/Zocial.json'),
 };
@@ -97,14 +91,13 @@ class App extends Component {
   _renderFamily(familyName) {
     return (
       <div>
-        {Object.keys(IconFamilies[familyName])
-          .map(iconName => (
-            <Icon
-              key={iconName + familyName}
-              family={familyName}
-              name={iconName}
-            />
-          ))}
+        {Object.keys(IconFamilies[familyName]).map(iconName => (
+          <Icon
+            key={iconName + familyName}
+            family={familyName}
+            name={iconName}
+          />
+        ))}
       </div>
     );
   }
