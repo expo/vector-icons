@@ -1,8 +1,5 @@
-import React, {
-  Component,
-  PropTypes,
-} from 'react';
-
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   NativeModules,
   Platform,
@@ -15,7 +12,8 @@ import createIconButtonComponent from './icon-button';
 import createTabBarItemIOSComponent from './tab-bar-item-ios';
 import createToolbarAndroidComponent from './toolbar-android';
 
-const NativeIconAPI = (NativeModules.RNVectorIconsManager || NativeModules.RNVectorIconsModule);
+const NativeIconAPI =
+  NativeModules.RNVectorIconsManager || NativeModules.RNVectorIconsModule;
 
 const DEFAULT_ICON_SIZE = 12;
 const DEFAULT_ICON_COLOR = 'black';
@@ -35,10 +33,11 @@ export default function createIconSet(glyphMap, fontFamily, fontFile) {
 
   class Icon extends Component {
     static propTypes = {
-      ...Text.propTypes,
       name: IconNamePropType.isRequired,
       size: PropTypes.number,
       color: PropTypes.string,
+      children: PropTypes.node,
+      style: PropTypes.any, // eslint-disable-line react/forbid-prop-types
     };
 
     static defaultProps = {
@@ -53,7 +52,7 @@ export default function createIconSet(glyphMap, fontFamily, fontFile) {
     }
 
     root = null;
-    handleRef = (ref) => {
+    handleRef = ref => {
       this.root = ref;
     };
 
@@ -79,18 +78,26 @@ export default function createIconSet(glyphMap, fontFamily, fontFile) {
       props.style = [styleDefaults, style, styleOverrides];
       props.ref = this.handleRef;
 
-      return (<Text {...props}>{glyph}{this.props.children}</Text>);
+      return <Text {...props}>{glyph}{this.props.children}</Text>;
     }
   }
 
   const imageSourceCache = {};
 
-  function getImageSource(name, size = DEFAULT_ICON_SIZE, color = DEFAULT_ICON_COLOR) {
+  function getImageSource(
+    name,
+    size = DEFAULT_ICON_SIZE,
+    color = DEFAULT_ICON_COLOR
+  ) {
     if (!NativeIconAPI) {
       if (Platform.OS === 'android') {
-        throw new Error('RNVectorIconsModule not available, did you properly integrate the module?');
+        throw new Error(
+          'RNVectorIconsModule not available, did you properly integrate the module?'
+        );
       }
-      throw new Error('RNVectorIconsManager not available, did you add the library to your project and link with libRNVectorIcons.a?');
+      throw new Error(
+        'RNVectorIconsManager not available, did you add the library to your project and link with libRNVectorIcons.a?'
+      );
     }
 
     let glyph = glyphMap[name] || '?';
@@ -111,23 +118,35 @@ export default function createIconSet(glyphMap, fontFamily, fontFile) {
           resolve({ uri: cached, scale });
         }
       } else {
-        NativeIconAPI.getImageForFont(fontReference, glyph, size, processedColor, (err, image) => {
-          const error = (typeof err === 'string' ? new Error(err) : err);
-          imageSourceCache[cacheKey] = image || error || false;
-          if (!error && image) {
-            resolve({ uri: image, scale });
-          } else {
-            reject(error);
+        NativeIconAPI.getImageForFont(
+          fontReference,
+          glyph,
+          size,
+          processedColor,
+          (err, image) => {
+            const error = typeof err === 'string' ? new Error(err) : err;
+            imageSourceCache[cacheKey] = image || error || false;
+            if (!error && image) {
+              resolve({ uri: image, scale });
+            } else {
+              reject(error);
+            }
           }
-        });
+        );
       }
     });
   }
 
   Icon.Button = createIconButtonComponent(Icon);
-  Icon.TabBarItem = createTabBarItemIOSComponent(IconNamePropType, getImageSource);
+  Icon.TabBarItem = createTabBarItemIOSComponent(
+    IconNamePropType,
+    getImageSource
+  );
   Icon.TabBarItemIOS = Icon.TabBarItem;
-  Icon.ToolbarAndroid = createToolbarAndroidComponent(IconNamePropType, getImageSource);
+  Icon.ToolbarAndroid = createToolbarAndroidComponent(
+    IconNamePropType,
+    getImageSource
+  );
   Icon.getImageSource = getImageSource;
 
   return Icon;
