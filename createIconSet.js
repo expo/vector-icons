@@ -1,10 +1,8 @@
 import React from 'react';
 import { Text } from 'react-native';
 import { Font } from 'expo';
-import createIconSet
-  from './vendor/react-native-vector-icons/lib/create-icon-set';
-import createIconButtonComponent
-  from './vendor/react-native-vector-icons/lib/icon-button';
+import createIconSet from './vendor/react-native-vector-icons/lib/create-icon-set';
+import createIconButtonComponent from './vendor/react-native-vector-icons/lib/icon-button';
 
 export default function(glyphMap, fontName, expoAssetId) {
   const expoFontName = Font.style(fontName, {
@@ -22,10 +20,15 @@ export default function(glyphMap, fontName, expoAssetId) {
     };
 
     async componentWillMount() {
+      this._mounted = true;
       if (!this.state.fontIsLoaded) {
         await Font.loadAsync(font);
-        this.setState({ fontIsLoaded: true });
+        this._mounted && this.setState({ fontIsLoaded: true });
       }
+    }
+
+    componentWillUnmount() {
+      this._mounted = false;
     }
 
     setNativeProps(props) {
