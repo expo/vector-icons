@@ -1,6 +1,4 @@
-import isString from 'lodash/isString';
-import omit from 'lodash/omit';
-import pick from 'lodash/pick';
+import { isString, omit, pick } from 'lodash';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, Text, TouchableHighlight, View } from './react-native';
