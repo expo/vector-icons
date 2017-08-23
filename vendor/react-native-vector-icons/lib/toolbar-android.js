@@ -1,5 +1,4 @@
-import isEqual from 'lodash/isEqual';
-import pick from 'lodash/pick';
+import { isEqual, pick } from 'lodash';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ToolbarAndroid } from './react-native';
