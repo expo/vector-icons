@@ -103,10 +103,11 @@ class App extends Component {
   }
 
   _onSubmit(text) {
+    const lcText = text.toLowerCase()
     let matches = [];
     _.forEach(IconFamilies, (icons, family) => {
       let names = Object.keys(icons);
-      let results = names.filter(name => name.indexOf(text) >= 0);
+      let results = names.filter(name => name.toLowerCase().indexOf(lcText) >= 0);
       if (results.length) {
         matches = [...matches, { family, names: results }];
       }
