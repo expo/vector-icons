@@ -29,9 +29,7 @@ const HeaderBar = props => {
   return (
     <div className="Header-Container">
       <div className="Header-Content">
-        <h1 className="Header-Title">
-          @expo/vector-icons directory
-        </h1>
+        <h1 className="Header-Title">@expo/vector-icons directory</h1>
       </div>
     </div>
   );
@@ -45,7 +43,7 @@ class SearchBar extends Component {
           <form onSubmit={this._onSubmit.bind(this)}>
             <Icon family="FontAwesome" name="search" className="Search-Icon" />
             <input
-              ref={input => this._input = input}
+              ref={input => (this._input = input)}
               placeholder="Search for an icon"
               type="text"
               className="Search-Input"
@@ -91,22 +89,25 @@ class App extends Component {
   _renderFamily(familyName) {
     return (
       <div>
-        {Object.keys(IconFamilies[familyName]).map(iconName => (
+        {Object.keys(IconFamilies[familyName]).map(iconName =>
           <Icon
             key={iconName + familyName}
             family={familyName}
             name={iconName}
           />
-        ))}
+        )}
       </div>
     );
   }
 
   _onSubmit(text) {
+    const lcText = text.toLowerCase();
     let matches = [];
     _.forEach(IconFamilies, (icons, family) => {
       let names = Object.keys(icons);
-      let results = names.filter(name => name.indexOf(text) >= 0);
+      let results = names.filter(
+        name => name.toLowerCase().indexOf(lcText) >= 0
+      );
       if (results.length) {
         matches = [...matches, { family, names: results }];
       }
@@ -119,7 +120,9 @@ class App extends Component {
     let { family, names } = match;
     return (
       <div className="Result-Row" key={family}>
-        <h2 className="Result-Title">{family}</h2>
+        <h2 className="Result-Title">
+          {family}
+        </h2>
 
         <div className="Result-List">
           {names.map(name => this._renderIcon(family, name))}
