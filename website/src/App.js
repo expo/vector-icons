@@ -25,6 +25,7 @@ class SearchBar extends Component {
             <Icon family="FontAwesome" name="search" className="Search-Icon" />
             <input
               ref={input => (this._input = input)}
+              autoFocus
               onChange={this._onChange}
               placeholder="Search for an icon"
               type="text"
