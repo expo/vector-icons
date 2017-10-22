@@ -1,4 +1,6 @@
-import { isString, omit, pick } from 'lodash';
+import isString from 'lodash/isString';
+import omit from 'lodash/omit';
+import pick from 'lodash/pick';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, Text, TouchableHighlight, View } from './react-native';
@@ -78,9 +80,11 @@ export default function createIconButtonComponent(Icon) {
         >
           <View style={[styles.container, blockStyle, style]} {...props}>
             <Icon {...iconProps} />
-            {isString(children)
-              ? <Text style={[styles.text, colorStyle]}>{children}</Text>
-              : children}
+            {isString(children) ? (
+              <Text style={[styles.text, colorStyle]}>{children}</Text>
+            ) : (
+              children
+            )}
           </View>
         </TouchableHighlight>
       );

@@ -1,4 +1,6 @@
-import { isEqual, pick } from 'lodash';
+/* eslint-disable react/no-unused-prop-types */
+import isEqual from 'lodash/isEqual';
+import pick from 'lodash/pick';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ToolbarAndroid } from './react-native';
@@ -9,7 +11,7 @@ export default function createToolbarAndroidComponent(
 ) {
   return class IconToolbarAndroid extends Component {
     static propTypes = {
-      logoIconName: IconNamePropType,
+      logoName: IconNamePropType,
       navIconName: IconNamePropType,
       overflowIconName: IconNamePropType,
       actions: PropTypes.arrayOf(
@@ -29,6 +31,31 @@ export default function createToolbarAndroidComponent(
     static defaultProps = {
       iconSize: 24,
     };
+
+    componentWillMount() {
+      this.updateIconSources(this.props);
+    }
+
+    componentWillReceiveProps(nextProps) {
+      const keys = Object.keys(IconToolbarAndroid.propTypes);
+      if (!isEqual(pick(nextProps, keys), pick(this.props, keys))) {
+        const stateToEvict = {};
+        if (!nextProps.logoName) {
+          stateToEvict.logo = undefined;
+        }
+        if (!nextProps.navIconName) {
+          stateToEvict.navIcon = undefined;
+        }
+        if (!nextProps.overflowIconName) {
+          stateToEvict.overflowIcon = undefined;
+        }
+        if (this.state && Object.keys(stateToEvict).length) {
+          this.setState(stateToEvict, () => this.updateIconSources(nextProps));
+        } else {
+          this.updateIconSources(nextProps);
+        }
+      }
+    }
 
     updateIconSources(props) {
       const size = props.iconSize;
@@ -61,31 +88,6 @@ export default function createToolbarAndroidComponent(
           return Promise.resolve(action);
         })
       ).then(actions => this.setState({ actions }));
-    }
-
-    componentWillMount() {
-      this.updateIconSources(this.props);
-    }
-
-    componentWillReceiveProps(nextProps) {
-      const keys = Object.keys(IconToolbarAndroid.propTypes);
-      if (!isEqual(pick(nextProps, keys), pick(this.props, keys))) {
-        const stateToEvict = {};
-        if (!nextProps.logoName) {
-          stateToEvict.logo = undefined;
-        }
-        if (!nextProps.navIconName) {
-          stateToEvict.navIcon = undefined;
-        }
-        if (!nextProps.overflowIconName) {
-          stateToEvict.overflowIcon = undefined;
-        }
-        if (this.state && Object.keys(stateToEvict).length) {
-          this.setState(stateToEvict, () => this.updateIconSources(nextProps));
-        } else {
-          this.updateIconSources(nextProps);
-        }
-      }
     }
 
     render() {

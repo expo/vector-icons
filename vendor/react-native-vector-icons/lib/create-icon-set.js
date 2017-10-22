@@ -33,7 +33,7 @@ export default function createIconSet(glyphMap, fontFamily, fontFile) {
 
   class Icon extends Component {
     static propTypes = {
-      name: IconNamePropType.isRequired,
+      name: IconNamePropType,
       size: PropTypes.number,
       color: PropTypes.string,
       children: PropTypes.node,
@@ -59,7 +59,7 @@ export default function createIconSet(glyphMap, fontFamily, fontFile) {
     render() {
       const { name, size, color, style, ...props } = this.props;
 
-      let glyph = glyphMap[name] || '?';
+      let glyph = name ? glyphMap[name] || '?' : '';
       if (typeof glyph === 'number') {
         glyph = String.fromCharCode(glyph);
       }
@@ -78,27 +78,36 @@ export default function createIconSet(glyphMap, fontFamily, fontFile) {
       props.style = [styleDefaults, style, styleOverrides];
       props.ref = this.handleRef;
 
-      return <Text {...props}>{glyph}{this.props.children}</Text>;
+      return (
+        <Text {...props}>
+          {glyph}
+          {this.props.children}
+        </Text>
+      );
     }
   }
 
   const imageSourceCache = {};
+
+  function ensureNativeModuleAvailable() {
+    if (!NativeIconAPI) {
+      if (Platform.OS === 'android') {
+        throw new Error(
+          'RNVectorIconsModule not available, did you properly integrate the module? Try running `react-native link react-native-vector-icons` and recompiling.'
+        );
+      }
+      throw new Error(
+        'RNVectorIconsManager not available, did you add the library to your project and link with libRNVectorIcons.a? Try running `react-native link react-native-vector-icons` and recompiling.'
+      );
+    }
+  }
 
   function getImageSource(
     name,
     size = DEFAULT_ICON_SIZE,
     color = DEFAULT_ICON_COLOR
   ) {
-    if (!NativeIconAPI) {
-      if (Platform.OS === 'android') {
-        throw new Error(
-          'RNVectorIconsModule not available, did you properly integrate the module?'
-        );
-      }
-      throw new Error(
-        'RNVectorIconsManager not available, did you add the library to your project and link with libRNVectorIcons.a?'
-      );
-    }
+    ensureNativeModuleAvailable();
 
     let glyph = glyphMap[name] || '?';
     if (typeof glyph === 'number') {
@@ -137,6 +146,19 @@ export default function createIconSet(glyphMap, fontFamily, fontFile) {
     });
   }
 
+  function loadFont(file = fontFile) {
+    if (Platform.OS === 'ios') {
+      ensureNativeModuleAvailable();
+      if (!file) {
+        return Promise.reject(
+          new Error('Unable to load font, because no file was specified. ')
+        );
+      }
+      return NativeIconAPI.loadFontWithFileName(...file.split('.'));
+    }
+    return Promise.resolve();
+  }
+
   Icon.Button = createIconButtonComponent(Icon);
   Icon.TabBarItem = createTabBarItemIOSComponent(
     IconNamePropType,
@@ -148,6 +170,7 @@ export default function createIconSet(glyphMap, fontFamily, fontFile) {
     getImageSource
   );
   Icon.getImageSource = getImageSource;
+  Icon.loadFont = loadFont;
 
   return Icon;
 }

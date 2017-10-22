@@ -15,3 +15,4 @@ export const TabBarItem = iconSet.TabBarItem;
 export const TabBarItemIOS = iconSet.TabBarItemIOS;
 export const ToolbarAndroid = iconSet.ToolbarAndroid;
 export const getImageSource = iconSet.getImageSource;
+
