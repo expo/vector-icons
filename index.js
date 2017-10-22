@@ -5,6 +5,9 @@ module.exports = {
   get EvilIcons() {
     return require('./EvilIcons').default;
   },
+  get Feather() {
+    return require('./Feather').default;
+  },
   get FontAwesome() {
     return require('./FontAwesome').default;
   },
