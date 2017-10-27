@@ -59,10 +59,7 @@ class App extends Component {
   render() {
     const { searchText } = this.state;
     const data = IconsArray.filter(icon => {
-      return (
-        icon.name.includes(searchText) ||
-        icon.family.toLowerCase().includes(searchText)
-      );
+      return icon.name.includes(searchText) || icon.family.toLowerCase().includes(searchText);
     });
 
     return (

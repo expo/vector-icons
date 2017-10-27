@@ -1,5 +1,4 @@
-import glyphMap
-  from './vendor/react-native-vector-icons/glyphmaps/MaterialCommunityIcons.json';
+import glyphMap from './vendor/react-native-vector-icons/glyphmaps/MaterialCommunityIcons.json';
 import createIconSet from './createIconSet';
 
 export default createIconSet(

@@ -6,14 +6,15 @@ export default class IconList extends React.Component {
   render() {
     return (
       <AutoSizer>
-        {({ height, width }) =>
+        {({ height, width }) => (
           <List
             height={height}
             width={width}
             rowCount={this.props.data.length}
             rowHeight={60}
             rowRenderer={this._renderRow}
-          />}
+          />
+        )}
       </AutoSizer>
     );
   }
@@ -42,15 +43,11 @@ export default class IconList extends React.Component {
             <Icon family={family} name={name} className="Result-Icon" />
           </div>
           <div style={{ flex: 1, maxWidth: 200 }}>
-            <h4 className="Result-Icon-Name">
-              {name}
-            </h4>
+            <h4 className="Result-Icon-Name">{name}</h4>
           </div>
 
           <div style={{ flex: 1 }}>
-            <h4 className="Result-Family-Name">
-              {family}
-            </h4>
+            <h4 className="Result-Family-Name">{family}</h4>
           </div>
         </div>
       </div>
