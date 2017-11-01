@@ -5,11 +5,8 @@ import createIconSet from './vendor/react-native-vector-icons/lib/create-icon-se
 import createIconButtonComponent from './vendor/react-native-vector-icons/lib/icon-button';
 
 export default function(glyphMap, fontName, expoAssetId) {
-  const expoFontName = Font.style(fontName, {
-    ignoreWarning: true,
-  }).fontFamily;
   const font = { [fontName]: expoAssetId };
-  const RNVIconComponent = createIconSet(glyphMap, expoFontName);
+  const RNVIconComponent = createIconSet(glyphMap, fontName);
 
   class Icon extends React.Component {
     static propTypes = RNVIconComponent.propTypes;
