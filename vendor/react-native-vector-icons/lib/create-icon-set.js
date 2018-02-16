@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import {
   NativeModules,
@@ -31,11 +31,11 @@ export default function createIconSet(glyphMap, fontFamily, fontFile) {
 
   const IconNamePropType = PropTypes.oneOf(Object.keys(glyphMap));
 
-  class Icon extends Component {
+  class Icon extends PureComponent {
     static propTypes = {
       name: IconNamePropType,
       size: PropTypes.number,
-      color: PropTypes.string,
+      color: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
       children: PropTypes.node,
       style: PropTypes.any, // eslint-disable-line react/forbid-prop-types
     };

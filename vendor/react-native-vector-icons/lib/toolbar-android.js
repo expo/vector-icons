@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unused-prop-types */
 import isEqual from 'lodash/isEqual';
 import pick from 'lodash/pick';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { ToolbarAndroid } from './react-native';
 
@@ -9,7 +9,7 @@ export default function createToolbarAndroidComponent(
   IconNamePropType,
   getImageSource
 ) {
-  return class IconToolbarAndroid extends Component {
+  return class IconToolbarAndroid extends PureComponent {
     static propTypes = {
       logoName: IconNamePropType,
       navIconName: IconNamePropType,
@@ -19,13 +19,13 @@ export default function createToolbarAndroidComponent(
           title: PropTypes.string.isRequired,
           iconName: IconNamePropType,
           iconSize: PropTypes.number,
-          iconColor: PropTypes.string,
+          iconColor: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
           show: PropTypes.oneOf(['always', 'ifRoom', 'never']),
           showWithText: PropTypes.bool,
         })
       ),
       iconSize: PropTypes.number,
-      iconColor: PropTypes.string,
+      iconColor: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     };
 
     static defaultProps = {
