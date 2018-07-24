@@ -19,7 +19,7 @@
   "homepage": "https://expo.github.io/vector-icons",
   "dependencies": {
     "lodash": "^4.17.4",
-    "react-native-vector-icons": "4.5.0"
+    "react-native-vector-icons": "4.6.0"
   },
   "devDependencies": {}
 }
