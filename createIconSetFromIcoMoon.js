@@ -1,4 +1,4 @@
-import { Font } from 'expo';
+import { Font } from 'expo-font';
 import createIconSetFromIcoMoon from './vendor/react-native-vector-icons/lib/create-icon-set-from-icomoon';
 
 export default function(config, expoFontName, expoAssetId) {

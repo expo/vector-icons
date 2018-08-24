@@ -20,6 +20,7 @@
   "dependencies": {
     "lodash": "^4.17.4",
     "react-native-vector-icons": "4.6.0"
+    "expo-font": "^1.0.0"
   },
   "devDependencies": {}
 }
