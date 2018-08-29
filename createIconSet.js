@@ -50,8 +50,15 @@ export default function(glyphMap, fontName, expoAssetId) {
     }
   }
 
+  function getRawGlyphMap() {
+    return glyphMap;
+  }
+
   Icon.Button = createIconButtonComponent(Icon);
   Icon.glyphMap = glyphMap;
+  Icon.getRawGlyphMap = getRawGlyphMap;
+  Icon.getFontFamily = () => fontName;
+  Icon.loadFont = () => Font.loadAsync(font);
   Icon.font = font;
 
   return Icon;

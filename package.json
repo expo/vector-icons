@@ -1,6 +1,6 @@
 {
   "name": "@expo/vector-icons",
-  "version": "6.3.1",
+  "version": "7.0.0-rc.0",
   "description": "Built-in support for 10 popular icon fonts and the tooling to create your own Icon components from your font and glyph map. This is a wrapper around react-native-vector-icons to make it compatible with Expo.",
   "main": "index.js",
   "scripts": {},
@@ -19,7 +19,9 @@
   "homepage": "https://expo.github.io/vector-icons",
   "dependencies": {
     "lodash": "^4.17.4",
-    "react-native-vector-icons": "4.5.0",
+    "react-native-vector-icons": "5.0.0"
+  },
+  "peerDependencies": {
     "expo-font": "^1.0.0"
   },
   "devDependencies": {}
