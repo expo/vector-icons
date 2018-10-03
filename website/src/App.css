@@ -1,4 +1,9 @@
 @font-face {
+  font-family: 'AntDesign';
+  src: url('./fonts/AntDesign.ttf') format('truetype');
+}
+
+@font-face {
   font-family: 'Entypo';
   src: url('./fonts/Entypo.ttf') format('truetype');
 }

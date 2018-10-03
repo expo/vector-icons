@@ -1,4 +1,7 @@
 module.exports = {
+  get AntDesign() {
+    return require('./AntDesign').default;
+  },
   get Entypo() {
     return require('./Entypo').default;
   },

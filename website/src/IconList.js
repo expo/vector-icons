@@ -1,7 +1,6 @@
 import React from 'react';
 import { AutoSizer, List } from 'react-virtualized';
 import Icon from './Icon';
-
 export default class IconList extends React.Component {
   render() {
     return (

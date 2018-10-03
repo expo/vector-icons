@@ -1,6 +1,7 @@
 import _ from 'lodash';
 
 export const IconFamilies = {
+  AntDesign: require('react-native-vector-icons/glyphmaps/AntDesign.json'),
   Entypo: require('react-native-vector-icons/glyphmaps/Entypo.json'),
   EvilIcons: require('react-native-vector-icons/glyphmaps/EvilIcons.json'),
   Feather: require('react-native-vector-icons/glyphmaps/Feather.json'),
