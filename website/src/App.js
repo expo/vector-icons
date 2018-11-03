@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import _ from 'lodash';
 
 import { IconsArray } from './IconConstants';
 import Icon from './Icon';
