@@ -53,7 +53,8 @@ export default function(glyphMap, fontName, expoAssetId) {
   function getRawGlyphMap() {
     return glyphMap;
   }
-
+  
+  Icon.getImageSource = RNVIconComponent.getImageSource;
   Icon.Button = createIconButtonComponent(Icon);
   Icon.glyphMap = glyphMap;
   Icon.getRawGlyphMap = getRawGlyphMap;
