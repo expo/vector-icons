@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from 'react-native';
-import { Font } from 'expo-font';
+import * as Font from 'expo-font';
 import createIconSet from './vendor/react-native-vector-icons/lib/create-icon-set';
 import createIconButtonComponent from './vendor/react-native-vector-icons/lib/icon-button';
 
