@@ -7,7 +7,7 @@ export default class IconList extends React.Component {
       <AutoSizer>
         {({ height, width }) => (
           <List
-            height={height}
+            height={height - 120} // The last element was not visible 120px = header + search bar height
             width={width}
             rowCount={this.props.data.length}
             rowHeight={60}
