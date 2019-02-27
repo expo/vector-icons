@@ -6,7 +6,7 @@ import {
   PixelRatio,
   processColor,
   Text,
-} from './react-native';
+} from 'react-native';
 
 import ensureNativeModuleAvailable from './ensure-native-module-available';
 import createIconButtonComponent from './icon-button';

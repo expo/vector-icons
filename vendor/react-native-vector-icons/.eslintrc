@@ -9,16 +9,11 @@
     "prettier"
   ],
   "parser": "babel-eslint",
-  "settings": {
-    "import/ignore": [
-      "lib/react-native.js"
-    ]
-  },
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/require-default-props": [0],
     "import/no-extraneous-dependencies": [0],
-    "import/no-unresolved": [2, { ignore: ['^react(-native)?$'] }],
+    "import/no-unresolved": [2, { "ignore": ["^react(-native)?$"] }],
     "import/extensions": [2, { "js": "never", "json": "always" }],
     "arrow-parens": ["error", "as-needed"],
     "comma-dangle": ["error", {
@@ -26,7 +21,7 @@
       "objects": "always-multiline",
       "imports": "always-multiline",
       "exports": "always-multiline",
-      "functions": "ignore",
+      "functions": "ignore"
     }],
     "prettier/prettier": ["error", {
       "trailingComma": "es5",
