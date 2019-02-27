@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from 'react-native';
-import * as Font from 'expo-font';
+import { loadAsync, isLoaded } from 'expo-font';
 import createIconSet from './vendor/react-native-vector-icons/lib/create-icon-set';
 import createIconButtonComponent from './vendor/react-native-vector-icons/lib/icon-button';
 
@@ -8,18 +8,27 @@ export default function(glyphMap, fontName, expoAssetId) {
   const font = { [fontName]: expoAssetId };
   const RNVIconComponent = createIconSet(glyphMap, fontName);
 
-  class Icon extends React.Component {
+  return class Icon extends React.Component {
     static propTypes = RNVIconComponent.propTypes;
     static defaultProps = RNVIconComponent.defaultProps;
+    static Button = createIconButtonComponent(Icon);
+    static glyphMap = glyphMap;
+    static getRawGlyphMap = () => glyphMap;
+    static getFontFamily = () => fontName;
+    static loadFont = () => loadAsync(font);
+    static font = font;
+
+    _mounted = false;
+    _icon?: any;
 
     state = {
-      fontIsLoaded: Font.isLoaded(fontName),
+      fontIsLoaded: isLoaded(fontName),
     };
 
     async componentWillMount() {
       this._mounted = true;
       if (!this.state.fontIsLoaded) {
-        await Font.loadAsync(font);
+        await loadAsync(font);
         this._mounted && this.setState({ fontIsLoaded: true });
       }
     }
@@ -48,18 +57,5 @@ export default function(glyphMap, fontName, expoAssetId) {
         />
       );
     }
-  }
-
-  function getRawGlyphMap() {
-    return glyphMap;
-  }
-
-  Icon.Button = createIconButtonComponent(Icon);
-  Icon.glyphMap = glyphMap;
-  Icon.getRawGlyphMap = getRawGlyphMap;
-  Icon.getFontFamily = () => fontName;
-  Icon.loadFont = () => Font.loadAsync(font);
-  Icon.font = font;
-
-  return Icon;
+  };
 }
