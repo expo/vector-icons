@@ -1,4 +1,5 @@
-import glyphMap from './vendor/react-native-vector-icons/glyphmaps/EvilIcons.json';
 import createIconSet from './createIconSet';
+import font from './fonts/EvilIcons.ttf';
+import glyphMap from './vendor/react-native-vector-icons/glyphmaps/EvilIcons.json';
 
-export default createIconSet(glyphMap, 'evilicons', require('./fonts/EvilIcons.ttf'));
+export default createIconSet(glyphMap, 'evilicons', font);

@@ -1,4 +1,5 @@
-import glyphMap from './vendor/react-native-vector-icons/glyphmaps/FontAwesome.json';
 import createIconSet from './createIconSet';
+import font from './fonts/FontAwesome.ttf';
+import glyphMap from './vendor/react-native-vector-icons/glyphmaps/FontAwesome.json';
 
-export default createIconSet(glyphMap, 'FontAwesome', require('./fonts/FontAwesome.ttf'));
+export default createIconSet(glyphMap, 'FontAwesome', font);

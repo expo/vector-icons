@@ -1,4 +1,5 @@
-import glyphMap from './vendor/react-native-vector-icons/glyphmaps/Octicons.json';
 import createIconSet from './createIconSet';
+import font from './fonts/Octicons.ttf';
+import glyphMap from './vendor/react-native-vector-icons/glyphmaps/Octicons.json';
 
-export default createIconSet(glyphMap, 'octicons', require('./fonts/Octicons.ttf'));
+export default createIconSet(glyphMap, 'octicons', font);

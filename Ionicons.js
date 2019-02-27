@@ -1,4 +1,5 @@
-import glyphMap from './vendor/react-native-vector-icons/glyphmaps/Ionicons.json';
 import createIconSet from './createIconSet';
+import font from './fonts/Ionicons.ttf';
+import glyphMap from './vendor/react-native-vector-icons/glyphmaps/Ionicons.json';
 
-export default createIconSet(glyphMap, 'ionicons', require('./fonts/Ionicons.ttf'));
+export default createIconSet(glyphMap, 'ionicons', font);

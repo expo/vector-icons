@@ -1,4 +1,5 @@
-import glyphMap from './vendor/react-native-vector-icons/glyphmaps/Entypo.json';
 import createIconSet from './createIconSet';
+import font from './fonts/Entypo.ttf';
+import glyphMap from './vendor/react-native-vector-icons/glyphmaps/Entypo.json';
 
-export default createIconSet(glyphMap, 'entypo', require('./fonts/Entypo.ttf'));
+export default createIconSet(glyphMap, 'entypo', font);
