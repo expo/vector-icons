@@ -1,4 +1,5 @@
-import glyphMap from './vendor/react-native-vector-icons/glyphmaps/Zocial.json';
 import createIconSet from './createIconSet';
+import font from './fonts/Zocial.ttf';
+import glyphMap from './vendor/react-native-vector-icons/glyphmaps/Zocial.json';
 
-export default createIconSet(glyphMap, 'zocial', require('./fonts/Zocial.ttf'));
+export default createIconSet(glyphMap, 'zocial', font);
