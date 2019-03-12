@@ -1,17 +1,20 @@
 {
   "name": "@expo/vector-icons",
+  "sideEffects": false,
   "version": "9.0.0",
   "description": "Built-in support for popular icon fonts and the tooling to create your own Icon components from your font and glyph map. This is a wrapper around react-native-vector-icons to make it compatible with Expo.",
   "main": "build/IconsLazy.js",
   "module": "build/Icons.js",
   "types": "build/Icons.d.ts",
   "scripts": {
+    "copy-vendor": "cp -R src/vendor/ build/vendor/",
+    "copy-assets": "cp -R src/fonts/ build/fonts/",
     "generate-lazy": "expo-module babel --config-file ./babel.config.build.js --source-maps --out-file build/IconsLazy.js build/Icons.js",
-    "build": "EXPO_NONINTERACTIVE=1 expo-module build; npm run generate-lazy",
+    "build": "EXPO_NONINTERACTIVE=1 expo-module build; npm run generate-lazy; npm run copy-vendor; npm run copy-assets",
     "clean": "expo-module clean",
     "lint": "eslint tools",
     "test": "expo-module test",
-    "prepare": "expo-module prepare; npm run generate-lazy",
+    "prepare": "expo-module prepare; npm run generate-lazy; npm run copy-vendor; npm run copy-assets",
     "prepublishOnly": "expo-module prepublishOnly",
     "expo-module": "expo-module"
   },
@@ -23,6 +26,9 @@
     "expo"
   ],
   "author": "Brent Vatne",
+  "contributors": [
+    "Evan Bacon <bacon@expo.io> (https://github.com/evanbacon)"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/expo/vector-icons/issues"
