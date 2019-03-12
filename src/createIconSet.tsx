@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from 'react-native';
-import { loadAsync, isLoaded } from 'expo-font';
+import * as Font from 'expo-font';
 import createIconSet from './vendor/react-native-vector-icons/lib/create-icon-set';
 import createIconButtonComponent from './vendor/react-native-vector-icons/lib/icon-button';
 
@@ -15,20 +15,20 @@ export default function(glyphMap, fontName, expoAssetId) {
     static glyphMap = glyphMap;
     static getRawGlyphMap = () => glyphMap;
     static getFontFamily = () => fontName;
-    static loadFont = () => loadAsync(font);
+    static loadFont = () => Font.loadAsync(font);
     static font = font;
 
     _mounted = false;
     _icon?: any;
 
     state = {
-      fontIsLoaded: isLoaded(fontName),
+      fontIsLoaded: Font.isLoaded(fontName),
     };
 
     async componentWillMount() {
       this._mounted = true;
       if (!this.state.fontIsLoaded) {
-        await loadAsync(font);
+        await Font.loadAsync(font);
         this._mounted && this.setState({ fontIsLoaded: true });
       }
     }

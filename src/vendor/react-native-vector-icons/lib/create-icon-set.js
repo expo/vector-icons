@@ -1,12 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import {
-  NativeModules,
-  Platform,
-  PixelRatio,
-  processColor,
-  Text,
-} from 'react-native';
+import { NativeModules, Platform, PixelRatio, processColor, Text } from 'react-native';
 
 import ensureNativeModuleAvailable from './ensure-native-module-available';
 import createIconButtonComponent from './icon-button';
