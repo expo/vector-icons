@@ -1,5 +1,2 @@
-import createIconSet from './createIconSet';
-import font from './fonts/AntDesign.ttf';
-import glyphMap from './vendor/react-native-vector-icons/glyphmaps/AntDesign.json';
-
-export default createIconSet(glyphMap, 'anticon', font);
+import AntDesign from './build/AntDesign';
+export default AntDesign;
