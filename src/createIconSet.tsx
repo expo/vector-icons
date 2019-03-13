@@ -4,9 +4,11 @@ import * as Font from 'expo-font';
 import createIconSet from './vendor/react-native-vector-icons/lib/create-icon-set';
 import createIconButtonComponent from './vendor/react-native-vector-icons/lib/icon-button';
 
-export default function(glyphMap, fontName, expoAssetId) {
+export { DEFAULT_ICON_COLOR, DEFAULT_ICON_SIZE } from './vendor/react-native-vector-icons/lib/create-icon-set';
+
+export default function(glyphMap, fontName, expoAssetId, fontStyle?: any) {
   const font = { [fontName]: expoAssetId };
-  const RNVIconComponent = createIconSet(glyphMap, fontName);
+  const RNVIconComponent = createIconSet(glyphMap, fontName, null, fontStyle);
 
   return class Icon extends React.Component {
     static propTypes = RNVIconComponent.propTypes;

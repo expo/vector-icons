@@ -3,6 +3,7 @@ export { default as Entypo } from './Entypo';
 export { default as EvilIcons } from './EvilIcons';
 export { default as Feather } from './Feather';
 export { default as FontAwesome } from './FontAwesome';
+export { default as FontAwesome5 } from './FontAwesome5';
 export { default as Foundation } from './Foundation';
 export { default as Ionicons } from './Ionicons';
 export { default as MaterialCommunityIcons } from './MaterialCommunityIcons';
