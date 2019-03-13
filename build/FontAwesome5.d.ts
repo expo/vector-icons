@@ -1,5 +1,3 @@
-import React from 'react';
-export default class FontAwesome5 extends React.Component {
-    componentDidMount(): void;
-    render(): null;
-}
+export { FA5Style } from './vendor/react-native-vector-icons/lib/create-icon-set-from-fontawesome5';
+declare const iconSet: any;
+export default iconSet;
