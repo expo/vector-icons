@@ -44,6 +44,8 @@
     "lodash": "^4.17.4"
   },
   "devDependencies": {
+    "@types/react-native": "~0.57",
+    "expo-font": "^3.0.1",
     "expo-module-scripts": "^1.0.0"
   }
 }
