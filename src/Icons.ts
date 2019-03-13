@@ -10,6 +10,11 @@ export { default as MaterialIcons } from './MaterialIcons';
 export { default as Octicons } from './Octicons';
 export { default as SimpleLineIcons } from './SimpleLineIcons';
 export { default as Zocial } from './Zocial';
-export { default as createIconSet } from './createIconSet';
-export { default as createIconSetFromFontello } from './createIconSetFromFontello';
-export { default as createIconSetFromIcoMoon } from './createIconSetFromIcoMoon';
+export { default as createMultiStyleIconSet } from './createMultiStyleIconSet';
+export {
+  default as createIconSetFromFontello,
+} from './createIconSetFromFontello';
+export {
+  default as createIconSetFromIcoMoon,
+} from './createIconSetFromIcoMoon';
+export { default as createMu } from './createIconSetFromIcoMoon';

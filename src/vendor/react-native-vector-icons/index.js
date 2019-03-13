@@ -5,3 +5,6 @@ export {
 export {
   default as createIconSetFromIcoMoon,
 } from './lib/create-icon-set-from-icomoon';
+export {
+  default as createMultiStyleIconSet,
+} from './lib/create-multi-style-icon-set';
