@@ -9,7 +9,12 @@ const fontMap = {
   Brand: require('./vendor/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf'),
 };
 
-export { FA5Style } from './vendor/react-native-vector-icons/lib/create-icon-set-from-fontawesome5';
+export const FA5Style = {
+  regular: 'regular',
+  light: 'light',
+  solid: 'solid',
+  brand: 'brand',
+};
 
 const iconSet = createFA5iconSet(glyphMap, metadata, fontMap, false);
 
