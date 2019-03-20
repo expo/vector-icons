@@ -27,4 +27,4 @@ export default class IconExample extends React.Component {
 }
 ```
 
-for more usage see [Expo icons documentation](https://docs.expo.io/versions/latest/guides/icons.html)
+for more usage see [Expo icons documentation](https://docs.expo.io/versions/latest/guides/icons/)
