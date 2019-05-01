@@ -33,7 +33,7 @@ In order to you use the FontAwesome 5 Pro icons, you will need to download the P
 
 First you need your FontAwesome npm token which can be obtained by logging into your account and then access the Services tab.
 
-Run `./node_modules/.bin/fa5pro` and enter the token when asked to in order to upgrade to the Pro version.
+Run `./node_modules/@expo/vector-icons/bin/fa5pro.sh` and enter the token when asked to in order to upgrade to the Pro version.
 
 Use FontAwesome5Pro icons like so
 

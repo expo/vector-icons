@@ -6,9 +6,6 @@
   "main": "build/IconsLazy.js",
   "module": "build/Icons.js",
   "types": "build/Icons.d.ts",
-  "bin": {
-    "fa5pro": "./bin/fa5pro.sh"
-  },
   "scripts": {
     "copy-vendor": "cp -R src/vendor/ build/vendor/",
     "generate-lazy": "expo-module babel --config-file ./babel.config.build.js --source-maps --out-file build/IconsLazy.js build/Icons.js",
