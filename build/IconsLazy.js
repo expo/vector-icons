@@ -39,6 +39,12 @@ Object.defineProperty(exports, "FontAwesome5", {
     return _FontAwesome2.default;
   }
 });
+Object.defineProperty(exports, "FontAwesome5Pro", {
+  enumerable: true,
+  get: function () {
+    return _FontAwesome5Pro.default;
+  }
+});
 Object.defineProperty(exports, "Foundation", {
   enumerable: true,
   get: function () {
@@ -117,6 +123,8 @@ var _Feather = _interopRequireDefault(require("./Feather"));
 var _FontAwesome = _interopRequireDefault(require("./FontAwesome"));
 
 var _FontAwesome2 = _interopRequireDefault(require("./FontAwesome5"));
+
+var _FontAwesome5Pro = _interopRequireDefault(require("./FontAwesome5Pro"));
 
 var _Foundation = _interopRequireDefault(require("./Foundation"));
 

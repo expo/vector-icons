@@ -27,4 +27,27 @@ export default class IconExample extends React.Component {
 }
 ```
 
+## Upgrading to FontAwesome5 Pro
+
+In order to you use the FontAwesome 5 Pro icons, you will need to download the Pro fonts.
+
+First you need your FontAwesome npm token which can be obtained by logging into your account and then access the Services tab.
+
+Run `./node_modules/.bin/fa5pro` and enter the token when asked to in order to upgrade to the Pro version.
+
+Use FontAwesome5Pro icons like so
+
+```tsx
+import React from 'react';
+import { FontAwesome5Pro } from '@expo/vector-icons';
+
+export default class IconExample extends React.Component {
+  render() {
+    return (
+      <FontAwesome5Pro light name="check-square" size={32} color="green" />
+    );
+  }
+}
+```
+
 for more usage see [Expo icons documentation](https://docs.expo.io/versions/latest/guides/icons/)
