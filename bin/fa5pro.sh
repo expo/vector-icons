@@ -18,10 +18,10 @@ then
 
   echo >&2 "Copying font files"
 
-  cp ${TEMP_DIR}/pro/webfonts/fa-brands-400.ttf ./node_modules/@expo/vector-icons/build/vendor/react-native-vector-icons/Fonts/FontAwesome5_Pro_Brands.ttf
-  cp ${TEMP_DIR}/pro/webfonts/fa-light-300.ttf ./node_modules/@expo/vector-icons/build/vendor/react-native-vector-icons/Fonts/FontAwesome5_Pro_Light.ttf
-  cp ${TEMP_DIR}/pro/webfonts/fa-regular-400.ttf ./node_modules/@expo/vector-icons/build/vendor/react-native-vector-icons/Fonts/FontAwesome5_Pro_Regular.ttf
-  cp ${TEMP_DIR}/pro/webfonts/fa-solid-900.ttf ./node_modules/@expo/vector-icons/build/vendor/react-native-vector-icons/Fonts/FontAwesome5_Pro_Solid.ttf
+  cp ${TEMP_DIR}/pro/webfonts/fa-brands-400.ttf ./build/vendor/react-native-vector-icons/Fonts/FontAwesome5_Pro_Brands.ttf
+  cp ${TEMP_DIR}/pro/webfonts/fa-light-300.ttf ./build/vendor/react-native-vector-icons/Fonts/FontAwesome5_Pro_Light.ttf
+  cp ${TEMP_DIR}/pro/webfonts/fa-regular-400.ttf ./build/vendor/react-native-vector-icons/Fonts/FontAwesome5_Pro_Regular.ttf
+  cp ${TEMP_DIR}/pro/webfonts/fa-solid-900.ttf ./build/vendor/react-native-vector-icons/Fonts/FontAwesome5_Pro_Solid.ttf
 
   echo >&2 "Done"
 fi
