@@ -35,7 +35,9 @@ First you need your FontAwesome npm token which can be obtained by logging into 
 
 Next, configure @fortawesome scope to use the correct server address and your token, as described [here](https://fontawesome.com/how-to-use/on-the-web/setup/using-package-managers#installing-pro).
 
-Finally, run `npm run fa5pro` to download and install the fonts.
+Finally, run `cd node_modules/@expo/vector-icons && npm run fa5pro` to download and install the fonts.
+
+If you already had @fortawesome configured (via an `.npmrc` file or by using `npm config set`) before you installed this package, the fonts will already have been installed.
 
 Use FontAwesome5Pro icons like so
 
