@@ -1,3 +1,4 @@
+import { Platform } from 'react-native';
 import createMultiStyleIconSet from './createMultiStyleIconSet';
 
 export const FA5Style = {
@@ -34,9 +35,12 @@ export function createFA5iconSet(glyphMap, metadata = {}, fonts, pro = false) {
     return {
       fontFamily: `${family}-${styleName}`,
       fontFile,
-      fontStyle: {
-        fontWeight,
-      },
+      fontStyle: Platform.select({
+        ios: {
+          fontWeight,
+        },
+        default: {},
+      }),
       glyphMap,
     };
   }
