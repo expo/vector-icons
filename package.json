@@ -12,8 +12,10 @@
     "build": "EXPO_NONINTERACTIVE=1 expo-module build && npm run generate-lazy && npm run copy-vendor",
     "build:dev": "expo-module build",
     "clean": "expo-module clean",
+    "fa5pro": "./bin/fa5pro.sh",
     "lint": "eslint tools",
     "test": "expo-module test",
+    "postinstall": "npm run fa5pro",
     "prepare": "expo-module prepare && npm run generate-lazy && npm run copy-vendor",
     "prepublishOnly": "expo-module prepublishOnly",
     "expo-module": "expo-module"
