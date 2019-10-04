@@ -5,7 +5,7 @@ declare const _default: {
         state: {
             fontIsLoaded: boolean;
         };
-        componentWillMount(): Promise<void>;
+        componentDidMount(): Promise<void>;
         componentWillUnmount(): void;
         setNativeProps(props: any): void;
         render(): JSX.Element;
@@ -25,7 +25,7 @@ declare const _default: {
         state: {
             fontIsLoaded: boolean;
         };
-        componentWillMount(): Promise<void>;
+        componentDidMount(): Promise<void>;
         componentWillUnmount(): void;
         setNativeProps(props: any): void;
         render(): JSX.Element;

@@ -1,10 +1,13 @@
-import React from 'react';
-import { Text } from 'react-native';
-import * as Font from 'expo-font';
-import createIconSet from './vendor/react-native-vector-icons/lib/create-icon-set';
-import createIconButtonComponent from './vendor/react-native-vector-icons/lib/icon-button';
+import React from "react";
+import { Text } from "react-native";
+import * as Font from "expo-font";
+import createIconSet from "./vendor/react-native-vector-icons/lib/create-icon-set";
+import createIconButtonComponent from "./vendor/react-native-vector-icons/lib/icon-button";
 
-export { DEFAULT_ICON_COLOR, DEFAULT_ICON_SIZE } from './vendor/react-native-vector-icons/lib/create-icon-set';
+export {
+  DEFAULT_ICON_COLOR,
+  DEFAULT_ICON_SIZE
+} from "./vendor/react-native-vector-icons/lib/create-icon-set";
 
 export default function(glyphMap, fontName, expoAssetId, fontStyle?: any) {
   const font = { [fontName]: expoAssetId };
@@ -24,10 +27,10 @@ export default function(glyphMap, fontName, expoAssetId, fontStyle?: any) {
     _icon?: any;
 
     state = {
-      fontIsLoaded: Font.isLoaded(fontName),
+      fontIsLoaded: Font.isLoaded(fontName)
     };
 
-    async componentWillMount() {
+    async componentDidMount() {
       this._mounted = true;
       if (!this.state.fontIsLoaded) {
         await Font.loadAsync(font);

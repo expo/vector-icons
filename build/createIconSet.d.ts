@@ -1,5 +1,5 @@
-import React from 'react';
-export { DEFAULT_ICON_COLOR, DEFAULT_ICON_SIZE } from './vendor/react-native-vector-icons/lib/create-icon-set';
+import React from "react";
+export { DEFAULT_ICON_COLOR, DEFAULT_ICON_SIZE } from "./vendor/react-native-vector-icons/lib/create-icon-set";
 export default function (glyphMap: any, fontName: any, expoAssetId: any, fontStyle?: any): {
     new (props: Readonly<{}>): {
         _mounted: boolean;
@@ -7,7 +7,7 @@ export default function (glyphMap: any, fontName: any, expoAssetId: any, fontSty
         state: {
             fontIsLoaded: boolean;
         };
-        componentWillMount(): Promise<void>;
+        componentDidMount(): Promise<void>;
         componentWillUnmount(): void;
         setNativeProps(props: any): void;
         render(): JSX.Element;
@@ -27,7 +27,7 @@ export default function (glyphMap: any, fontName: any, expoAssetId: any, fontSty
         state: {
             fontIsLoaded: boolean;
         };
-        componentWillMount(): Promise<void>;
+        componentDidMount(): Promise<void>;
         componentWillUnmount(): void;
         setNativeProps(props: any): void;
         render(): JSX.Element;

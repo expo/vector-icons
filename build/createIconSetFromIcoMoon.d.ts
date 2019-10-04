@@ -5,7 +5,7 @@ export default function (config: any, expoFontName: any, expoAssetId: any): {
         state: {
             fontIsLoaded: boolean;
         };
-        componentWillMount(): Promise<void>;
+        componentDidMount(): Promise<void>;
         componentWillUnmount(): void;
         setNativeProps(props: any): void;
         render(): JSX.Element;
@@ -25,7 +25,7 @@ export default function (config: any, expoFontName: any, expoAssetId: any): {
         state: {
             fontIsLoaded: boolean;
         };
-        componentWillMount(): Promise<void>;
+        componentDidMount(): Promise<void>;
         componentWillUnmount(): void;
         setNativeProps(props: any): void;
         render(): JSX.Element;
