@@ -33,30 +33,30 @@ export interface IconProps<GLYPHS extends string> extends TextProps {
   color?: string;
 }
 
-export interface Icon<GM, FN extends string> {
+export type GlyphMap<G extends string> = { [K in G]: number }
+
+export interface Icon<G extends string, FN extends string> {
   propTypes: any;
   defaultProps: any;
   Button: ComponentClass<any>;
-  glyphMap: GM;
-  getRawGlyphMap: () => GM;
+  glyphMap: GlyphMap<G>;
+  getRawGlyphMap: () => GlyphMap<G>;
   getFontFamily: () => FN;
   loadFont: () => Promise<void>;
   font: { [x: string]: any };
-  new (props: icon<GM>): React.Component<icon<GM>>;
+  new (props: IconProps<G>): React.Component<IconProps<G>>;
 }
 
-type icon<GM> = IconProps<Extract<keyof GM, string>>;
-
-export default function<GM, FN extends string>(
-  glyphMap: GM,
+export default function<G extends string, FN extends string>(
+  glyphMap: GlyphMap<G>,
   fontName: FN,
   expoAssetId,
   fontStyle?: any
-): Icon<GM, FN> {
+): Icon<G, FN> {
   const font = { [fontName]: expoAssetId };
   const RNVIconComponent = createIconSet(glyphMap, fontName, null, fontStyle);
 
-  return class Icon extends React.Component<icon<GM>> {
+  return class Icon extends React.Component<IconProps<G>> {
     static propTypes = RNVIconComponent.propTypes;
     static defaultProps = RNVIconComponent.defaultProps;
     static Button = createIconButtonComponent(Icon);
