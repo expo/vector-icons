@@ -1,6 +1,6 @@
 import * as Font from "expo-font";
 import React, { ComponentClass } from "react";
-import { Text, TextProps } from "react-native";
+import { Text, TextProps, TouchableHighlightProps, ViewProps } from "react-native";
 
 import createIconSet from "./vendor/react-native-vector-icons/lib/create-icon-set";
 import createIconButtonComponent from "./vendor/react-native-vector-icons/lib/icon-button";
@@ -9,6 +9,29 @@ export {
   DEFAULT_ICON_COLOR,
   DEFAULT_ICON_SIZE
 } from "./vendor/react-native-vector-icons/lib/create-icon-set";
+
+export interface IconButtonProps<GLYPHS extends string> extends ViewProps, TouchableHighlightProps {
+  /**
+   * Size of the icon, can also be passed as fontSize in the style object.
+   *
+   * @default 12
+   */
+  size?: number;
+
+  /**
+   * Name of the icon to show
+   *
+   * See Icon Explorer app
+   * {@link https://github.com/oblador/react-native-vector-icons/tree/master/Examples/IconExplorer}
+   */
+  name: GLYPHS;
+
+  /**
+   * Color of the icon
+   *
+   */
+  color?: string;
+}
 
 export interface IconProps<GLYPHS extends string> extends TextProps {
   /**
@@ -38,7 +61,7 @@ export type GlyphMap<G extends string> = { [K in G]: number }
 export interface Icon<G extends string, FN extends string> {
   propTypes: any;
   defaultProps: any;
-  Button: ComponentClass<any>;
+  Button: ComponentClass<IconButtonProps<G>>;
   glyphMap: GlyphMap<G>;
   getRawGlyphMap: () => GlyphMap<G>;
   getFontFamily: () => FN;
