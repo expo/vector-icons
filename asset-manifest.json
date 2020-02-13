@@ -1,8 +1,8 @@
 {
-  "main.css": "static/css/main.414cc8c5.css",
-  "main.css.map": "static/css/main.414cc8c5.css.map",
-  "main.js": "static/js/main.241a635e.js",
-  "main.js.map": "static/js/main.241a635e.js.map",
+  "main.css": "static/css/main.fe826186.css",
+  "main.css.map": "static/css/main.fe826186.css.map",
+  "main.js": "static/js/main.f77b5edf.js",
+  "main.js.map": "static/js/main.f77b5edf.js.map",
   "static/media/AntDesign.ttf": "static/media/AntDesign.3a2ba315.ttf",
   "static/media/Entypo.ttf": "static/media/Entypo.744ce600.ttf",
   "static/media/EvilIcons.ttf": "static/media/EvilIcons.140c53a7.ttf",
@@ -10,9 +10,9 @@
   "static/media/FontAwesome.ttf": "static/media/FontAwesome.b06871f2.ttf",
   "static/media/Foundation.ttf": "static/media/Foundation.e20945d7.ttf",
   "static/media/Ionicons.ttf": "static/media/Ionicons.b2e0fc82.ttf",
-  "static/media/MaterialCommunityIcons.ttf": "static/media/MaterialCommunityIcons.d15c1216.ttf",
+  "static/media/MaterialCommunityIcons.ttf": "static/media/MaterialCommunityIcons.5a293a27.ttf",
   "static/media/MaterialIcons.ttf": "static/media/MaterialIcons.a37b0c01.ttf",
-  "static/media/Octicons.ttf": "static/media/Octicons.73b8cff0.ttf",
+  "static/media/Octicons.ttf": "static/media/Octicons.8e7f807e.ttf",
   "static/media/SimpleLineIcons.ttf": "static/media/SimpleLineIcons.d2285965.ttf",
   "static/media/Zocial.ttf": "static/media/Zocial.5cdf883b.ttf"
 }
