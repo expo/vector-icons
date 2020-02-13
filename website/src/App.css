@@ -1,61 +1,61 @@
 @font-face {
-  font-family: "AntDesign";
-  src: url("./fonts/AntDesign.ttf") format("truetype");
+  font-family: 'AntDesign';
+  src: url('./fonts/AntDesign.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: "Entypo";
-  src: url("./fonts/Entypo.ttf") format("truetype");
+  font-family: 'Entypo';
+  src: url('./fonts/Entypo.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: "EvilIcons";
-  src: url("./fonts/EvilIcons.ttf") format("truetype");
+  font-family: 'EvilIcons';
+  src: url('./fonts/EvilIcons.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: "Feather";
-  src: url("./fonts/Feather.ttf") format("truetype");
+  font-family: 'Feather';
+  src: url('./fonts/Feather.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: "FontAwesome";
-  src: url("./fonts/FontAwesome.ttf") format("truetype");
+  font-family: 'FontAwesome';
+  src: url('./fonts/FontAwesome.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: "Foundation";
-  src: url("./fonts/Foundation.ttf") format("truetype");
+  font-family: 'Foundation';
+  src: url('./fonts/Foundation.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: "Ionicons";
-  src: url("./fonts/Ionicons.ttf") format("truetype");
+  font-family: 'Ionicons';
+  src: url('./fonts/Ionicons.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: "MaterialIcons";
-  src: url("./fonts/MaterialIcons.ttf") format("truetype");
+  font-family: 'MaterialIcons';
+  src: url('./fonts/MaterialIcons.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: "MaterialCommunityIcons";
-  src: url("./fonts/MaterialCommunityIcons.ttf") format("truetype");
+  font-family: 'MaterialCommunityIcons';
+  src: url('./fonts/MaterialCommunityIcons.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: "Octicons";
-  src: url("./fonts/Octicons.ttf") format("truetype");
+  font-family: 'Octicons';
+  src: url('./fonts/Octicons.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: "SimpleLineIcons";
-  src: url("./fonts/SimpleLineIcons.ttf") format("truetype");
+  font-family: 'SimpleLineIcons';
+  src: url('./fonts/SimpleLineIcons.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: "Zocial";
-  src: url("./fonts/Zocial.ttf") format("truetype");
+  font-family: 'Zocial';
+  src: url('./fonts/Zocial.ttf') format('truetype');
 }
 
 .App {
@@ -109,7 +109,7 @@
 
 .Search-Input {
   background-color: transparent;
-  width: 90%;
+  width: 100%;
   font-size: 16px;
   margin-left: 25px;
   border: 0;
@@ -179,6 +179,7 @@ body,
   margin: 0 auto;
   box-shadow: 0px 10px 10px #ccc;
 }
+
 
 *:focus {
   outline: none;
