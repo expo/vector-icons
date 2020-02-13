@@ -1,6 +1,6 @@
 {
   "name": "@expo/vector-icons-website",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "private": true,
   "homepage": "https://expo.github.io/vector-icons",
   "devDependencies": {
