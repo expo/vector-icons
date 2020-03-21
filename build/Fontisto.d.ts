@@ -56,4 +56,3 @@ declare const iconSet: {
     contextType?: import("react").Context<any> | undefined;
 };
 export default iconSet;
-export declare const Button: any, TabBarItem: any, TabBarItemIOS: any, ToolbarAndroid: any, getImageSource: any, getImageSourceSync: any;

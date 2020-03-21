@@ -10,11 +10,3 @@ import glyphMap from "./vendor/react-native-vector-icons/glyphmaps/Fontisto.json
 const iconSet = createIconSet(glyphMap, "Fontisto", font);
 
 export default iconSet;
-export const {
-  Button,
-  TabBarItem,
-  TabBarItemIOS,
-  ToolbarAndroid,
-  getImageSource,
-  getImageSourceSync
-} = iconSet;
