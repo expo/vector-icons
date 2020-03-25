@@ -109,7 +109,7 @@
 
 .Search-Input {
   background-color: transparent;
-  width: 100%;
+  width: 90%;
   font-size: 16px;
   margin-left: 25px;
   border: 0;
@@ -179,7 +179,6 @@ body,
   margin: 0 auto;
   box-shadow: 0px 10px 10px #ccc;
 }
-
 
 *:focus {
   outline: none;

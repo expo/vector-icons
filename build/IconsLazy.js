@@ -93,6 +93,12 @@ Object.defineProperty(exports, "createMultiStyleIconSet", {
     return _createMultiStyleIconSet.default;
   }
 });
+Object.defineProperty(exports, "createIconSet", {
+  enumerable: true,
+  get: function () {
+    return _createIconSet.default;
+  }
+});
 Object.defineProperty(exports, "createIconSetFromFontello", {
   enumerable: true,
   get: function () {
@@ -141,6 +147,8 @@ var _SimpleLineIcons = _interopRequireDefault(require("./SimpleLineIcons"));
 var _Zocial = _interopRequireDefault(require("./Zocial"));
 
 var _createMultiStyleIconSet = _interopRequireDefault(require("./createMultiStyleIconSet"));
+
+var _createIconSet = _interopRequireDefault(require("./createIconSet"));
 
 var _createIconSetFromFontello = _interopRequireDefault(require("./createIconSetFromFontello"));
 

@@ -5,13 +5,13 @@ declare const _default: {
         state: {
             fontIsLoaded: boolean;
         };
-        componentWillMount(): Promise<void>;
+        componentDidMount(): Promise<void>;
         componentWillUnmount(): void;
         setNativeProps(props: any): void;
         render(): JSX.Element;
         context: any;
         setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
-        forceUpdate(callBack?: (() => void) | undefined): void;
+        forceUpdate(callback?: (() => void) | undefined): void;
         readonly props: Readonly<{}> & Readonly<{
             children?: import("react").ReactNode;
         }>;
@@ -25,13 +25,13 @@ declare const _default: {
         state: {
             fontIsLoaded: boolean;
         };
-        componentWillMount(): Promise<void>;
+        componentDidMount(): Promise<void>;
         componentWillUnmount(): void;
         setNativeProps(props: any): void;
         render(): JSX.Element;
         context: any;
         setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
-        forceUpdate(callBack?: (() => void) | undefined): void;
+        forceUpdate(callback?: (() => void) | undefined): void;
         readonly props: Readonly<{}> & Readonly<{
             children?: import("react").ReactNode;
         }>;
