@@ -25,7 +25,7 @@ export default class IconList extends React.Component {
     isVisible, // This row is visible within the List (eg it is not an overscanned row)
     style, // Style object to be applied to row (to position it)
   }) => {
-    const { family, name } = this.props.data[index];
+    const { family, style: familyStyle, name } = this.props.data[index];
 
     return (
       <div key={index} style={style} className="Result-Icon-Container">
@@ -39,14 +39,14 @@ export default class IconList extends React.Component {
             paddingVertical: 5,
           }}>
           <div style={{ width: 80, textAlign: 'center' }}>
-            <Icon family={family} name={name} className="Result-Icon" />
+            <Icon family={family} name={name} className="Result-Icon" style={familyStyle} />
           </div>
           <div style={{ flex: 1, maxWidth: 200 }}>
             <h4 className="Result-Icon-Name">{name}</h4>
           </div>
 
           <div style={{ flex: 1 }}>
-            <h4 className="Result-Family-Name">{family}</h4>
+            <h4 className="Result-Family-Name">{family}{familyStyle && ` (${familyStyle})`}</h4>
           </div>
         </div>
       </div>

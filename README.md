@@ -7,6 +7,7 @@ This library is a compatibility layer around [@oblador/react-native-vector-icons
 ## Resources
 
 - [@expo/vector-icons directory](https://expo.github.io/vector-icons/) - a searchable list of all included icons.
+- [Font Awesome 5 icons directory](https://fontawesome.com/icons) - all Font Awesome 5 icons (including the Pro icons)
   ![Screenshot of website](https://raw.githubusercontent.com/expo/vector-icons/master/website-screenshot.png)
 - [Expo documentation](https://docs.expo.io/)
 
