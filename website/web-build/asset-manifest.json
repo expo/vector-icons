@@ -1,0 +1,32 @@
+{
+  "files": {
+    "app.js": "/static/js/app.0a0d28ac.chunk.js",
+    "app.js.map": "/static/js/app.0a0d28ac.chunk.js.map",
+    "runtime~app.js": "/static/js/runtime~app.b3244af7.js",
+    "runtime~app.js.map": "/static/js/runtime~app.b3244af7.js.map",
+    "static/js/2.14318083.chunk.js": "/static/js/2.14318083.chunk.js",
+    "static/js/2.14318083.chunk.js.map": "/static/js/2.14318083.chunk.js.map",
+    "fonts/AntDesign.ttf": "/./fonts/AntDesign.ttf",
+    "fonts/Entypo.ttf": "/./fonts/Entypo.ttf",
+    "fonts/Feather.ttf": "/./fonts/Feather.ttf",
+    "fonts/FontAwesome.ttf": "/./fonts/FontAwesome.ttf",
+    "fonts/FontAwesome5_Brands.ttf": "/./fonts/FontAwesome5_Brands.ttf",
+    "fonts/FontAwesome5_Solid.ttf": "/./fonts/FontAwesome5_Solid.ttf",
+    "fonts/Foundation.ttf": "/./fonts/Foundation.ttf",
+    "fonts/Ionicons.ttf": "/./fonts/Ionicons.ttf",
+    "fonts/MaterialCommunityIcons.ttf": "/./fonts/MaterialCommunityIcons.ttf",
+    "fonts/MaterialIcons.ttf": "/./fonts/MaterialIcons.ttf",
+    "fonts/SimpleLineIcons.ttf": "/./fonts/SimpleLineIcons.ttf",
+    "favicon-16.png": "/favicon-16.png",
+    "favicon-32.png": "/favicon-32.png",
+    "favicon.ico": "/favicon.ico",
+    "index.html": "/index.html",
+    "manifest.json": "/manifest.json",
+    "serve.json": "/serve.json"
+  },
+  "entrypoints": [
+    "static/js/runtime~app.b3244af7.js",
+    "static/js/2.14318083.chunk.js",
+    "static/js/app.0a0d28ac.chunk.js"
+  ]
+}

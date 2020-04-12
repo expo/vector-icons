@@ -1,23 +1,31 @@
 {
-  "name": "@expo/vector-icons-website",
-  "version": "0.0.1",
-  "private": true,
-  "homepage": "https://expo.github.io/vector-icons",
-  "devDependencies": {
-    "gh-pages": "^0.11.0",
-    "react-scripts": "0.7.0"
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject"
   },
   "dependencies": {
-    "lodash": "^4.14.0",
-    "react": "^15.3.2",
-    "react-dom": "^15.3.2",
-    "react-native-vector-icons": "6.0.0",
-    "react-virtualized": "^9.12.0"
+    "@react-native-community/masked-view": "0.1.6",
+    "@react-navigation/native": "^5.1.4",
+    "@react-navigation/stack": "^5.2.9",
+    "expo": "^37.0.0",
+    "react": "16.9.0",
+    "react-dom": "16.9.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.0.tar.gz",
+    "react-native-gesture-handler": "~1.6.0",
+    "react-native-paper": "^3.7.0",
+    "react-native-reanimated": "~1.7.0",
+    "react-native-safe-area-context": "0.7.3",
+    "react-native-screens": "~2.2.0",
+    "react-native-web": "^0.11.7",
+    "react-responsive": "^8.0.3"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "eject": "react-scripts eject",
-    "deploy": "npm run build && gh-pages -d build"
-  }
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "babel-preset-expo": "^8.1.0"
+  },
+  "private": true
 }

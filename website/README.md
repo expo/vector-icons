@@ -1,8 +1,17 @@
-# Deploy
+# @expo/vector-icons | PWA
 
-* If work at Expo, you cannot deploy from `libraries/vector-icons`
-  inside of universe -- you need to check out the repo from Github into
-  a separate directory outside of universe.
+```
+$ yarn
+```
+or
+```
+$ npm install
+```
 
-- `yarn`
-- `npm run deploy`
+```
+$ yarn web
+```
+or
+```
+ $ npm run web
+```
