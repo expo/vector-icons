@@ -1,6 +1,8 @@
-import React from "react";
-export { DEFAULT_ICON_COLOR, DEFAULT_ICON_SIZE } from "./vendor/react-native-vector-icons/lib/create-icon-set";
-export default function (glyphMap: any, fontName: any, expoAssetId: any, fontStyle?: any): {
+/**
+ * Feather icon set component.
+ * Usage: <Feather name="icon-name" size={20} color="#4F8EF7" />
+ */
+declare const iconSet: {
     new (props: Readonly<{}>): {
         _mounted: boolean;
         _icon?: any;
@@ -15,10 +17,10 @@ export default function (glyphMap: any, fontName: any, expoAssetId: any, fontSty
         setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
         forceUpdate(callback?: (() => void) | undefined): void;
         readonly props: Readonly<{}> & Readonly<{
-            children?: React.ReactNode;
+            children?: import("react").ReactNode;
         }>;
         refs: {
-            [key: string]: React.ReactInstance;
+            [key: string]: import("react").ReactInstance;
         };
     };
     new (props: {}, context?: any): {
@@ -35,10 +37,10 @@ export default function (glyphMap: any, fontName: any, expoAssetId: any, fontSty
         setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
         forceUpdate(callback?: (() => void) | undefined): void;
         readonly props: Readonly<{}> & Readonly<{
-            children?: React.ReactNode;
+            children?: import("react").ReactNode;
         }>;
         refs: {
-            [key: string]: React.ReactInstance;
+            [key: string]: import("react").ReactInstance;
         };
     };
     propTypes: any;
@@ -51,5 +53,6 @@ export default function (glyphMap: any, fontName: any, expoAssetId: any, fontSty
     font: {
         [x: number]: any;
     };
-    contextType?: React.Context<any> | undefined;
+    contextType?: import("react").Context<any> | undefined;
 };
+export default iconSet;

@@ -27,6 +27,12 @@ Object.defineProperty(exports, "Feather", {
     return _Feather.default;
   }
 });
+Object.defineProperty(exports, "Fontisto", {
+  enumerable: true,
+  get: function () {
+    return _Fontisto.default;
+  }
+});
 Object.defineProperty(exports, "FontAwesome", {
   enumerable: true,
   get: function () {
@@ -119,6 +125,8 @@ var _Entypo = _interopRequireDefault(require("./Entypo"));
 var _EvilIcons = _interopRequireDefault(require("./EvilIcons"));
 
 var _Feather = _interopRequireDefault(require("./Feather"));
+
+var _Fontisto = _interopRequireDefault(require("./Fontisto"));
 
 var _FontAwesome = _interopRequireDefault(require("./FontAwesome"));
 
