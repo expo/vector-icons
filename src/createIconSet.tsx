@@ -22,7 +22,7 @@ export interface IconButtonProps<GLYPHS extends string> extends ViewProps, Touch
    * Name of the icon to show
    *
    * See Icon Explorer app
-   * {@link https://github.com/oblador/react-native-vector-icons/tree/master/Examples/IconExplorer}
+   * {@link https://expo.github.io/vector-icons/}
    */
   name: GLYPHS;
 
@@ -45,7 +45,7 @@ export interface IconProps<GLYPHS extends string> extends TextProps {
    * Name of the icon to show
    *
    * See Icon Explorer app
-   * {@link https://github.com/oblador/react-native-vector-icons/tree/master/Examples/IconExplorer}
+   * {@link https://expo.github.io/vector-icons/}
    */
   name: GLYPHS;
 
