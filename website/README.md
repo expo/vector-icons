@@ -1,9 +1,13 @@
-## @expo/vector-icons | PWA
+# @expo/vector-icons
 
-```
-$ yarn or npm install
+## Installation
+
+```bash
+$ yarn # or npm install
 ```
 
-```
-$ yarn web or npm run web
+## Run it
+
+```bash
+$ yarn web # or npm run web
 ```
