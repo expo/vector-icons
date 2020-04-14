@@ -21,7 +21,8 @@
     "react-native-safe-area-context": "0.7.3",
     "react-native-screens": "~2.2.0",
     "react-native-web": "^0.11.7",
-    "react-responsive": "^8.0.3"
+    "react-responsive": "^8.0.3",
+    "use-debounce": "^3.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

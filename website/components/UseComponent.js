@@ -1,19 +1,21 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { Platform, StyleSheet, Text } from 'react-native';
 
 const UseComponent = ({ family, name }) => {
   return (
-    <Text style={styles.instructions}>{`    <${family}
-        name="${name}"
-        size={24}
-        color="black"
-    />`}</Text>
+    <Text style={styles.instructions}>{
+`<${family} name="${name}" size={24} color="black" />`}</Text>
   );
 };
 
 const styles = StyleSheet.create({
   instructions: {
-    color: '#33691E',
+    ...Platform.select({
+      web: {
+        userSelect: 'all',
+      },
+    }),
+    fontFamily: 'monospace',
     fontSize: 18,
     fontWeight: '400',
     marginVertical: 10,
