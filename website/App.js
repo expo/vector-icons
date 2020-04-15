@@ -3,19 +3,8 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar, View } from 'react-native';
-// import { Provider as PaperProvider, DefaultTheme } from 'react-native-paper';
 import List from './screens/List';
 import Detail from './screens/Detail';
-
-// const myTheme = {
-//   ...DefaultTheme,
-//   roundness: 2,
-//   colors: {
-//     ...DefaultTheme.colors,
-//     primary: '#7B1FA2',
-//     accent: '#E1BEE7',
-//   },
-// };
 
 const Stack = createStackNavigator();
 
