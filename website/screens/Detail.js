@@ -3,18 +3,18 @@ import {
   StyleSheet,
   View,
   Text,
-  Platform,
   TouchableOpacity,
   Clipboard,
 } from 'react-native';
-import { Button } from 'react-native-paper';
-import Space from '../components/Space.js';
 import Icon from '../components/Icon';
 import FamilyImport from '../components/FamilyImport';
 import UseComponent from '../components/UseComponent';
+import { useMediaQuery } from 'react-responsive';
 
 const Detail = ({ route, navigation }) => {
   const { family, name } = route.params;
+
+  let isDesktop = useMediaQuery({ query: '(min-width: 900px)' });
 
   const handleCopyImport = () => {
     Clipboard.setString(`import { ${family} } from '@expo/vector-icons';`);
@@ -25,7 +25,8 @@ const Detail = ({ route, navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View
+      style={[styles.container, { marginHorizontal: isDesktop ? 200 : 10 }]}>
       <View style={{ padding: 20 }}>
         <View
           style={{
@@ -85,12 +86,6 @@ const Detail = ({ route, navigation }) => {
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Text style={styles.button}>BACK</Text>
         </TouchableOpacity>
-        {/* <Button
-          mode="contained"
-          onPress={() => navigation.goBack()}
-          style={{ borderRadius: 10 }}>
-          Back
-        </Button> */}
       </View>
     </View>
   );
@@ -98,7 +93,6 @@ const Detail = ({ route, navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: Platform.OS === 'web' ? 30 : 10,
     marginTop: 50,
     borderWidth: 1,
     borderRadius: 10,
