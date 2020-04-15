@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
-import { StyleSheet, View, FlatList } from "react-native";
-import { Searchbar } from "react-native-paper";
-import { useDebouncedCallback } from "use-debounce";
-import { IconsArray } from "../IconConstants";
-import ListItem from "../components/ListItem";
+import React, { useState, useEffect, useRef } from 'react';
+import { StyleSheet, View, FlatList } from 'react-native';
+import { Searchbar } from 'react-native-paper';
+import { useDebouncedCallback } from 'use-debounce';
+import { IconsArray } from '../IconConstants';
+import ListItem from '../components/ListItem';
 
 function getIconsForQuery(query) {
   return IconsArray.filter(
@@ -13,12 +13,12 @@ function getIconsForQuery(query) {
 }
 
 const List = ({ navigation }) => {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
   const [listIcons, setListIcons] = useState([]);
   const inputRef = React.useRef();
 
   useEffect(() => {
-    setListIcons(getIconsForQuery(""));
+    setListIcons(getIconsForQuery(''));
     inputRef.current?.focus();
   }, [query, inputRef]);
 
@@ -38,7 +38,9 @@ const List = ({ navigation }) => {
 
       <FlatList
         data={listIcons}
-        renderItem={({ item }) => <IconRow item={item} navigation={navigation} />}
+        renderItem={({ item }) => (
+          <IconRow item={item} navigation={navigation} />
+        )}
         keyExtractor={(item) => `${item.family}-${item.name}`}
       />
     </View>
@@ -51,10 +53,10 @@ const IconRow = React.memo(({ item, navigation }) => {
       family={item.family}
       name={item.name}
       onPress={() => {
-        navigation.navigate("Details", {
+        navigation.navigate('Details', {
           family: item.family,
           name: item.name,
-        })
+        });
       }}
     />
   );
