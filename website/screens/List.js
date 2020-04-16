@@ -23,7 +23,7 @@ const List = ({ navigation }) => {
   }, [query, inputRef]);
 
   const [handleOnChange] = useDebouncedCallback((query) => {
-    setListIcons(getIconsForQuery(query));
+    setListIcons(getIconsForQuery(query.toLowerCase()));
   }, 250);
 
   return (
@@ -40,7 +40,6 @@ const List = ({ navigation }) => {
           ref={inputRef}
           placeholder="Search for an icon or family"
           onChangeText={handleOnChange}
-          autoCapitalize="none"
           style={styles.input}
         />
       </View>
