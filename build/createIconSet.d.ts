@@ -1,55 +1,60 @@
-import React from "react";
+import React, { ComponentClass } from "react";
+import { TextProps, TouchableHighlightProps, ViewProps } from "react-native";
 export { DEFAULT_ICON_COLOR, DEFAULT_ICON_SIZE } from "./vendor/react-native-vector-icons/lib/create-icon-set";
-export default function (glyphMap: any, fontName: any, expoAssetId: any, fontStyle?: any): {
-    new (props: Readonly<{}>): {
-        _mounted: boolean;
-        _icon?: any;
-        state: {
-            fontIsLoaded: boolean;
-        };
-        componentDidMount(): Promise<void>;
-        componentWillUnmount(): void;
-        setNativeProps(props: any): void;
-        render(): JSX.Element;
-        context: any;
-        setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
-        forceUpdate(callback?: (() => void) | undefined): void;
-        readonly props: Readonly<{}> & Readonly<{
-            children?: React.ReactNode;
-        }>;
-        refs: {
-            [key: string]: React.ReactInstance;
-        };
-    };
-    new (props: {}, context?: any): {
-        _mounted: boolean;
-        _icon?: any;
-        state: {
-            fontIsLoaded: boolean;
-        };
-        componentDidMount(): Promise<void>;
-        componentWillUnmount(): void;
-        setNativeProps(props: any): void;
-        render(): JSX.Element;
-        context: any;
-        setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
-        forceUpdate(callback?: (() => void) | undefined): void;
-        readonly props: Readonly<{}> & Readonly<{
-            children?: React.ReactNode;
-        }>;
-        refs: {
-            [key: string]: React.ReactInstance;
-        };
-    };
+export interface IconButtonProps<GLYPHS extends string> extends ViewProps, TouchableHighlightProps {
+    /**
+     * Size of the icon, can also be passed as fontSize in the style object.
+     *
+     * @default 12
+     */
+    size?: number;
+    /**
+     * Name of the icon to show
+     *
+     * See Icon Explorer app
+     * {@link https://expo.github.io/vector-icons/}
+     */
+    name: GLYPHS;
+    /**
+     * Color of the icon
+     *
+     */
+    color?: string;
+}
+export interface IconProps<GLYPHS extends string> extends TextProps {
+    /**
+     * Size of the icon, can also be passed as fontSize in the style object.
+     *
+     * @default 12
+     */
+    size?: number;
+    /**
+     * Name of the icon to show
+     *
+     * See Icon Explorer app
+     * {@link https://expo.github.io/vector-icons/}
+     */
+    name: GLYPHS;
+    /**
+     * Color of the icon
+     *
+     */
+    color?: string;
+}
+export declare type GlyphMap<G extends string> = {
+    [K in G]: number;
+};
+export interface Icon<G extends string, FN extends string> {
     propTypes: any;
     defaultProps: any;
-    Button: any;
-    glyphMap: any;
-    getRawGlyphMap: () => any;
-    getFontFamily: () => any;
+    Button: ComponentClass<IconButtonProps<G>>;
+    glyphMap: GlyphMap<G>;
+    getRawGlyphMap: () => GlyphMap<G>;
+    getFontFamily: () => FN;
     loadFont: () => Promise<void>;
     font: {
-        [x: number]: any;
+        [x: string]: any;
     };
-    contextType?: React.Context<any> | undefined;
-};
+    new (props: IconProps<G>): React.Component<IconProps<G>>;
+}
+export default function <G extends string, FN extends string>(glyphMap: GlyphMap<G>, fontName: FN, expoAssetId: any, fontStyle?: any): Icon<G, FN>;

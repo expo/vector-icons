@@ -39,6 +39,11 @@
 }
 
 @font-face {
+  font-family: 'Fontisto';
+  src: url('./fonts/Fontisto.ttf') format('truetype');
+}
+
+@font-face {
   font-family: 'Foundation';
   src: url('./fonts/Foundation.ttf') format('truetype');
 }
