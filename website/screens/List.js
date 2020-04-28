@@ -4,6 +4,7 @@ import { useDebouncedCallback } from 'use-debounce';
 import { IconsArray } from '../IconConstants';
 import ListItem from '../components/ListItem';
 import { Ionicons } from '@expo/vector-icons';
+import Hotshot from 'hotshot';
 
 function getIconsForQuery(query) {
   return IconsArray.filter(
@@ -20,11 +21,24 @@ const List = ({ navigation }) => {
   useEffect(() => {
     setListIcons(getIconsForQuery(''));
     inputRef.current?.focus();
+    hotshot;
   }, [query, inputRef]);
 
   const [handleOnChange] = useDebouncedCallback((query) => {
     setListIcons(getIconsForQuery(query.toLowerCase()));
   }, 250);
+
+  const hotshot = new Hotshot({
+    combos: [
+      {
+        keyCodes: [191], // open search by pressing / key
+        callback: () =>
+          setTimeout(() => {
+            inputRef.current?.focus();
+          }, 16),
+      },
+    ],
+  });
 
   return (
     <View style={styles.container}>
@@ -42,6 +56,7 @@ const List = ({ navigation }) => {
           placeholderTextColor="#757575"
           onChangeText={handleOnChange}
           style={styles.input}
+          selectTextOnFocus
         />
       </View>
 
