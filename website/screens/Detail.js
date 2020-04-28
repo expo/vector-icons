@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   View,
@@ -11,6 +11,7 @@ import FamilyImport from '../components/FamilyImport';
 import UseComponent from '../components/UseComponent';
 import { useMediaQuery } from 'react-responsive';
 import CopyButton from '../components/CopyButton';
+import Hotshot from 'hotshot';
 
 const Detail = ({ route, navigation }) => {
   const { family, name } = route.params;
@@ -30,6 +31,27 @@ const Detail = ({ route, navigation }) => {
     setCopyColorRen(true);
     setCopyColorImp(false);
   };
+
+  useEffect(() => {
+    hotshot;
+  }, []);
+
+  const hotshot = new Hotshot({
+    combos: [
+      {
+        keyCodes: [66], // back to icon search pressing 'B' key.
+        callback: () => setTimeout(() => navigation.goBack(), 16),
+      },
+      {
+        keyCodes: [49], // copy Import code
+        callback: () => setTimeout(() => handleCopyImport(), 16),
+      },
+      {
+        keyCodes: [50], // copy Use code
+        callback: () => setTimeout(() => handleCopyUse(), 16),
+      },
+    ],
+  });
 
   return (
     <View

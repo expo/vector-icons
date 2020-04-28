@@ -32,10 +32,7 @@ const List = ({ navigation }) => {
     combos: [
       {
         keyCodes: [191], // open search by pressing / key
-        callback: () =>
-          setTimeout(() => {
-            inputRef.current?.focus();
-          }, 16),
+        callback: () => setTimeout(() => inputRef.current?.focus(), 16),
       },
     ],
   });
