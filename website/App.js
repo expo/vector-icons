@@ -10,7 +10,7 @@ const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={{ backgroundColor: '#eee', flex: 1 }}>
+    <View style={{ backgroundColor: '#FAFAFA', flex: 1 }}>
       <NavigationContainer>
         <StatusBar barStyle="light-content" />
         <Stack.Navigator mode="modal" headerMode="float">
@@ -18,11 +18,12 @@ export default function App() {
             name="List"
             component={List}
             options={{
-              title: '@expo/vector-icons',
+              title: '@expo/vector-icons directory',
               headerStyle: {
-                backgroundColor: '#7B1FA2',
+                backgroundColor: '#000',
+                borderBottomColor: '#000',
               },
-              headerTintColor: '#fff',
+              headerTintColor: '#CCCCCC',
             }}
           />
           <Stack.Screen
@@ -30,9 +31,10 @@ export default function App() {
             component={Detail}
             options={{
               headerStyle: {
-                backgroundColor: '#7B1FA2',
+                backgroundColor: '#000',
+                borderBottomColor: '#000',
               },
-              headerTintColor: '#fff',
+              headerTintColor: '#CCCCCC',
             }}
           />
         </Stack.Navigator>

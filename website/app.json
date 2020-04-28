@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "@expo/vector-icons",
-    "slug": "expo-web-vector-icons",
+    "name": "@expo/vector-icons directory",
+    "slug": "expo-web-vector-icons-directory",
     "privacy": "public",
     "platforms": ["web"],
     "version": "1.0.0",

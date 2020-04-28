@@ -32,13 +32,14 @@ const List = ({ navigation }) => {
         <Ionicons
           name="md-search"
           size={30}
-          color="black"
+          color="#cccccc"
           style={styles.icon}
         />
         <TextInput
           key="stable"
           ref={inputRef}
           placeholder="Search for an icon or family"
+          placeholderTextColor="#757575"
           onChangeText={handleOnChange}
           style={styles.input}
         />
@@ -78,13 +79,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 10,
-    backgroundColor: 'rgba(243, 229, 245,1)',
+    backgroundColor: '#3E3E3E',
   },
   input: {
     padding: 10,
     width: '100%',
     fontSize: 18,
-    outlineColor: 'rgba(243, 229, 245,1)',
+    color: '#fff',
+    outlineColor: '#3E3E3E',
   },
   icon: {
     padding: 10,
