@@ -11,7 +11,7 @@ const CheckBox = ({
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.container}>
         <MaterialCommunityIcons name={icon} size={18} color="black" />
-        <Text style={{ marginLeft: 3 }}>{label}</Text>
+        <Text style={styles.label}>{label}</Text>
       </View>
     </TouchableWithoutFeedback>
   );
@@ -22,6 +22,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
+    marginBottom: 10,
+  },
+  label: {
+    marginLeft: 3,
+    fontSize: 18,
   },
 });
 

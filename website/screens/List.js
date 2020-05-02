@@ -5,6 +5,7 @@ import { IconsArray } from '../IconConstants';
 import ListItem from '../components/ListItem';
 import Display from '../components/Display';
 import FilterButton from '../components/FilterButton';
+import ClearButton from '../components/ClearButton';
 import { Ionicons } from '@expo/vector-icons';
 import Hotshot from 'hotshot';
 import CheckBox from '../components/CheckBox';
@@ -19,7 +20,7 @@ function getIconsForQuery(query) {
 const List = ({ navigation }) => {
   const inputRef = useRef();
   const [query, setQuery] = useState('');
-  const [barOpen, setBarOpen] = useState(true);
+  const [barOpen, setBarOpen] = useState(false);
   const [listIcons, setListIcons] = useState([]);
 
   const [ant, setAnt] = useState(false);
@@ -59,6 +60,22 @@ const List = ({ navigation }) => {
     setBarOpen(!barOpen);
   };
 
+  const handleClearButton = () => {
+    setAnt(false);
+    setEnt(false);
+    setEvil(false);
+    setFeather(false);
+    setFontawe(false);
+    setFontawe5(false);
+    setFound(false);
+    setIoni(false);
+    setMaterial(false);
+    setMatcom(false);
+    setSim(false);
+    setOcti(false);
+    setZocial(false);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.searchContainer}>
@@ -83,12 +100,19 @@ const List = ({ navigation }) => {
       <View style={styles.filterContainer}>
         {/* Keys instruction */}
 
-        {/* Filter button */}
-        <FilterButton
-          buttonColor={barOpen ? '#447181' : '#515460'}
-          onPress={handleFilterButton}
-        />
+        {/* Filter & Clear button */}
+        <View style={{ flexDirection: 'row' }}>
+          <FilterButton
+            buttonColor={barOpen ? '#447181' : '#515460'}
+            onPress={handleFilterButton}
+          />
+
+          <View style={{ marginLeft: 10 }}>
+            <ClearButton onPress={handleClearButton} />
+          </View>
+        </View>
       </View>
+
       <Display enable={barOpen}>
         <View style={styles.displayContainer}>
           <View style={styles.familySection}>
@@ -107,6 +131,7 @@ const List = ({ navigation }) => {
                 style={{
                   flexDirection: 'row',
                   justifyContent: 'space-around',
+                  marginBottom: 10,
                 }}>
                 {/* meter checkbox o similar */}
                 <View style={{ flexDirection: 'column' }}>
@@ -135,9 +160,7 @@ const List = ({ navigation }) => {
                     }
                     onPress={() => setFeather(!feather)}
                   />
-                </View>
 
-                <View style={{ flexDirection: 'column' }}>
                   <CheckBox
                     label="FontAwesome"
                     icon={
@@ -159,15 +182,15 @@ const List = ({ navigation }) => {
                     icon={found ? 'checkbox-marked' : 'checkbox-blank-outline'}
                     onPress={() => setFound(!found)}
                   />
+                </View>
 
+                <View style={{ flexDirection: 'column' }}>
                   <CheckBox
                     label="Ionicons"
                     icon={ioni ? 'checkbox-marked' : 'checkbox-blank-outline'}
                     onPress={() => setIoni(!ioni)}
                   />
-                </View>
 
-                <View style={{ flexDirection: 'column' }}>
                   <CheckBox
                     label="MaterialIcons"
                     icon={
@@ -193,9 +216,7 @@ const List = ({ navigation }) => {
                     icon={octi ? 'checkbox-marked' : 'checkbox-blank-outline'}
                     onPress={() => setOcti(!octi)}
                   />
-                </View>
 
-                <View style={{ flexDirection: 'column' }}>
                   <CheckBox
                     label="Zocial"
                     icon={zocial ? 'checkbox-marked' : 'checkbox-blank-outline'}
@@ -262,7 +283,6 @@ const styles = StyleSheet.create({
   },
   displayContainer: {
     backgroundColor: '#ececec',
-    height: 130,
   },
   familySection: {
     paddingLeft: 20,
