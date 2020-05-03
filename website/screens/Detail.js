@@ -43,11 +43,11 @@ const Detail = ({ route, navigation }) => {
         callback: () => setTimeout(() => navigation.goBack(), 16),
       },
       {
-        keyCodes: [49], // copy Import code
+        keyCodes: [49], // copy Import code pressing '1' key.
         callback: () => setTimeout(() => handleCopyImport(), 16),
       },
       {
-        keyCodes: [50], // copy Use code
+        keyCodes: [50], // copy Use code pressing '2' key.
         callback: () => setTimeout(() => handleCopyUse(), 16),
       },
     ],
@@ -75,10 +75,7 @@ const Detail = ({ route, navigation }) => {
               style={[
                 styles.copyView,
                 {
-                  backgroundColor: copyColorImp
-                    ? // ? 'rgba(206, 147, 216,0.2)'
-                      '#CCCCCC'
-                    : null,
+                  backgroundColor: copyColorImp ? '#CCCCCC' : null,
                 },
               ]}>
               <FamilyImport family={family} />
@@ -95,10 +92,7 @@ const Detail = ({ route, navigation }) => {
               style={[
                 styles.copyView,
                 {
-                  backgroundColor: copyColorRen
-                    ? // ? 'rgba(206, 147, 216,0.2)'
-                      '#CCCCCC'
-                    : null,
+                  backgroundColor: copyColorRen ? '#CCCCCC' : null,
                 },
               ]}>
               <UseComponent family={family} name={name} />
@@ -123,7 +117,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: '#000',
     backgroundColor: '#fafafa',
-    // backgroundColor: 'rgba(243, 229, 245,0.5)',
   },
   title: {
     fontSize: 24,
