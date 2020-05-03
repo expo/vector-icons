@@ -7,6 +7,7 @@ const ListItem = ({ name, family, onPress }) => {
     <TouchableOpacity onPress={onPress}>
       <View style={styles.container}>
         <Icon family={family} name={name} size={30} />
+
         <View style={styles.textView}>
           <Text style={styles.name}>{name}</Text>
           <Text style={styles.family}>{family}</Text>

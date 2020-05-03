@@ -6,23 +6,23 @@ import ListItem from '../components/ListItem';
 import Display from '../components/Display';
 import FilterButton from '../components/FilterButton';
 import ClearButton from '../components/ClearButton';
-import HelpButton from '../components/HelpButton';
 import { Ionicons } from '@expo/vector-icons';
 import Hotshot from 'hotshot';
 import CheckBox from '../components/CheckBox';
 
-// function getIconsForQuery(query) {
-//   return IconsArray.filter(
-//     (icon) =>
-//       icon.name.includes(query) || icon.family.toLowerCase().includes(query)
-//   );
-// }
+function getIconsForQuery(query) {
+  return IconsArray.filter(
+    (icon) =>
+      icon.name.includes(query) || icon.family.toLowerCase().includes(query)
+  );
+}
 
 const List = ({ navigation }) => {
   const inputRef = useRef();
   const [query, setQuery] = useState('');
-  const [barOpen, setBarOpen] = useState(false); // change to false when I finished
+  const [barOpen, setBarOpen] = useState(false);
   const [listIcons, setListIcons] = useState([]);
+
   const [ant, setAnt] = useState(false);
   const [ent, setEnt] = useState(false);
   const [evil, setEvil] = useState(false);
@@ -42,52 +42,6 @@ const List = ({ navigation }) => {
     inputRef.current?.focus();
     hotshot;
   }, [query, inputRef]);
-
-  function contains(target, pattern) {
-    let value = 0;
-    pattern.forEach((word) => {
-      value = value + target.includes(word);
-    });
-    return value === 1;
-  }
-
-  // *************************************************************************
-  // ACA ESTA TODO LO QUE TENGO QUE ACOMODAR PARA QUE FUNCIONEN LOS FILTROS
-
-  function getIconsForQuery(query) {
-    let myFilter = [];
-    ant ? myFilter.push('AntDesign') : '';
-    ent ? myFilter.push('Entypo') : '';
-    evil ? myFilter.push('EvilIcons') : '';
-    feather ? myFilter.push('Feather') : '';
-    fontawe ? myFilter.push('FontAwesome') : '';
-    fontawe5 ? myFilter.push('FontAwesome5') : '';
-    found ? myFilter.push('Foundation') : '';
-    ioni ? myFilter.push('Ionicons') : '';
-    material ? myFilter.push('MaterialIcons') : '';
-    matcom ? myFilter.push('MaterialCommunityIcons') : '';
-    sim ? myFilter.push('SimpleLineIcons') : '';
-    octi ? myFilter.push('Octicons') : '';
-    zocial ? myFilter.push('Zocial') : '';
-
-    const lista = IconsArray.filter((icon) => {
-      if (myFilter.length !== 0) {
-        return contains(icon.family, myFilter);
-      } else {
-        return icon;
-      }
-    });
-
-    // console.log(lista);
-
-    const nameIcon = lista.filter((icon) => {
-      return icon.name.toLowerCase().includes(query);
-    });
-    // console.log(nameIcon);
-    return nameIcon;
-  }
-  // *************************************************************************
-  // *************************************************************************
 
   const [handleOnChange] = useDebouncedCallback((query) => {
     setListIcons(getIconsForQuery(query.toLowerCase()));
@@ -138,12 +92,14 @@ const List = ({ navigation }) => {
           placeholderTextColor="#757575"
           onChangeText={handleOnChange}
           style={styles.input}
-          // selectTextOnFocus
+          selectTextOnFocus
         />
       </View>
 
       {/* Filter section */}
       <View style={styles.filterContainer}>
+        {/* Keys instruction */}
+
         {/* Filter & Clear button */}
         <View style={{ flexDirection: 'row' }}>
           <FilterButton
@@ -154,20 +110,29 @@ const List = ({ navigation }) => {
           <View style={{ marginLeft: 10 }}>
             <ClearButton onPress={handleClearButton} />
           </View>
-
-          <View style={{ marginLeft: 10 }}>
-            <HelpButton onPress={() => navigation.navigate('Help')} />
-          </View>
         </View>
       </View>
 
       <Display enable={barOpen}>
         <View style={styles.displayContainer}>
           <View style={styles.familySection}>
-            <Text style={styles.titleDisplay}>Icons Family</Text>
+            <Text
+              style={{
+                fontWeight: '600',
+                fontSize: 20,
+                marginBottom: 10,
+                alignSelf: 'center',
+              }}>
+              Icons Family
+            </Text>
 
             <View>
-              <View style={styles.checkDisplay}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-around',
+                  marginBottom: 10,
+                }}>
                 {/* meter checkbox o similar */}
                 <View style={{ flexDirection: 'column' }}>
                   <CheckBox
@@ -320,18 +285,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#ececec',
   },
   familySection: {
+    paddingLeft: 20,
     paddingTop: 10,
-  },
-  checkDisplay: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginBottom: 10,
-  },
-  titleDisplay: {
-    fontWeight: '600',
-    fontSize: 20,
-    marginBottom: 10,
-    alignSelf: 'center',
   },
 });
 
