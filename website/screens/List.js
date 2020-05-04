@@ -11,17 +11,10 @@ import { Ionicons } from '@expo/vector-icons';
 import Hotshot from 'hotshot';
 import CheckBox from '../components/CheckBox';
 
-// function getIconsForQuery(query) {
-//   return IconsArray.filter(
-//     (icon) =>
-//       icon.name.includes(query) || icon.family.toLowerCase().includes(query)
-//   );
-// }
-
 const List = ({ navigation }) => {
   const inputRef = useRef();
   const [query, setQuery] = useState('');
-  const [barOpen, setBarOpen] = useState(false); // change to false when I finished
+  const [barOpen, setBarOpen] = useState(false);
   const [listIcons, setListIcons] = useState([]);
   const [ant, setAnt] = useState(false);
   const [ent, setEnt] = useState(false);
@@ -38,10 +31,31 @@ const List = ({ navigation }) => {
   const [zocial, setZocial] = useState(false);
 
   useEffect(() => {
-    setListIcons(getIconsForQuery(''));
+    setListIcons(getIconsForQuery(query.toLowerCase()));
     inputRef.current?.focus();
     hotshot;
-  }, [query, inputRef]);
+  }, [
+    query,
+    inputRef,
+    ant,
+    ent,
+    evil,
+    feather,
+    fontawe,
+    fontawe5,
+    found,
+    ioni,
+    material,
+    matcom,
+    sim,
+    octi,
+    zocial,
+  ]);
+
+  const [handleOnChange] = useDebouncedCallback(
+    (query) => setQuery(query),
+    250
+  );
 
   function contains(target, pattern) {
     let value = 0;
@@ -50,9 +64,6 @@ const List = ({ navigation }) => {
     });
     return value === 1;
   }
-
-  // *************************************************************************
-  // ACA ESTA TODO LO QUE TENGO QUE ACOMODAR PARA QUE FUNCIONEN LOS FILTROS
 
   function getIconsForQuery(query) {
     let myFilter = [];
@@ -78,20 +89,12 @@ const List = ({ navigation }) => {
       }
     });
 
-    // console.log(lista);
-
     const nameIcon = lista.filter((icon) => {
       return icon.name.toLowerCase().includes(query);
     });
-    // console.log(nameIcon);
+
     return nameIcon;
   }
-  // *************************************************************************
-  // *************************************************************************
-
-  const [handleOnChange] = useDebouncedCallback((query) => {
-    setListIcons(getIconsForQuery(query.toLowerCase()));
-  }, 250);
 
   const hotshot = new Hotshot({
     combos: [
@@ -138,7 +141,7 @@ const List = ({ navigation }) => {
           placeholderTextColor="#757575"
           onChangeText={handleOnChange}
           style={styles.input}
-          // selectTextOnFocus
+          selectTextOnFocus
         />
       </View>
 
@@ -168,7 +171,6 @@ const List = ({ navigation }) => {
 
             <View>
               <View style={styles.checkDisplay}>
-                {/* meter checkbox o similar */}
                 <View style={{ flexDirection: 'column' }}>
                   <CheckBox
                     label="AntDesign"
