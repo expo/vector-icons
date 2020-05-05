@@ -1,4 +1,4 @@
-# @expo/vector-icons
+# @expo/vector-icons directory
 
 ## Installation
 
