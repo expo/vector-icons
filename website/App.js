@@ -2,6 +2,7 @@ import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Dimensions, StatusBar, View } from "react-native";
+import { version } from "@expo/vector-icons/package.json";
 import List from "./screens/List";
 import Detail from "./screens/Detail";
 import Help from "./screens/Help";
@@ -41,7 +42,7 @@ function Browsing() {
         name="List"
         component={List}
         options={{
-          title: "@expo/vector-icons directory",
+          title: `@expo/vector-icons@${version}`,
           headerStyle: {
             backgroundColor: "#000",
             borderBottomColor: "#000",
