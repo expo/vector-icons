@@ -24,12 +24,19 @@ const linking = {
 
 const BrowsingStack = createStackNavigator();
 
-function Browsing() {
-  // This is a lil jank, semi-randomly switches header mode if you resize and navigate
-  const skipHeader = Dimensions.get('window').width <= 900;
+const IsPwa = !!["fullscreen", "standalone", "minimal-ui"].some((displayMode) =>
+  window.matchMedia("(display-mode: " + displayMode + ")")
+).matches;
 
+const IsSmallScreen = Dimensions.get("window").width <= 900;
+const ShowHeader = IsPwa || !IsSmallScreen;
+
+function Browsing() {
   return (
-    <BrowsingStack.Navigator mode="modal" headerMode={skipHeader ? "none" : "float"}>
+    <BrowsingStack.Navigator
+      mode="modal"
+      headerMode={ShowHeader ? "float" : "none"}
+    >
       <BrowsingStack.Screen
         name="List"
         component={List}
