@@ -5,6 +5,7 @@
     "build": "expo build:web --no-pwa"
   },
   "dependencies": {
+    "@expo/vector-icons": "10.1.1-alpha.1",
     "@react-native-community/masked-view": "0.1.6",
     "@react-navigation/native": "^5.2.4",
     "@react-navigation/stack": "^5.2.19",
