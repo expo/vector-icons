@@ -1,8 +1,13 @@
-# Deploy
+# @expo/vector-icons directory
 
-* If work at Expo, you cannot deploy from `libraries/vector-icons`
-  inside of universe -- you need to check out the repo from Github into
-  a separate directory outside of universe.
+## Installation
 
-- `yarn`
-- `npm run deploy`
+```bash
+$ yarn
+```
+
+## Run it
+
+```bash
+$ yarn start
+```

@@ -2,3 +2,6 @@ npm-debug.log
 node_modules/**/*
 .DS_Store
 build/**/*
+.expo
+web-build
+build
