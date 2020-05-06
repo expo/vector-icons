@@ -8,7 +8,7 @@ const CheckBox = ({
   onPress,
 }) => {
   return (
-    <TouchableWithoutFeedback onPress={onPress}>
+    <TouchableWithoutFeedback onPress={() => onPress(label)}>
       <View style={styles.container}>
         <MaterialCommunityIcons name={icon} size={18} color="black" />
         <Text style={styles.label}>{label}</Text>

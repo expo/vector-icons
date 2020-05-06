@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useImperativeHandle,
+  forwardRef,
+} from "react";
 import { StyleSheet, View, FlatList, TextInput, Text } from "react-native";
 import { useDebouncedCallback } from "use-debounce";
 import { useMediaQuery } from "react-responsive";
@@ -11,47 +17,114 @@ import { Ionicons } from "@expo/vector-icons";
 import Hotshot from "hotshot";
 import CheckBox from "../components/CheckBox";
 
-const List = ({ navigation }) => {
+const DefaultIconFamilyFilters = {
+  AntDesign: false,
+  Entypo: false,
+  EvilIcons: false,
+  Feather: false,
+  FontAwesome: false,
+  FontAwesome5: false,
+  Foundation: false,
+  Ionicons: false,
+  MaterialIcons: false,
+  MaterialCommunityIcons: false,
+  SimpleLineIcons: false,
+  Octicons: false,
+  Zocial: false,
+  Fontisto: false,
+};
+
+function _FilterBar(props, ref) {
+  const [iconFamilyFilters, setIconFamilyFilters] = useState({
+    ...DefaultIconFamilyFilters,
+  });
+
+  function toggleIconFamilyFilter(name) {
+    setIconFamilyFilters({
+      ...iconFamilyFilters,
+      [name]: !iconFamilyFilters[name],
+    });
+  }
+
+  // Debounce updating filters
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      props.onFiltersChange(iconFamilyFilters);
+    }, 150);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [iconFamilyFilters]);
+
+  useImperativeHandle(ref, () => ({
+    clear: () => setIconFamilyFilters({ ...DefaultIconFamilyFilters }),
+  }));
+
+  return (
+    <View
+      style={[
+        styles.displayContainer,
+        { display: props.isVisible ? "block" : "none" },
+      ]}
+    >
+      <View style={styles.familySection}>
+        <View>
+          <View style={styles.checkDisplay}>
+            {Object.keys(iconFamilyFilters).map((familyName) => (
+              <CheckBox
+                key={familyName}
+                label={familyName}
+                icon={
+                  iconFamilyFilters[familyName]
+                    ? "checkbox-marked"
+                    : "checkbox-blank-outline"
+                }
+                onPress={toggleIconFamilyFilter}
+              />
+            ))}
+          </View>
+        </View>
+      </View>
+    </View>
+  );
+}
+
+const FilterBar = React.memo(forwardRef(_FilterBar));
+
+function _SearchBar(props, ref) {
+  return (
+    <View style={styles.searchContainer}>
+      <Ionicons
+        name="md-search"
+        size={30}
+        color="#FFFFFF"
+        style={styles.icon}
+      />
+      <TextInput
+        key="stable"
+        ref={ref}
+        placeholder="Search for an icon or family"
+        placeholderTextColor="#757575"
+        onChangeText={props.onChangeText}
+        style={styles.input}
+        selectTextOnFocus
+      />
+    </View>
+  );
+}
+
+const SearchBar = React.memo(forwardRef(_SearchBar));
+
+function List({ navigation }) {
   const inputRef = useRef();
   const [query, setQuery] = useState("");
   const [barOpen, setBarOpen] = useState(false);
-  const [listIcons, setListIcons] = useState([]);
-  const [ant, setAnt] = useState(false);
-  const [ent, setEnt] = useState(false);
-  const [evil, setEvil] = useState(false);
-  const [feather, setFeather] = useState(false);
-  const [fontawe, setFontawe] = useState(false);
-  const [fontawe5, setFontawe5] = useState(false);
-  const [found, setFound] = useState(false);
-  const [ioni, setIoni] = useState(false);
-  const [material, setMaterial] = useState(false);
-  const [matcom, setMatcom] = useState(false);
-  const [sim, setSim] = useState(false);
-  const [octi, setOcti] = useState(false);
-  const [zocial, setZocial] = useState(false);
-  const [fontisto, setFontisto] = useState(false);
+  const [filters, setFilters] = useState({});
 
   useEffect(() => {
-    setListIcons(getIconsForQuery(query.toLowerCase()));
     inputRef.current?.focus();
-  }, [
-    query,
-    inputRef,
-    ant,
-    ent,
-    evil,
-    feather,
-    fontawe,
-    fontawe5,
-    found,
-    ioni,
-    material,
-    matcom,
-    sim,
-    octi,
-    zocial,
-    fontisto,
-  ]);
+  }, [inputRef]);
 
   useEffect(() => {
     new Hotshot({
@@ -69,89 +142,15 @@ const List = ({ navigation }) => {
     250
   );
 
-  function contains(target, pattern) {
-    let value = 0;
-    pattern.forEach((word) => {
-      value = value + target.includes(word);
-    });
-    return value === 1;
-  }
-
-  function getIconsForQuery(query) {
-    let myFilter = [];
-    ant ? myFilter.push("AntDesign") : "";
-    ent ? myFilter.push("Entypo") : "";
-    evil ? myFilter.push("EvilIcons") : "";
-    feather ? myFilter.push("Feather") : "";
-    fontawe ? myFilter.push("FontAwesome") : "";
-    fontawe5 ? myFilter.push("FontAwesome5") : "";
-    found ? myFilter.push("Foundation") : "";
-    ioni ? myFilter.push("Ionicons") : "";
-    material ? myFilter.push("MaterialIcons") : "";
-    matcom ? myFilter.push("MaterialCommunityIcons") : "";
-    sim ? myFilter.push("SimpleLineIcons") : "";
-    octi ? myFilter.push("Octicons") : "";
-    zocial ? myFilter.push("Zocial") : "";
-    fontisto ? myFilter.push("Fontisto") : "";
-
-    const lista = IconsArray.filter((icon) => {
-      if (myFilter.length !== 0) {
-        return contains(icon.family, myFilter);
-      } else {
-        return icon;
-      }
-    });
-
-    const nameIcon = lista.filter((icon) => {
-      return icon.name.toLowerCase().includes(query);
-    });
-
-    return nameIcon;
-  }
-
   const handleFilterButton = () => {
     setBarOpen(!barOpen);
   };
 
-  const handleClearButton = () => {
-    setAnt(false);
-    setEnt(false);
-    setEvil(false);
-    setFeather(false);
-    setFontawe(false);
-    setFontawe5(false);
-    setFound(false);
-    setIoni(false);
-    setMaterial(false);
-    setMatcom(false);
-    setSim(false);
-    setOcti(false);
-    setZocial(false);
-    setFontisto(false);
-  };
+  const filterBarRef = useRef(null);
+  const isDesktop = useMediaQuery({ query: "(min-width: 900px)" });
 
-  let isDesktop = useMediaQuery({ query: "(min-width: 900px)" });
-
-  return (
-    <View style={styles.container}>
-      <View style={styles.searchContainer}>
-        <Ionicons
-          name="md-search"
-          size={30}
-          color="#FFFFFF"
-          style={styles.icon}
-        />
-        <TextInput
-          key="stable"
-          ref={inputRef}
-          placeholder="Search for an icon or family"
-          placeholderTextColor="#757575"
-          onChangeText={handleOnChange}
-          style={styles.input}
-          selectTextOnFocus
-        />
-      </View>
-
+  const MemoizedFilterToggles = React.useMemo(
+    () => (
       <View style={styles.filterContainer}>
         <View style={{ flexDirection: "row" }}>
           <FilterButton
@@ -160,136 +159,56 @@ const List = ({ navigation }) => {
           />
 
           <View style={{ marginLeft: 10 }}>
-            <ClearButton onPress={handleClearButton} />
-          </View>
-
-          {/* <View style={{ marginLeft: 10 }}>
-            <HelpButton onPress={() => navigation.navigate("Help")} />
-          </View> */}
-        </View>
-      </View>
-
-      <View
-        style={[
-          styles.displayContainer,
-          { display: barOpen ? "block" : "none" },
-        ]}
-      >
-        <View style={styles.familySection}>
-          <View>
-            <View style={styles.checkDisplay}>
-              <CheckBox
-                key="AntDesign"
-                label="AntDesign"
-                icon={ant ? "checkbox-marked" : "checkbox-blank-outline"}
-                onPress={() => setAnt(!ant)}
-              />
-
-              <CheckBox
-                key="Entypo"
-                label="Entypo"
-                icon={ent ? "checkbox-marked" : "checkbox-blank-outline"}
-                onPress={() => setEnt(!ent)}
-              />
-
-              <CheckBox
-                key="EvilIcons"
-                label="EvilIcons"
-                icon={evil ? "checkbox-marked" : "checkbox-blank-outline"}
-                onPress={() => setEvil(!evil)}
-              />
-
-              <CheckBox
-                key="Feather"
-                label="Feather"
-                icon={feather ? "checkbox-marked" : "checkbox-blank-outline"}
-                onPress={() => setFeather(!feather)}
-              />
-
-              <CheckBox
-                key="FontAwesome"
-                label="FontAwesome"
-                icon={fontawe ? "checkbox-marked" : "checkbox-blank-outline"}
-                onPress={() => setFontawe(!fontawe)}
-              />
-
-              <CheckBox
-                key="FontAwesome5"
-                label="FontAwesome5"
-                icon={fontawe5 ? "checkbox-marked" : "checkbox-blank-outline"}
-                onPress={() => setFontawe5(!fontawe5)}
-              />
-
-              <CheckBox
-                key="Foundation"
-                label="Foundation"
-                icon={found ? "checkbox-marked" : "checkbox-blank-outline"}
-                onPress={() => setFound(!found)}
-              />
-
-              <CheckBox
-                key="Ionicons"
-                label="Ionicons"
-                icon={ioni ? "checkbox-marked" : "checkbox-blank-outline"}
-                onPress={() => setIoni(!ioni)}
-              />
-
-              <CheckBox
-                key="MaterialIcons"
-                label="MaterialIcons"
-                icon={material ? "checkbox-marked" : "checkbox-blank-outline"}
-                onPress={() => setMaterial(!material)}
-              />
-
-              <CheckBox
-                key="MaterialCommunityIcons"
-                label="MaterialCommunityIcons"
-                icon={matcom ? "checkbox-marked" : "checkbox-blank-outline"}
-                onPress={() => setMatcom(!matcom)}
-              />
-
-              <CheckBox
-                key="SimpleLineIcons"
-                label="SimpleLineIcons"
-                icon={sim ? "checkbox-marked" : "checkbox-blank-outline"}
-                onPress={() => setSim(!sim)}
-              />
-
-              <CheckBox
-                key="Octicons"
-                label="Octicons"
-                icon={octi ? "checkbox-marked" : "checkbox-blank-outline"}
-                onPress={() => setOcti(!octi)}
-              />
-
-              <CheckBox
-                key="Zocial"
-                label="Zocial"
-                icon={zocial ? "checkbox-marked" : "checkbox-blank-outline"}
-                onPress={() => setZocial(!zocial)}
-              />
-
-              <CheckBox
-                key="Fontisto"
-                label="Fontisto"
-                icon={fontisto ? "checkbox-marked" : "checkbox-blank-outline"}
-                onPress={() => setFontisto(!fontisto)}
-              />
-            </View>
+            <ClearButton onPress={() => filterBarRef.current.clear()} />
           </View>
         </View>
       </View>
+    ),
+    [handleFilterButton, barOpen, filterBarRef.current]
+  );
 
-      <FlatList
-        data={listIcons}
-        renderItem={({ item }) => (
-          <IconRow item={item} navigation={navigation} />
-        )}
-        keyExtractor={(item) => `${item.family}-${item.name}`}
+  return (
+    <View style={styles.container}>
+      <SearchBar onChangeText={handleOnChange} ref={inputRef} />
+      {MemoizedFilterToggles}
+      <FilterBar
+        isVisible={barOpen}
+        ref={filterBarRef}
+        onFiltersChange={setFilters}
       />
+
+      <IconList query={query} filters={filters} navigation={navigation} />
     </View>
   );
-};
+}
+
+const IconList = React.memo(({ query, filters, navigation }) => {
+  useEffect(() => {
+    setIcons(getIconsForQuery(query.toLowerCase(), filters));
+  }, [query, filters]);
+
+  const [icons, setIcons] = useState([]);
+
+  const renderItem = React.useCallback(
+    ({ item }) => {
+      return <IconRow item={item} navigation={navigation} />;
+    },
+    [navigation]
+  );
+
+  return (
+    <FlatList
+      style={{ flex: 1 }}
+      data={icons}
+      renderItem={renderItem}
+      keyExtractor={keyExtractor}
+    />
+  );
+});
+
+function keyExtractor(item) {
+  return `${item.family}-${item.name}`;
+}
 
 const IconRow = React.memo(({ item, navigation }) => {
   return (
@@ -305,6 +224,28 @@ const IconRow = React.memo(({ item, navigation }) => {
     />
   );
 });
+
+function contains(target, pattern) {
+  let value = 0;
+  pattern.forEach((word) => {
+    value = value + target.includes(word);
+  });
+  return value === 1;
+}
+
+function getIconsForQuery(query, iconFamilyFilters) {
+  const isFamilyFilterActive =
+    Object.values(iconFamilyFilters).filter(Boolean).length > 0;
+  const filteredByFamily = !isFamilyFilterActive
+    ? IconsArray
+    : IconsArray.filter((icon) => {
+        return iconFamilyFilters[icon.family];
+      });
+
+  return filteredByFamily.filter((icon) => {
+    return icon.name.toLowerCase().includes(query);
+  });
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -325,7 +266,9 @@ const styles = StyleSheet.create({
     outlineColor: "#2A2C33",
   },
   icon: {
-    padding: 10,
+    width: 30,
+    height: 30,
+    textAlign: "center",
   },
   filterContainer: {
     height: 40,
