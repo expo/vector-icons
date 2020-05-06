@@ -112,10 +112,10 @@ const Detail = ({ route, navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 50,
+    marginTop: 10,
     borderWidth: 1,
     borderRadius: 10,
-    borderColor: '#000',
+    borderColor: 'rgba(0,0,0,0.1)',
     backgroundColor: '#fafafa',
   },
   title: {

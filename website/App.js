@@ -1,8 +1,7 @@
-import "react-native-gesture-handler";
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { StatusBar, View } from "react-native";
+import { Dimensions, StatusBar, View } from "react-native";
 import List from "./screens/List";
 import Detail from "./screens/Detail";
 import Help from "./screens/Help";
@@ -26,8 +25,11 @@ const linking = {
 const BrowsingStack = createStackNavigator();
 
 function Browsing() {
+  // This is a lil jank, semi-randomly switches header mode if you resize and navigate
+  const skipHeader = Dimensions.get('window').width <= 900;
+
   return (
-    <BrowsingStack.Navigator mode="modal" headerMode="float">
+    <BrowsingStack.Navigator mode="modal" headerMode={skipHeader ? "none" : "float"}>
       <BrowsingStack.Screen
         name="List"
         component={List}

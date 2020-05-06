@@ -21,18 +21,16 @@ const Key = (props) => (
 const Help = ({ navigation }) => {
   let isDesktop = useMediaQuery({ query: "(min-width: 900px)" });
 
-  useEffect(() => {
-    hotshot;
-  }, []);
-
-  const hotshot = new Hotshot({
-    combos: [
-      {
-        key: [66], // back to icon search pressing 'B' key.
-        callback: () => setTimeout(() => navigation.goBack(), 16),
-      },
-    ],
-  });
+  // useEffect(() => {
+  //   new Hotshot({
+  //     combos: [
+  //       {
+  //         key: [66], // back to icon search pressing 'B' key.
+  //         callback: () => setTimeout(() => navigation.goBack(), 16),
+  //       },
+  //     ],
+  //   });
+  // }, []);
 
   return (
     <View
@@ -68,10 +66,10 @@ const Help = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 50,
+    marginTop: 10,
     borderWidth: 1,
     borderRadius: 10,
-    borderColor: "#000",
+    borderColor: 'rgba(0,0,0,0.1)',
     backgroundColor: "#fafafa",
   },
   title: {

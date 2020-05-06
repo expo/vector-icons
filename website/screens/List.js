@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { StyleSheet, View, FlatList, TextInput, Text } from "react-native";
 import { useDebouncedCallback } from "use-debounce";
+import { useMediaQuery } from "react-responsive";
 import { IconsArray } from "../IconConstants";
 import ListItem from "../components/ListItem";
 import Display from "../components/Display";
@@ -34,7 +35,6 @@ const List = ({ navigation }) => {
   useEffect(() => {
     setListIcons(getIconsForQuery(query.toLowerCase()));
     inputRef.current?.focus();
-    hotshot;
   }, [
     query,
     inputRef,
@@ -53,6 +53,17 @@ const List = ({ navigation }) => {
     zocial,
     fontisto,
   ]);
+
+  useEffect(() => {
+    new Hotshot({
+      combos: [
+        {
+          keyCodes: [191], // open search by pressing / key
+          callback: () => setTimeout(() => inputRef.current?.focus(), 16),
+        },
+      ],
+    });
+  }, [inputRef.current]);
 
   const [handleOnChange] = useDebouncedCallback(
     (query) => setQuery(query),
@@ -99,15 +110,6 @@ const List = ({ navigation }) => {
     return nameIcon;
   }
 
-  const hotshot = new Hotshot({
-    combos: [
-      {
-        keyCodes: [191], // open search by pressing / key
-        callback: () => setTimeout(() => inputRef.current?.focus(), 16),
-      },
-    ],
-  });
-
   const handleFilterButton = () => {
     setBarOpen(!barOpen);
   };
@@ -128,6 +130,8 @@ const List = ({ navigation }) => {
     setZocial(false);
     setFontisto(false);
   };
+
+  let isDesktop = useMediaQuery({ query: "(min-width: 900px)" });
 
   return (
     <View style={styles.container}>
@@ -162,9 +166,9 @@ const List = ({ navigation }) => {
             <ClearButton onPress={handleClearButton} />
           </View>
 
-          <View style={{ marginLeft: 10 }}>
+          {/* <View style={{ marginLeft: 10 }}>
             <HelpButton onPress={() => navigation.navigate("Help")} />
-          </View>
+          </View> */}
         </View>
       </View>
 
@@ -296,6 +300,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     paddingHorizontal: 10,
+    paddingVertical: 10,
     backgroundColor: "#2A2C33",
   },
   input: {
@@ -310,8 +315,8 @@ const styles = StyleSheet.create({
   },
   filterContainer: {
     height: 40,
+    alignItems: 'flex-end',
     backgroundColor: "#2A2C33",
-    alignItems: "flex-end",
     paddingHorizontal: 20,
   },
   displayContainer: {
