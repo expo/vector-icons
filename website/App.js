@@ -7,6 +7,12 @@ import List from "./screens/List";
 import Detail from "./screens/Detail";
 import Help from "./screens/Help";
 
+const IsPwa = !!["fullscreen", "standalone", "minimal-ui"].some((displayMode) =>
+  window.matchMedia("(display-mode: " + displayMode + ")")
+).matches;
+const IsSmallScreen = Dimensions.get("window").width <= 900;
+const ShowHeader = IsPwa || !IsSmallScreen;
+
 const linking = {
   config: {
     Index: {
@@ -24,70 +30,48 @@ const linking = {
 };
 
 const BrowsingStack = createStackNavigator();
-
-const IsPwa = !!["fullscreen", "standalone", "minimal-ui"].some((displayMode) =>
-  window.matchMedia("(display-mode: " + displayMode + ")")
-).matches;
-
-const IsSmallScreen = Dimensions.get("window").width <= 900;
-const ShowHeader = IsPwa || !IsSmallScreen;
-
 function Browsing() {
   return (
     <BrowsingStack.Navigator
       mode="modal"
       headerMode={ShowHeader ? "float" : "none"}
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: "#000",
+          borderBottomColor: "#000",
+        },
+        headerTintColor: "#ccc",
+      }}
     >
       <BrowsingStack.Screen
         name="List"
         component={List}
         options={{
           title: `@expo/vector-icons@${version}`,
-          headerStyle: {
-            backgroundColor: "#000",
-            borderBottomColor: "#000",
-          },
-          headerTintColor: "#CCCCCC",
         }}
       />
-      <BrowsingStack.Screen
-        name="Details"
-        component={Detail}
-        options={{
-          headerStyle: {
-            backgroundColor: "#000",
-            borderBottomColor: "#000",
-          },
-          headerTintColor: "#CCCCCC",
-        }}
-      />
-
-      <Stack.Screen
-        name="Help"
-        component={Help}
-        options={{
-          headerStyle: {
-            backgroundColor: "#000",
-            borderBottomColor: "#000",
-          },
-          headerTintColor: "#CCCCCC",
-        }}
-      />
+      <BrowsingStack.Screen name="Details" component={Detail} />
+      <BrowsingStack.Screen name="Help" component={Help} />
     </BrowsingStack.Navigator>
   );
 }
 
 const Stack = createStackNavigator();
+function Navigation() {
+  return (
+    <NavigationContainer linking={linking}>
+      <Stack.Navigator headerMode="none">
+        <Stack.Screen name="Index" component={Browsing} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
 
 export default function App() {
   return (
-    <View style={{ backgroundColor: "#FAFAFA", flex: 1 }}>
+    <View style={{ backgroundColor: "#fafafa", flex: 1 }}>
       <StatusBar barStyle="light-content" />
-      <NavigationContainer linking={linking}>
-        <Stack.Navigator headerMode="none">
-          <Stack.Screen name="Index" component={Browsing} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <Navigation />
     </View>
   );
 }

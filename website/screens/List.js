@@ -4,7 +4,6 @@ import { useDebouncedCallback } from "use-debounce";
 import { useMediaQuery } from "react-responsive";
 import { IconsArray } from "../IconConstants";
 import ListItem from "../components/ListItem";
-import Display from "../components/Display";
 import FilterButton from "../components/FilterButton";
 import ClearButton from "../components/ClearButton";
 import HelpButton from "../components/HelpButton";
@@ -153,9 +152,7 @@ const List = ({ navigation }) => {
         />
       </View>
 
-      {/* Filter section */}
       <View style={styles.filterContainer}>
-        {/* Filter & Clear button */}
         <View style={{ flexDirection: "row" }}>
           <FilterButton
             buttonColor={barOpen ? "#447181" : "#515460"}
@@ -172,99 +169,116 @@ const List = ({ navigation }) => {
         </View>
       </View>
 
-      <Display enable={barOpen}>
-        <View style={styles.displayContainer}>
-          <View style={styles.familySection}>
-            <View>
-              <View style={styles.checkDisplay}>
-                <CheckBox
-                  label="AntDesign"
-                  icon={ant ? "checkbox-marked" : "checkbox-blank-outline"}
-                  onPress={() => setAnt(!ant)}
-                />
+      <View
+        style={[
+          styles.displayContainer,
+          { display: barOpen ? "block" : "none" },
+        ]}
+      >
+        <View style={styles.familySection}>
+          <View>
+            <View style={styles.checkDisplay}>
+              <CheckBox
+                key="AntDesign"
+                label="AntDesign"
+                icon={ant ? "checkbox-marked" : "checkbox-blank-outline"}
+                onPress={() => setAnt(!ant)}
+              />
 
-                <CheckBox
-                  label="Entypo"
-                  icon={ent ? "checkbox-marked" : "checkbox-blank-outline"}
-                  onPress={() => setEnt(!ent)}
-                />
+              <CheckBox
+                key="Entypo"
+                label="Entypo"
+                icon={ent ? "checkbox-marked" : "checkbox-blank-outline"}
+                onPress={() => setEnt(!ent)}
+              />
 
-                <CheckBox
-                  label="EvilIcons"
-                  icon={evil ? "checkbox-marked" : "checkbox-blank-outline"}
-                  onPress={() => setEvil(!evil)}
-                />
+              <CheckBox
+                key="EvilIcons"
+                label="EvilIcons"
+                icon={evil ? "checkbox-marked" : "checkbox-blank-outline"}
+                onPress={() => setEvil(!evil)}
+              />
 
-                <CheckBox
-                  label="Feather"
-                  icon={feather ? "checkbox-marked" : "checkbox-blank-outline"}
-                  onPress={() => setFeather(!feather)}
-                />
+              <CheckBox
+                key="Feather"
+                label="Feather"
+                icon={feather ? "checkbox-marked" : "checkbox-blank-outline"}
+                onPress={() => setFeather(!feather)}
+              />
 
-                <CheckBox
-                  label="FontAwesome"
-                  icon={fontawe ? "checkbox-marked" : "checkbox-blank-outline"}
-                  onPress={() => setFontawe(!fontawe)}
-                />
+              <CheckBox
+                key="FontAwesome"
+                label="FontAwesome"
+                icon={fontawe ? "checkbox-marked" : "checkbox-blank-outline"}
+                onPress={() => setFontawe(!fontawe)}
+              />
 
-                <CheckBox
-                  label="FontAwesome5"
-                  icon={fontawe5 ? "checkbox-marked" : "checkbox-blank-outline"}
-                  onPress={() => setFontawe5(!fontawe5)}
-                />
+              <CheckBox
+                key="FontAwesome5"
+                label="FontAwesome5"
+                icon={fontawe5 ? "checkbox-marked" : "checkbox-blank-outline"}
+                onPress={() => setFontawe5(!fontawe5)}
+              />
 
-                <CheckBox
-                  label="Foundation"
-                  icon={found ? "checkbox-marked" : "checkbox-blank-outline"}
-                  onPress={() => setFound(!found)}
-                />
+              <CheckBox
+                key="Foundation"
+                label="Foundation"
+                icon={found ? "checkbox-marked" : "checkbox-blank-outline"}
+                onPress={() => setFound(!found)}
+              />
 
-                <CheckBox
-                  label="Ionicons"
-                  icon={ioni ? "checkbox-marked" : "checkbox-blank-outline"}
-                  onPress={() => setIoni(!ioni)}
-                />
+              <CheckBox
+                key="Ionicons"
+                label="Ionicons"
+                icon={ioni ? "checkbox-marked" : "checkbox-blank-outline"}
+                onPress={() => setIoni(!ioni)}
+              />
 
-                <CheckBox
-                  label="MaterialIcons"
-                  icon={material ? "checkbox-marked" : "checkbox-blank-outline"}
-                  onPress={() => setMaterial(!material)}
-                />
+              <CheckBox
+                key="MaterialIcons"
+                label="MaterialIcons"
+                icon={material ? "checkbox-marked" : "checkbox-blank-outline"}
+                onPress={() => setMaterial(!material)}
+              />
 
-                <CheckBox
-                  label="MaterialCommunityIcons"
-                  icon={matcom ? "checkbox-marked" : "checkbox-blank-outline"}
-                  onPress={() => setMatcom(!matcom)}
-                />
+              <CheckBox
+                key="MaterialCommunityIcons"
+                label="MaterialCommunityIcons"
+                icon={matcom ? "checkbox-marked" : "checkbox-blank-outline"}
+                onPress={() => setMatcom(!matcom)}
+              />
 
-                <CheckBox
-                  label="SimpleLineIcons"
-                  icon={sim ? "checkbox-marked" : "checkbox-blank-outline"}
-                  onPress={() => setSim(!sim)}
-                />
+              <CheckBox
+                key="SimpleLineIcons"
+                label="SimpleLineIcons"
+                icon={sim ? "checkbox-marked" : "checkbox-blank-outline"}
+                onPress={() => setSim(!sim)}
+              />
 
-                <CheckBox
-                  label="Octicons"
-                  icon={octi ? "checkbox-marked" : "checkbox-blank-outline"}
-                  onPress={() => setOcti(!octi)}
-                />
+              <CheckBox
+                key="Octicons"
+                label="Octicons"
+                icon={octi ? "checkbox-marked" : "checkbox-blank-outline"}
+                onPress={() => setOcti(!octi)}
+              />
 
-                <CheckBox
-                  label="Zocial"
-                  icon={zocial ? "checkbox-marked" : "checkbox-blank-outline"}
-                  onPress={() => setZocial(!zocial)}
-                />
+              <CheckBox
+                key="Zocial"
+                label="Zocial"
+                icon={zocial ? "checkbox-marked" : "checkbox-blank-outline"}
+                onPress={() => setZocial(!zocial)}
+              />
 
-                <CheckBox
-                  label="Fontisto"
-                  icon={fontisto ? "checkbox-marked" : "checkbox-blank-outline"}
-                  onPress={() => setFontisto(!fontisto)}
-                />
-              </View>
+              <CheckBox
+                key="Fontisto"
+                label="Fontisto"
+                icon={fontisto ? "checkbox-marked" : "checkbox-blank-outline"}
+                onPress={() => setFontisto(!fontisto)}
+              />
             </View>
           </View>
         </View>
-      </Display>
+      </View>
 
       <FlatList
         data={listIcons}
@@ -315,7 +329,7 @@ const styles = StyleSheet.create({
   },
   filterContainer: {
     height: 40,
-    alignItems: 'flex-end',
+    alignItems: "flex-end",
     backgroundColor: "#2A2C33",
     paddingHorizontal: 20,
   },
