@@ -169,13 +169,15 @@ function List({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <SearchBar onChangeText={handleOnChange} ref={inputRef} />
-      {MemoizedFilterToggles}
-      <FilterBar
-        isVisible={barOpen}
-        ref={filterBarRef}
-        onFiltersChange={setFilters}
-      />
+      <View style={{ position: "relative", zIndex: 1000 }}>
+        <SearchBar onChangeText={handleOnChange} ref={inputRef} />
+        {MemoizedFilterToggles}
+        <FilterBar
+          isVisible={barOpen}
+          ref={filterBarRef}
+          onFiltersChange={setFilters}
+        />
+      </View>
 
       <IconList query={query} filters={filters} navigation={navigation} />
     </View>
