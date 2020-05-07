@@ -71,7 +71,7 @@ function _FilterBar(props, ref) {
       <View style={styles.familySection}>
         <View>
           <View style={styles.checkDisplay}>
-            {Object.keys(iconFamilyFilters).map((familyName) => (
+            {Object.keys(iconFamilyFilters).sort().map((familyName) => (
               <CheckBox
                 key={familyName}
                 label={familyName}
