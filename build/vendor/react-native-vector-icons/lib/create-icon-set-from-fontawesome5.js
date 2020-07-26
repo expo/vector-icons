@@ -1,3 +1,4 @@
+import { Platform } from './react-native';
 import createMultiStyleIconSet from './create-multi-style-icon-set';
 
 const FA5Style = {
@@ -28,31 +29,36 @@ function createFA5iconSet(glyphMap, metadata = {}, pro = false) {
     return metadata[family].indexOf(glyph) !== -1;
   }
 
-  function createFontAwesomeStyle(styleName, fontWeight, family = fontFamily) {
+  function createFontAwesomeStyle(style, fontWeight, family = fontFamily) {
+    let styleName = style;
     let fontFile = `FontAwesome5_${pro ? `Pro_${styleName}` : styleName}.ttf`;
 
     if (styleName === 'Brands') {
+      styleName = 'Regular';
       fontFile = 'FontAwesome5_Brands.ttf';
     }
 
     return {
       fontFamily: `${family}-${styleName}`,
       fontFile,
-      fontStyle: {
-        fontWeight,
-      },
+      fontStyle: Platform.select({
+        ios: {
+          fontWeight,
+        },
+        default: {},
+      }),
       glyphMap,
     };
   }
 
   const brandIcons = createFontAwesomeStyle(
-    'Regular',
+    'Brands',
     '400',
-    'FontAwesome5Brands',
+    'FontAwesome5Brands'
   );
-  const lightIcons = createFontAwesomeStyle('Light', '100');
+  const lightIcons = createFontAwesomeStyle('Light', '300');
   const regularIcons = createFontAwesomeStyle('Regular', '400');
-  const solidIcons = createFontAwesomeStyle('Solid', '700');
+  const solidIcons = createFontAwesomeStyle('Solid', '900');
   const Icon = createMultiStyleIconSet(
     {
       brand: brandIcons,
@@ -64,7 +70,7 @@ function createFA5iconSet(glyphMap, metadata = {}, pro = false) {
       defaultStyle: 'regular',
       fallbackFamily,
       glyphValidator,
-    },
+    }
   );
 
   return Icon;
