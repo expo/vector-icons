@@ -1,6 +1,6 @@
 import createIconSet from "./createIconSet";
 
-export default function(config, expoFontName, expoAssetId) {
+export default function (config, expoFontName, expoAssetId) {
   const glyphMap = {};
   config.icons.forEach(icon => {
     icon.properties.name.split(/\s*,\s*/g).forEach(name => {
@@ -11,7 +11,7 @@ export default function(config, expoFontName, expoAssetId) {
   const fontFamily =
     expoFontName || config.preferences.fontPref.metadata.fontFamily;
 
-  return createIconSet(
+  return createIconSet<string, string>(
     glyphMap,
     fontFamily,
     expoAssetId || `${fontFamily}.ttf`
