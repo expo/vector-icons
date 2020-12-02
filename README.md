@@ -36,7 +36,17 @@ I'll be honest with you, it's not straightforward. You should set aside about an
 
 1. Clone [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)
 2. Copy files from the cloned directory into `src/vendor/react-native-vector-icons`, except the dotfiles.
-3. Run `git status` and look at the untracked files. Remove anything that doesn't seem needed in order to ___. For example, remove package.json, react-native.config.js, react-native.osx.js.
+3. Run `git status` and look at the untracked files. Remove anything that doesn't seem needed. For example, remove package.json, react-native.config.js, react-native.osx.js. Things to look out for are new icon fonts or new `create-*` files.
 4. Run `git diff **/*.js` - do any of the changes look like they should be synced over to the equivalent `.ts` files in `src`?/
   - ToolBarAndroid and TabBarIOS are not included in @expo/vector-icons
   - Neither are the native vendor font loading or image source related methods.
+  - Probably there won't be anything important. The main thing to look out for are user-facing API changes, the `@expo/vector-icons` internals are different enough that you don't need to worry about it.
+  - Were any dependencies added? Check imports against those in the current package.json, see why they were added - maybe they support the `bin` scripts, in which case we need them.
+5. Run `yarn` when you're done and it'll copy vendor files over to build.
+6. Go to the website directory, test it out. If new icons were added, ensure that they work here.
+  - While you're here, it would be kind of you to update the Expo SDK version to latest.
+7. You are done! Open a PR, have someone else like @brentvatne look at it, merge it. The website will be deployed when you merge to master.
+
+### How to deploy the website
+
+Create a commit on master.
