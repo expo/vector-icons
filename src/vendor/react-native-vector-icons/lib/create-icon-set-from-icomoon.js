@@ -3,7 +3,7 @@ import createIconSet from './create-icon-set';
 export default function createIconSetFromIcoMoon(
   config,
   fontFamilyArg,
-  fontFile,
+  fontFile
 ) {
   const glyphMap = {};
   config.icons.forEach(icon => {

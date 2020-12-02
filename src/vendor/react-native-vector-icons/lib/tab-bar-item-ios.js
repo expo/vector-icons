@@ -1,9 +1,9 @@
 /* eslint-disable react/no-unused-prop-types */
-import isEqual from 'lodash/isEqual';
-import pick from 'lodash/pick';
+import isEqual from 'lodash.isequal';
+import pick from 'lodash.pick';
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { TabBarIOS } from 'react-native';
+import { TabBarIOS } from './react-native';
 
 const ICON_PROP_NAMES = ['iconName', 'iconSize', 'iconColor'];
 const SELECTED_ICON_PROP_NAMES = [
@@ -27,11 +27,8 @@ export default function createTabBarItemIOSComponent(
       iconName: IconNamePropType.isRequired,
       selectedIconName: IconNamePropType,
       iconSize: PropTypes.number,
-      iconColor: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      selectedIconColor: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number,
-      ]),
+      iconColor: PropTypes.any, // eslint-disable-line react/forbid-prop-types
+      selectedIconColor: PropTypes.any, // eslint-disable-line react/forbid-prop-types
     };
 
     static defaultProps = {
