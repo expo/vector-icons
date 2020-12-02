@@ -27,3 +27,16 @@ export default class IconExample extends React.Component {
 ```
 
 for more usage see [Expo icons documentation](https://docs.expo.io/guides/icons/)
+
+## Maintainers
+
+### How to upgrade the react-native-vector-icons version
+
+I'll be honest with you, it's not straightforward. You should set aside about an hour to do this.
+
+1. Clone [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)
+2. Copy files from the cloned directory into `src/vendor/react-native-vector-icons`, except the dotfiles.
+3. Run `git status` and look at the untracked files. Remove anything that doesn't seem needed in order to ___. For example, remove package.json, react-native.config.js, react-native.osx.js.
+4. Run `git diff **/*.js` - do any of the changes look like they should be synced over to the equivalent `.ts` files in `src`?/
+  - ToolBarAndroid and TabBarIOS are not included in @expo/vector-icons
+  - Neither are the native vendor font loading or image source related methods.
