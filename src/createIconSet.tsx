@@ -1,6 +1,6 @@
 import * as Font from "expo-font";
 import React, { ComponentClass } from "react";
-import { Text, TextProps, TouchableHighlightProps, ViewProps } from "react-native";
+import { Text, TextProps, TouchableHighlightProps, ViewProps, OpaqueColorValue } from "react-native";
 
 import createIconSet from "./vendor/react-native-vector-icons/lib/create-icon-set";
 import createIconButtonComponent from "./vendor/react-native-vector-icons/lib/icon-button";
@@ -27,10 +27,11 @@ export interface IconButtonProps<GLYPHS extends string> extends ViewProps, Touch
   name: GLYPHS;
 
   /**
-   * Color of the icon
+   * Color of the icon. Can be a string or OpaqueColorValue (returned from
+   * PlatformColor(..))
    *
    */
-  color?: string;
+  color?: string | OpaqueColorValue;
 }
 
 export interface IconProps<GLYPHS extends string> extends TextProps {
@@ -50,10 +51,11 @@ export interface IconProps<GLYPHS extends string> extends TextProps {
   name: GLYPHS;
 
   /**
-   * Color of the icon
+   * Color of the icon. Can be a string or OpaqueColorValue (returned from
+   * PlatformColor(..))
    *
    */
-  color?: string;
+  color?: string | OpaqueColorValue;
 }
 
 export type GlyphMap<G extends string> = { [K in G]: number }
