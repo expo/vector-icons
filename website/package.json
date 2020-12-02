@@ -5,28 +5,28 @@
     "build": "expo build:web --no-pwa"
   },
   "dependencies": {
-    "@expo/vector-icons": "10.2.0",
-    "@react-native-community/masked-view": "0.1.6",
+    "@expo/vector-icons": "12.0.0",
+    "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/native": "^5.2.4",
     "@react-navigation/stack": "^5.2.19",
-    "expo": "^37.0.0",
+    "expo": "^40.0.0-beta.2",
     "hotshot": "^1.0.5",
-    "react": "16.9.0",
-    "react-dom": "16.9.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.0.tar.gz",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.0.tar.gz",
     "react-native-animatable": "^1.3.3",
-    "react-native-gesture-handler": "~1.6.0",
-    "react-native-reanimated": "~1.7.0",
-    "react-native-safe-area-context": "0.7.3",
-    "react-native-screens": "~2.2.0",
-    "react-native-web": "^0.11.7",
+    "react-native-gesture-handler": "~1.8.0",
+    "react-native-reanimated": "~1.13.0",
+    "react-native-safe-area-context": "3.1.9",
+    "react-native-screens": "~2.15.0",
+    "react-native-web": "~0.13.12",
     "react-responsive": "^8.0.3",
     "use-debounce": "^3.4.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "babel-preset-expo": "^8.1.0",
-    "expo-cli": "3.20.1"
+    "@babel/core": "~7.9.0",
+    "babel-preset-expo": "8.3.0",
+    "expo-cli": "^4.0.6"
   },
   "private": true
 }

@@ -1,11 +1,17 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { NativeModules, Platform, PixelRatio, processColor, Text } from 'react-native';
+import {
+  NativeModules,
+  Platform,
+  PixelRatio,
+  processColor,
+  Text,
+} from './react-native';
 
 import ensureNativeModuleAvailable from './ensure-native-module-available';
+import createIconSourceCache from './create-icon-source-cache';
 import createIconButtonComponent from './icon-button';
 import createTabBarItemIOSComponent from './tab-bar-item-ios';
-import createToolbarAndroidComponent from './toolbar-android';
 
 export const NativeIconAPI =
   NativeModules.RNVectorIconsManager || NativeModules.RNVectorIconsModule;
@@ -25,7 +31,7 @@ export default function createIconSet(
     : fontFamily;
 
   const fontReference = Platform.select({
-    windows: `Assets/${fontFile}#${fontFamily}`,
+    windows: `/Assets/${fontFile}#${fontFamily}`,
     android: fontBasename,
     web: fontBasename,
     default: fontFamily,
@@ -34,11 +40,13 @@ export default function createIconSet(
   const IconNamePropType = PropTypes.oneOf(Object.keys(glyphMap));
 
   class Icon extends PureComponent {
+    root = null;
+
     static propTypes = {
       allowFontScaling: PropTypes.bool,
       name: IconNamePropType,
       size: PropTypes.number,
-      color: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      color: PropTypes.any, // eslint-disable-line react/forbid-prop-types
       children: PropTypes.node,
       style: PropTypes.any, // eslint-disable-line react/forbid-prop-types
     };
@@ -47,8 +55,6 @@ export default function createIconSet(
       size: DEFAULT_ICON_SIZE,
       allowFontScaling: false,
     };
-
-    root = null;
 
     setNativeProps(nativeProps) {
       if (this.root) {
@@ -65,7 +71,7 @@ export default function createIconSet(
 
       let glyph = name ? glyphMap[name] || '?' : '';
       if (typeof glyph === 'number') {
-        glyph = String.fromCharCode(glyph);
+        glyph = String.fromCodePoint(glyph);
       }
 
       const styleDefaults = {
@@ -91,63 +97,84 @@ export default function createIconSet(
     }
   }
 
-  const imageSourceCache = {};
+  const imageSourceCache = createIconSourceCache();
 
-  function getImageSource(
+  function resolveGlyph(name) {
+    const glyph = glyphMap[name] || '?';
+    if (typeof glyph === 'number') {
+      return String.fromCodePoint(glyph);
+    }
+    return glyph;
+  }
+
+  function getImageSourceSync(
     name,
     size = DEFAULT_ICON_SIZE,
     color = DEFAULT_ICON_COLOR
   ) {
     ensureNativeModuleAvailable();
 
-    let glyph = glyphMap[name] || '?';
-    if (typeof glyph === 'number') {
-      glyph = String.fromCharCode(glyph);
-    }
-
+    const glyph = resolveGlyph(name);
     const processedColor = processColor(color);
     const cacheKey = `${glyph}:${size}:${processedColor}`;
-    const scale = PixelRatio.get();
 
-    return new Promise((resolve, reject) => {
-      const cached = imageSourceCache[cacheKey];
-      if (typeof cached !== 'undefined') {
-        if (!cached || cached instanceof Error) {
-          reject(cached);
-        } else {
-          resolve({ uri: cached, scale });
-        }
-      } else {
-        NativeIconAPI.getImageForFont(
-          fontReference,
-          glyph,
-          size,
-          processedColor,
-          (err, image) => {
-            const error = typeof err === 'string' ? new Error(err) : err;
-            imageSourceCache[cacheKey] = image || error || false;
-            if (!error && image) {
-              resolve({ uri: image, scale });
-            } else {
-              reject(error);
-            }
-          }
-        );
-      }
-    });
+    if (imageSourceCache.has(cacheKey)) {
+      return imageSourceCache.get(cacheKey);
+    }
+    try {
+      const imagePath = NativeIconAPI.getImageForFontSync(
+        fontReference,
+        glyph,
+        size,
+        processedColor
+      );
+      const value = { uri: imagePath, scale: PixelRatio.get() };
+      imageSourceCache.setValue(cacheKey, value);
+      return value;
+    } catch (error) {
+      imageSourceCache.setError(cacheKey, error);
+      throw error;
+    }
   }
 
-  function loadFont(file = fontFile) {
+  async function getImageSource(
+    name,
+    size = DEFAULT_ICON_SIZE,
+    color = DEFAULT_ICON_COLOR
+  ) {
+    ensureNativeModuleAvailable();
+
+    const glyph = resolveGlyph(name);
+    const processedColor = processColor(color);
+    const cacheKey = `${glyph}:${size}:${processedColor}`;
+
+    if (imageSourceCache.has(cacheKey)) {
+      return imageSourceCache.get(cacheKey);
+    }
+    try {
+      const imagePath = await NativeIconAPI.getImageForFont(
+        fontReference,
+        glyph,
+        size,
+        processedColor
+      );
+      const value = { uri: imagePath, scale: PixelRatio.get() };
+      imageSourceCache.setValue(cacheKey, value);
+      return value;
+    } catch (error) {
+      imageSourceCache.setError(cacheKey, error);
+      throw error;
+    }
+  }
+
+  async function loadFont(file = fontFile) {
     if (Platform.OS === 'ios') {
       ensureNativeModuleAvailable();
       if (!file) {
-        return Promise.reject(
-          new Error('Unable to load font, because no file was specified. ')
-        );
+        throw new Error('Unable to load font, because no file was specified. ');
       }
-      return NativeIconAPI.loadFontWithFileName(...file.split('.'));
+      await NativeIconAPI.loadFontWithFileName(...file.split('.'));
     }
-    return Promise.resolve();
   }
 
   function hasIcon(name) {
@@ -168,11 +195,8 @@ export default function createIconSet(
     getImageSource
   );
   Icon.TabBarItemIOS = Icon.TabBarItem;
-  Icon.ToolbarAndroid = createToolbarAndroidComponent(
-    IconNamePropType,
-    getImageSource
-  );
   Icon.getImageSource = getImageSource;
+  Icon.getImageSourceSync = getImageSourceSync;
   Icon.loadFont = loadFont;
   Icon.hasIcon = hasIcon;
   Icon.getRawGlyphMap = getRawGlyphMap;

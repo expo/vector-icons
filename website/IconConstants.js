@@ -1,5 +1,3 @@
-import _ from "lodash";
-
 export const IconFamilies = {
   AntDesign: require("@expo/vector-icons/build/vendor/react-native-vector-icons/glyphmaps/AntDesign.json"),
   Entypo: require("@expo/vector-icons/build/vendor/react-native-vector-icons/glyphmaps/Entypo.json"),
@@ -17,18 +15,14 @@ export const IconFamilies = {
   Fontisto: require("@expo/vector-icons/build/vendor/react-native-vector-icons/glyphmaps/Fontisto.json"),
 };
 
-export const IconsArray = _.reduce(
-  Object.keys(IconFamilies),
-  (arr, family) => {
-    let icons = IconFamilies[family];
-    Object.keys(icons).forEach((iconName) => {
-      arr.push({
-        name: iconName,
-        value: icons[iconName],
-        family,
-      });
+export const IconsArray = Object.keys(IconFamilies).reduce((arr, family) => {
+  let icons = IconFamilies[family];
+  Object.keys(icons).forEach((iconName) => {
+    arr.push({
+      name: iconName,
+      value: icons[iconName],
+      family,
     });
-    return arr;
-  },
-  []
-);
+  });
+  return arr;
+}, []);
