@@ -24,6 +24,20 @@ import List from "./screens/List";
 import Detail from "./screens/Detail";
 import Help from "./screens/Help";
 
+// rm -rf service worker
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker
+    .getRegistrations()
+    .then((registrations) => {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
 const IsPwa = !!["fullscreen", "standalone", "minimal-ui"].some((displayMode) =>
   window.matchMedia("(display-mode: " + displayMode + ")")
 ).matches;
