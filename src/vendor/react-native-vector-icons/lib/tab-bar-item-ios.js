@@ -25,14 +25,6 @@ export default function createTabBarItemIOSComponent(
   getImageSource
 ) {
   return class TabBarItemIOS extends PureComponent {
-    static propTypes = {
-      iconName: IconNamePropType.isRequired,
-      selectedIconName: IconNamePropType,
-      iconSize: PropTypes.number,
-      iconColor: PropTypes.any, // eslint-disable-line react/forbid-prop-types
-      selectedIconColor: PropTypes.any, // eslint-disable-line react/forbid-prop-types
-    };
-
     static defaultProps = {
       iconSize: 30,
     };

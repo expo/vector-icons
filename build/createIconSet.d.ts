@@ -47,7 +47,6 @@ export declare type GlyphMap<G extends string> = {
     [K in G]: number;
 };
 export interface Icon<G extends string, FN extends string> {
-    propTypes: any;
     defaultProps: any;
     Button: ComponentClass<IconButtonProps<G>>;
     glyphMap: GlyphMap<G>;

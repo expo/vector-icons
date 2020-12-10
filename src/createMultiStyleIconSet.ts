@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 
 import createIconSet from './createIconSet';
 
@@ -107,11 +106,6 @@ export default function createMultiStyleIconSet(
 
   function createStyledIconClass(selectClass = '') {
     class IconClass extends PureComponent {
-      static propTypes = styleNames.reduce((acc, name) => {
-        acc[name] = PropTypes.bool;
-        return acc;
-      }, {});
-
       static defaultProps = styleNames.reduce((acc, name) => {
         acc[name] = false;
         return acc;

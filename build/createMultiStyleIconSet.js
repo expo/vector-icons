@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import createIconSet from './createIconSet';
 export default function createMultiStyleIconSet(styles, optionsInput = {}) {
     const styleNames = Object.keys(styles);
@@ -70,10 +69,6 @@ export default function createMultiStyleIconSet(styles, optionsInput = {}) {
                 return React.createElement(SelectedIconClass, props);
             }
         }
-        IconClass.propTypes = styleNames.reduce((acc, name) => {
-            acc[name] = PropTypes.bool;
-            return acc;
-        }, {});
         IconClass.defaultProps = styleNames.reduce((acc, name) => {
             acc[name] = false;
             return acc;

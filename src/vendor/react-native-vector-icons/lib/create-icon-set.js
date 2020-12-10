@@ -37,19 +37,8 @@ export default function createIconSet(
     default: fontFamily,
   });
 
-  const IconNamePropType = PropTypes.oneOf(Object.keys(glyphMap));
-
   class Icon extends PureComponent {
     root = null;
-
-    static propTypes = {
-      allowFontScaling: PropTypes.bool,
-      name: IconNamePropType,
-      size: PropTypes.number,
-      color: PropTypes.any, // eslint-disable-line react/forbid-prop-types
-      children: PropTypes.node,
-      style: PropTypes.any, // eslint-disable-line react/forbid-prop-types
-    };
 
     static defaultProps = {
       size: DEFAULT_ICON_SIZE,
@@ -190,10 +179,6 @@ export default function createIconSet(
   }
 
   Icon.Button = createIconButtonComponent(Icon);
-  Icon.TabBarItem = createTabBarItemIOSComponent(
-    IconNamePropType,
-    getImageSource
-  );
   Icon.TabBarItemIOS = Icon.TabBarItem;
   Icon.getImageSource = getImageSource;
   Icon.getImageSourceSync = getImageSourceSync;

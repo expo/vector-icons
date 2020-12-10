@@ -40,7 +40,6 @@ export default function (glyphMap, fontName, expoAssetId, fontStyle) {
                 }} {...this.props}/>);
             }
         },
-        _a.propTypes = RNVIconComponent.propTypes,
         _a.defaultProps = RNVIconComponent.defaultProps,
         _a.Button = createIconButtonComponent(_a),
         _a.glyphMap = glyphMap,
