@@ -76,7 +76,7 @@ export interface IconButtonProps<GLYPHS extends string> extends IconProps<GLYPHS
   backgroundColor?: string | OpaqueColorValue;
 }
 
-export type GlyphMap<G extends string> = { [K in G]: number }
+export type GlyphMap<G extends string> = { [K in G]: number | string }
 
 export interface Icon<G extends string, FN extends string> {
   defaultProps: any;
