@@ -60,7 +60,7 @@ export interface IconButtonProps<GLYPHS extends string> extends IconProps<GLYPHS
     backgroundColor?: string | OpaqueColorValue;
 }
 export declare type GlyphMap<G extends string> = {
-    [K in G]: number;
+    [K in G]: number | string;
 };
 export interface Icon<G extends string, FN extends string> {
     defaultProps: any;
