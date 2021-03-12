@@ -1,13 +1,21 @@
 import * as Font from "expo-font";
 import React, { ComponentClass } from "react";
-import { Text, TextProps, TouchableHighlightProps, ViewProps, OpaqueColorValue, TextStyle, ViewStyle } from "react-native";
+import {
+  Text,
+  TextProps,
+  TouchableHighlightProps,
+  ViewProps,
+  OpaqueColorValue,
+  TextStyle,
+  ViewStyle,
+} from "react-native";
 
 import createIconSet from "./vendor/react-native-vector-icons/lib/create-icon-set";
 import createIconButtonComponent from "./vendor/react-native-vector-icons/lib/icon-button";
 
 export {
   DEFAULT_ICON_COLOR,
-  DEFAULT_ICON_SIZE
+  DEFAULT_ICON_SIZE,
 } from "./vendor/react-native-vector-icons/lib/create-icon-set";
 
 export interface IconProps<GLYPHS extends string> extends TextProps {
@@ -34,7 +42,10 @@ export interface IconProps<GLYPHS extends string> extends TextProps {
   color?: string | OpaqueColorValue;
 }
 
-export interface IconButtonProps<GLYPHS extends string> extends IconProps<GLYPHS>, ViewProps, TouchableHighlightProps {
+export interface IconButtonProps<GLYPHS extends string>
+  extends IconProps<GLYPHS>,
+    ViewProps,
+    TouchableHighlightProps {
   /**
    * Text and icon color
    * Use iconStyle or nest a Text component if you need different colors.
@@ -76,7 +87,7 @@ export interface IconButtonProps<GLYPHS extends string> extends IconProps<GLYPHS
   backgroundColor?: string | OpaqueColorValue;
 }
 
-export type GlyphMap<G extends string> = { [K in G]: number | string }
+export type GlyphMap<G extends string> = { [K in G]: number | string };
 
 export interface Icon<G extends string, FN extends string> {
   defaultProps: any;
@@ -89,7 +100,7 @@ export interface Icon<G extends string, FN extends string> {
   new (props: IconProps<G>): React.Component<IconProps<G>>;
 }
 
-export default function<G extends string, FN extends string>(
+export default function <G extends string, FN extends string>(
   glyphMap: GlyphMap<G>,
   fontName: FN,
   expoAssetId,
@@ -111,7 +122,7 @@ export default function<G extends string, FN extends string>(
     _icon?: any;
 
     state = {
-      fontIsLoaded: Font.isLoaded(fontName)
+      fontIsLoaded: Font.isLoaded(fontName),
     };
 
     async componentDidMount() {
@@ -133,13 +144,19 @@ export default function<G extends string, FN extends string>(
     }
 
     render() {
+      if (__DEV__ && this.props.name && !(this.props.name in glyphMap)) {
+        console.warn(
+          `"${this.props.name}" is not a valid icon name for family "${fontName}"`
+        );
+      }
+
       if (!this.state.fontIsLoaded) {
         return <Text />;
       }
 
       return (
         <RNVIconComponent
-          ref={view => {
+          ref={(view) => {
             this._icon = view;
           }}
           {...this.props}

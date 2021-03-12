@@ -1,6 +1,6 @@
 import React, { ComponentClass } from "react";
 import { TextProps, TouchableHighlightProps, ViewProps, OpaqueColorValue, TextStyle, ViewStyle } from "react-native";
-export { DEFAULT_ICON_COLOR, DEFAULT_ICON_SIZE } from "./vendor/react-native-vector-icons/lib/create-icon-set";
+export { DEFAULT_ICON_COLOR, DEFAULT_ICON_SIZE, } from "./vendor/react-native-vector-icons/lib/create-icon-set";
 export interface IconProps<GLYPHS extends string> extends TextProps {
     /**
      * Size of the icon, can also be passed as fontSize in the style object.

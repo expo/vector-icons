@@ -1,9 +1,9 @@
 import * as Font from "expo-font";
 import React from "react";
-import { Text } from "react-native";
+import { Text, } from "react-native";
 import createIconSet from "./vendor/react-native-vector-icons/lib/create-icon-set";
 import createIconButtonComponent from "./vendor/react-native-vector-icons/lib/icon-button";
-export { DEFAULT_ICON_COLOR, DEFAULT_ICON_SIZE } from "./vendor/react-native-vector-icons/lib/create-icon-set";
+export { DEFAULT_ICON_COLOR, DEFAULT_ICON_SIZE, } from "./vendor/react-native-vector-icons/lib/create-icon-set";
 export default function (glyphMap, fontName, expoAssetId, fontStyle) {
     var _a;
     const font = { [fontName]: expoAssetId };
@@ -13,7 +13,7 @@ export default function (glyphMap, fontName, expoAssetId, fontStyle) {
                 super(...arguments);
                 this._mounted = false;
                 this.state = {
-                    fontIsLoaded: Font.isLoaded(fontName)
+                    fontIsLoaded: Font.isLoaded(fontName),
                 };
             }
             async componentDidMount() {
@@ -32,10 +32,13 @@ export default function (glyphMap, fontName, expoAssetId, fontStyle) {
                 }
             }
             render() {
+                if (__DEV__ && this.props.name && !(this.props.name in glyphMap)) {
+                    console.warn(`"${this.props.name}" is not a valid icon name for family "${fontName}"`);
+                }
                 if (!this.state.fontIsLoaded) {
                     return <Text />;
                 }
-                return (<RNVIconComponent ref={view => {
+                return (<RNVIconComponent ref={(view) => {
                     this._icon = view;
                 }} {...this.props}/>);
             }
