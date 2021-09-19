@@ -1,2 +1,1 @@
-import createIconSetFromIcoMoon from './build/createIconSetFromIcoMoon';
-export default createIconSetFromIcoMoon;
+module.exports = require("./build/createIconSetFromIcoMoon");

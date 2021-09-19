@@ -1,12 +1,18 @@
-import { Platform } from 'react-native';
-import createMultiStyleIconSet from './createMultiStyleIconSet';
-export const FA5Style = {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.createFA5iconSet = exports.FA5Style = void 0;
+const react_native_1 = require("react-native");
+const createMultiStyleIconSet_1 = __importDefault(require("./createMultiStyleIconSet"));
+exports.FA5Style = {
     regular: 'regular',
     light: 'light',
     solid: 'solid',
     brand: 'brand',
 };
-export function createFA5iconSet(glyphMap, metadata = {}, fonts, pro = false) {
+function createFA5iconSet(glyphMap, metadata = {}, fonts, pro = false) {
     const metadataKeys = Object.keys(metadata);
     const fontFamily = `FontAwesome5${pro ? 'Pro' : 'Free'}`;
     function fallbackFamily(glyph) {
@@ -29,7 +35,7 @@ export function createFA5iconSet(glyphMap, metadata = {}, fonts, pro = false) {
         return {
             fontFamily: `${family}-${styleName}`,
             fontFile,
-            fontStyle: Platform.select({
+            fontStyle: react_native_1.Platform.select({
                 ios: {
                     fontWeight,
                 },
@@ -42,7 +48,7 @@ export function createFA5iconSet(glyphMap, metadata = {}, fonts, pro = false) {
     const lightIcons = createFontAwesomeStyle('Light', '100');
     const regularIcons = createFontAwesomeStyle('Regular', '400');
     const solidIcons = createFontAwesomeStyle('Solid', '700');
-    const Icon = createMultiStyleIconSet({
+    const Icon = (0, createMultiStyleIconSet_1.default)({
         brand: brandIcons,
         light: lightIcons,
         regular: regularIcons,
@@ -54,4 +60,5 @@ export function createFA5iconSet(glyphMap, metadata = {}, fonts, pro = false) {
     });
     return Icon;
 }
+exports.createFA5iconSet = createFA5iconSet;
 //# sourceMappingURL=createIconSetFromFontAwesome5.js.map

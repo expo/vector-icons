@@ -1,2 +1,1 @@
-import Fontisto from "./build/Fontisto";
-export default Fontisto;
+module.exports = require("./build/Fontisto");

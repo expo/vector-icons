@@ -1,2 +1,1 @@
-import FontAwesome from './build/FontAwesome';
-export default FontAwesome;
+module.exports = require("./build/FontAwesome");

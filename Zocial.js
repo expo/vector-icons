@@ -1,2 +1,1 @@
-import Zocial from './build/Zocial';
-export default Zocial;
+module.exports = require("./build/Zocial");

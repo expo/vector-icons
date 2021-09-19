@@ -1,2 +1,1 @@
-import Octicons from './build/Octicons';
-export default Octicons;
+module.exports = require("./build/Octicons");

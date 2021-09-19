@@ -1,2 +1,1 @@
-import MaterialCommunityIcons from './build/MaterialCommunityIcons';
-export default MaterialCommunityIcons;
+module.exports = require("./build/MaterialCommunityIcons");

@@ -1,2 +1,1 @@
-import Entypo from './build/Entypo';
-export default Entypo;
+module.exports = require("./build/Entypo");

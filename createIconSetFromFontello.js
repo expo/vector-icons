@@ -1,2 +1,1 @@
-import createIconSetFromFontello from './build/createIconSetFromFontello';
-export default createIconSetFromFontello;
+module.exports = require("./build/createIconSetFromFontello");
