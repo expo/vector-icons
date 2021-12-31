@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   icon: {
-    marginRight: 10,
+    marginRight: 0,
   },
   text: {
     fontWeight: '600',
