@@ -17,7 +17,7 @@ This library is part of the `expo` package, so if you are using `expo` you can s
 
 ```tsx
 import React from 'react';
-import { Ionicons } from '@expo/vector-icons/Ionicons';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default class IconExample extends React.Component {
   render() {
