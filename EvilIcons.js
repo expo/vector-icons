@@ -1,2 +1,1 @@
-import EvilIcons from './build/EvilIcons';
-export default EvilIcons;
+module.exports = require("./build/EvilIcons");

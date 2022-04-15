@@ -1,6 +1,30 @@
-import React, { PureComponent } from 'react';
-import createIconSet from './createIconSet';
-export default function createMultiStyleIconSet(styles, optionsInput = {}) {
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const react_1 = __importStar(require("react"));
+const createIconSet_1 = __importDefault(require("./createIconSet"));
+function createMultiStyleIconSet(styles, optionsInput = {}) {
     const styleNames = Object.keys(styles);
     if (styleNames.length === 0) {
         throw new Error('You need to add at least one style');
@@ -13,7 +37,7 @@ export default function createMultiStyleIconSet(styles, optionsInput = {}) {
     };
     const iconSets = styleNames.reduce((acc, name) => {
         const style = styles[name];
-        acc[name] = createIconSet(style.glyphMap || {}, style.fontFamily || '', style.fontFile || '', style.fontStyle || {});
+        acc[name] = (0, createIconSet_1.default)(style.glyphMap || {}, style.fontFamily || '', style.fontFile || '', style.fontStyle || {});
         return acc;
     }, {});
     function styleFromProps(props) {
@@ -61,30 +85,32 @@ export default function createMultiStyleIconSet(styles, optionsInput = {}) {
         return options.glyphValidator(name, style);
     }
     function createStyledIconClass(selectClass = '') {
-        class IconClass extends PureComponent {
+        class IconClass extends react_1.PureComponent {
+            static defaultProps = styleNames.reduce((acc, name) => {
+                acc[name] = false;
+                return acc;
+            }, {});
+            static font = Object.values(styles).reduce((acc, style) => {
+                acc[style.fontFamily] = style.fontFile;
+                return acc;
+            }, {});
+            static Button;
+            static StyledIconSet = getStyledIconSet;
+            static getFontFamily = getFontFamily;
+            static getRawGlyphMap = getRawGlyphMap;
+            static hasIcon = hasIcon;
             render() {
                 const selectedIconSet = getIconSetForProps(this.props);
                 const SelectedIconClass = selectIconClass(selectedIconSet, selectClass);
                 const props = reduceProps(this.props);
-                return React.createElement(SelectedIconClass, props);
+                return react_1.default.createElement(SelectedIconClass, props);
             }
         }
-        IconClass.defaultProps = styleNames.reduce((acc, name) => {
-            acc[name] = false;
-            return acc;
-        }, {});
-        IconClass.font = Object.values(styles).reduce((acc, style) => {
-            acc[style.fontFamily] = style.fontFile;
-            return acc;
-        }, {});
-        IconClass.StyledIconSet = getStyledIconSet;
-        IconClass.getFontFamily = getFontFamily;
-        IconClass.getRawGlyphMap = getRawGlyphMap;
-        IconClass.hasIcon = hasIcon;
         return IconClass;
     }
     const Icon = createStyledIconClass();
     Icon.Button = createStyledIconClass('Button');
     return Icon;
 }
+exports.default = createMultiStyleIconSet;
 //# sourceMappingURL=createMultiStyleIconSet.js.map

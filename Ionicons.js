@@ -1,2 +1,1 @@
-import Ionicons from './build/Ionicons';
-export default Ionicons;
+module.exports = require("./build/Ionicons");

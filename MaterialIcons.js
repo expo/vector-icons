@@ -1,2 +1,1 @@
-import MaterialIcons from './build/MaterialIcons';
-export default MaterialIcons;
+module.exports = require("./build/MaterialIcons");

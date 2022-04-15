@@ -1,2 +1,1 @@
-import SimpleLineIcons from './build/SimpleLineIcons';
-export default SimpleLineIcons;
+module.exports = require("./build/SimpleLineIcons");

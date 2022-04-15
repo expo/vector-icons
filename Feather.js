@@ -1,2 +1,1 @@
-import Feather from './build/Feather';
-export default Feather;
+module.exports = require("./build/Feather");
