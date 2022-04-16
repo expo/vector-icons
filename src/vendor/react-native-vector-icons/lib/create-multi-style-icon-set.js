@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 import createIconSet, {
   DEFAULT_ICON_COLOR,
@@ -104,6 +105,11 @@ export default function createMultiStyleIconSet(styles, optionsInput = {}) {
 
   function createStyledIconClass(selectClass = '') {
     class IconClass extends PureComponent {
+      static propTypes = styleNames.reduce((acc, name) => {
+        acc[name] = PropTypes.bool;
+        return acc;
+      }, {});
+
       static defaultProps = styleNames.reduce((acc, name) => {
         acc[name] = false;
         return acc;
@@ -123,8 +129,6 @@ export default function createMultiStyleIconSet(styles, optionsInput = {}) {
 
   const Icon = createStyledIconClass();
   Icon.Button = createStyledIconClass('Button');
-  Icon.TabBarItem = createStyledIconClass('TabBarItem');
-  Icon.TabBarItemIOS = createStyledIconClass('TabBarItemIOS');
   Icon.getStyledIconSet = getStyledIconSet;
   Icon.getImageSource = getImageSource;
   Icon.getFontFamily = getFontFamily;

@@ -6,12 +6,11 @@ import {
   PixelRatio,
   processColor,
   Text,
-} from './react-native';
+} from 'react-native';
 
 import ensureNativeModuleAvailable from './ensure-native-module-available';
 import createIconSourceCache from './create-icon-source-cache';
 import createIconButtonComponent from './icon-button';
-import createTabBarItemIOSComponent from './tab-bar-item-ios';
 
 export const NativeIconAPI =
   NativeModules.RNVectorIconsManager || NativeModules.RNVectorIconsModule;
@@ -37,8 +36,19 @@ export default function createIconSet(
     default: fontFamily,
   });
 
+  const IconNamePropType = PropTypes.oneOf(Object.keys(glyphMap));
+
   class Icon extends PureComponent {
     root = null;
+
+    static propTypes = {
+      allowFontScaling: PropTypes.bool,
+      name: IconNamePropType,
+      size: PropTypes.number,
+      color: PropTypes.any, // eslint-disable-line react/forbid-prop-types
+      children: PropTypes.node,
+      style: PropTypes.any, // eslint-disable-line react/forbid-prop-types
+    };
 
     static defaultProps = {
       size: DEFAULT_ICON_SIZE,
@@ -78,7 +88,7 @@ export default function createIconSet(
       props.ref = this.handleRef;
 
       return (
-        <Text {...props}>
+        <Text selectable={false} {...props}>
           {glyph}
           {children}
         </Text>
@@ -179,7 +189,6 @@ export default function createIconSet(
   }
 
   Icon.Button = createIconButtonComponent(Icon);
-  Icon.TabBarItemIOS = Icon.TabBarItem;
   Icon.getImageSource = getImageSource;
   Icon.getImageSourceSync = getImageSourceSync;
   Icon.loadFont = loadFont;
