@@ -2035,10 +2035,10 @@
   dependencies:
     cross-spawn "^6.0.5"
 
-"@expo/vector-icons@13.0.0-rc.0":
-  version "13.0.0-rc.0"
-  resolved "https://registry.yarnpkg.com/@expo/vector-icons/-/vector-icons-13.0.0-rc.0.tgz#6f50944f8752277fed0ac04e2ac773f1170c7423"
-  integrity sha512-rTaNGB+N500uSrNgYjT9HtH5AnMur3jHtoTzG5QCU4zERRb5RRva8jz2gS1ubdq2OfyU8pcUm4spIerZGeclIA==
+"@expo/vector-icons@13.0.0":
+  version "13.0.0"
+  resolved "https://registry.yarnpkg.com/@expo/vector-icons/-/vector-icons-13.0.0.tgz#e2989b85e95a82bce216f88cf8fb583ab050ec95"
+  integrity sha512-TI+l71+5aSKnShYclFa14Kum+hQMZ86b95SH6tQUG3qZEmLTarvWpKwqtTwQKqvlJSJrpFiSFu3eCuZokY6zWA==
 
 "@expo/vector-icons@^12.0.4":
   version "12.0.5"
