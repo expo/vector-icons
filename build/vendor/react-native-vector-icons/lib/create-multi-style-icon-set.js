@@ -123,8 +123,6 @@ export default function createMultiStyleIconSet(styles, optionsInput = {}) {
 
   const Icon = createStyledIconClass();
   Icon.Button = createStyledIconClass('Button');
-  Icon.TabBarItem = createStyledIconClass('TabBarItem');
-  Icon.TabBarItemIOS = createStyledIconClass('TabBarItemIOS');
   Icon.getStyledIconSet = getStyledIconSet;
   Icon.getImageSource = getImageSource;
   Icon.getFontFamily = getFontFamily;
