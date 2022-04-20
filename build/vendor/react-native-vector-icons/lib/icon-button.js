@@ -1,8 +1,6 @@
-import isString from 'lodash.isstring';
-import omit from 'lodash.omit';
-import pick from 'lodash.pick';
 import React, { PureComponent } from 'react';
-import { StyleSheet, Text, TouchableHighlight, View } from './react-native';
+import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
+import { pick, omit } from './object-utils';
 
 const styles = StyleSheet.create({
   container: {
@@ -107,8 +105,10 @@ export default function createIconButtonComponent(Icon) {
         >
           <View style={[styles.container, blockStyle, style]} {...props}>
             <Icon {...iconProps} />
-            {isString(children) ? (
-              <Text style={[styles.text, colorStyle]}>{children}</Text>
+            {typeof children === 'string' ? (
+              <Text style={[styles.text, colorStyle]} selectable={false}>
+                {children}
+              </Text>
             ) : (
               children
             )}
