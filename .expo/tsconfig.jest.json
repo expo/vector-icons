@@ -1,0 +1,11 @@
+{
+  "extends": "/Users/gauel/Documents/GitHub/vector-icons/tsconfig.json",
+  "compilerOptions": {
+    "module": "esnext",
+    "typeRoots": [
+      "./node_modules/@types",
+      "../node_modules/@types",
+      "/Users/gauel/Documents/GitHub/vector-icons/node_modules/expo-module-scripts/ts-declarations"
+    ]
+  }
+}
