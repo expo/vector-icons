@@ -40,6 +40,13 @@ export interface IconProps<GLYPHS extends string> extends TextProps {
    *
    */
   color?: string | OpaqueColorValue;
+
+  /**
+   * Callback that gets called when an icon is not part of the icon family
+   *
+   * @param iconName The invalid icon name
+   */
+  onIconNotFound?(iconName: string): void;
 }
 
 export interface IconButtonProps<GLYPHS extends string>
@@ -144,10 +151,16 @@ export default function <G extends string, FN extends string>(
     }
 
     render() {
-      if (__DEV__ && this.props.name && !(this.props.name in glyphMap)) {
-        console.warn(
-          `"${this.props.name}" is not a valid icon name for family "${fontName}"`
-        );
+      if (this.props.name && !(this.props.name in glyphMap)) {
+        if (__DEV__) {
+          console.warn(
+            `"${this.props.name}" is not a valid icon name for family "${fontName}"`
+          );
+        }
+
+        if (this.props.onIconNotFound) {
+          this.props.onIconNotFound(this.props.name);
+        }
       }
 
       if (!this.state.fontIsLoaded) {

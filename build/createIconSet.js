@@ -32,8 +32,13 @@ export default function (glyphMap, fontName, expoAssetId, fontStyle) {
                 }
             }
             render() {
-                if (__DEV__ && this.props.name && !(this.props.name in glyphMap)) {
-                    console.warn(`"${this.props.name}" is not a valid icon name for family "${fontName}"`);
+                if (this.props.name && !(this.props.name in glyphMap)) {
+                    if (__DEV__) {
+                        console.warn(`"${this.props.name}" is not a valid icon name for family "${fontName}"`);
+                    }
+                    if (this.props.onIconNotFound) {
+                        this.props.onIconNotFound(this.props.name);
+                    }
                 }
                 if (!this.state.fontIsLoaded) {
                     return <Text />;
