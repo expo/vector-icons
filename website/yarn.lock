@@ -2035,10 +2035,8 @@
   dependencies:
     cross-spawn "^6.0.5"
 
-"@expo/vector-icons@13.0.0":
+"@expo/vector-icons@../":
   version "13.0.0"
-  resolved "https://registry.yarnpkg.com/@expo/vector-icons/-/vector-icons-13.0.0.tgz#e2989b85e95a82bce216f88cf8fb583ab050ec95"
-  integrity sha512-TI+l71+5aSKnShYclFa14Kum+hQMZ86b95SH6tQUG3qZEmLTarvWpKwqtTwQKqvlJSJrpFiSFu3eCuZokY6zWA==
 
 "@expo/vector-icons@^12.0.4":
   version "12.0.5"
