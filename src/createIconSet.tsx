@@ -8,6 +8,7 @@ import {
   OpaqueColorValue,
   TextStyle,
   ViewStyle,
+  Platform,
 } from "react-native";
 
 import createIconSet from "./vendor/react-native-vector-icons/lib/create-icon-set";
@@ -150,7 +151,7 @@ export default function <G extends string, FN extends string>(
         );
       }
 
-      if (!this.state.fontIsLoaded) {
+      if (Platform.OS !== "web" && !this.state.fontIsLoaded) {
         return <Text />;
       }
 
