@@ -93,6 +93,7 @@ function _FilterBar(props, ref) {
 const FilterBar = React.memo(forwardRef(_FilterBar));
 
 function _SearchBar(props, ref) {
+  const [isFocussed, setIsFocussed] = useState(false);
   return (
     <View style={styles.searchContainer}>
       <Ionicons
@@ -105,9 +106,11 @@ function _SearchBar(props, ref) {
         key="stable"
         ref={ref}
         placeholder="Search for an icon or family"
+        onFocus={() => setIsFocussed(true)}
+        onBlur={() => setIsFocussed(false)}
         placeholderTextColor="#757575"
         onChangeText={props.onChangeText}
-        style={styles.input}
+        style={[styles.input, isFocussed ? styles.focussed : {}]}
         selectTextOnFocus
       />
     </View>
@@ -148,6 +151,9 @@ function List({ navigation }) {
 
   const filterBarRef = useRef(null);
   const isDesktop = useMediaQuery({ query: "(min-width: 900px)" });
+  const inputContainerOnMobile = {
+    flexDirection: "column",
+  }
 
   const MemoizedFilterToggles = React.useMemo(
     () => (
@@ -169,15 +175,17 @@ function List({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <View style={{ position: "relative", zIndex: 1000 }}>
-        <SearchBar onChangeText={handleOnChange} ref={inputRef} />
-        {MemoizedFilterToggles}
-        <FilterBar
-          isVisible={barOpen}
-          ref={filterBarRef}
-          onFiltersChange={setFilters}
-        />
+      <View>
+        <View style={[styles.inputContainer, isDesktop ? {} : inputContainerOnMobile]}>
+          <SearchBar onChangeText={handleOnChange} ref={inputRef} />
+          {MemoizedFilterToggles}
+        </View>
       </View>
+      <FilterBar
+        isVisible={barOpen}
+        ref={filterBarRef}
+        onFiltersChange={setFilters}
+      />
 
       <IconList query={query} filters={filters} navigation={navigation} />
     </View>
@@ -190,6 +198,9 @@ const IconList = React.memo(({ query, filters, navigation }) => {
   }, [query, filters]);
 
   const [icons, setIcons] = useState([]);
+  console.log('====================================');
+  console.log(icons);
+  console.log('====================================');
 
   const renderItem = React.useCallback(
     ({ item }) => {
@@ -197,13 +208,17 @@ const IconList = React.memo(({ query, filters, navigation }) => {
     },
     [navigation]
   );
+  const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
+  const isLargeDesktop = useMediaQuery({ query: "(min-width: 1200px)" });
 
   return (
     <FlatList
-      style={{ flex: 1 }}
+      contentContainerStyle={{ gap: 10, paddingLeft: 10, paddingVertical: 10 }}
       data={icons}
       renderItem={renderItem}
       keyExtractor={keyExtractor}
+      numColumns={isDesktop ? (isLargeDesktop ? 8 : 4) : 2}
+      key={isDesktop ? (isLargeDesktop ? "largeDesktop" : "desktop") : "mobile"}
     />
   );
 });
@@ -241,8 +256,8 @@ function getIconsForQuery(query, iconFamilyFilters) {
   const filteredByFamily = !isFamilyFilterActive
     ? IconsArray
     : IconsArray.filter((icon) => {
-        return iconFamilyFilters[icon.family];
-      });
+      return iconFamilyFilters[icon.family];
+    });
 
   return filteredByFamily.filter((icon) => {
     return icon.name.toLowerCase().includes(query);
@@ -252,8 +267,18 @@ function getIconsForQuery(query, iconFamilyFilters) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    minHeight: "100%",
+  },
+  inputContainer: {
+    flex: 1,
+    position: "relative",
+    // zIndex: 1000,
+    flexDirection: "row",
+    borderColor: "#2A2C33",
+    width: "100%",
   },
   searchContainer: {
+    flex: 40,
     flexDirection: "row",
     alignItems: "center",
     paddingHorizontal: 10,
@@ -261,11 +286,17 @@ const styles = StyleSheet.create({
     backgroundColor: "#2A2C33",
   },
   input: {
+    marginLeft: 20,
     padding: 10,
+    paddingLeft: 0,
     width: "100%",
     fontSize: 18,
     color: "#fff",
-    outlineColor: "#2A2C33",
+    outlineWidth: 0,
+  },
+  focussed: {
+    borderBottomColor: "#fff",
+    borderBottomWidth: 1,
   },
   icon: {
     width: 30,
@@ -273,10 +304,11 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   filterContainer: {
-    height: 40,
-    alignItems: "flex-end",
     backgroundColor: "#2A2C33",
     paddingHorizontal: 20,
+    alignItems: "center",
+    justifyContent: "center",
+    minHeight: 50,
   },
   displayContainer: {
     backgroundColor: "#ececec",
