@@ -28,23 +28,16 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   container: {
-    // flexDirection: "row",
-    // paddingLeft: 20,
     textAlign: "center",
     paddingVertical: 15,
     justifyContent: "center",
     alignItems: "center",
     gap: 6,
-    // borderBottomWidth: 1,
-    // borderBottomColor: "#e3e3e3",
-    // borderWidth: 1,
-    // borderColor: "#e3e3e3",
     backgroundColor: "#fafafa",
     width: "100%",
   },
   textView: {
     flexDirection: "column",
-    // marginLeft: 20,
   },
   name: {
     fontSize: 18,
