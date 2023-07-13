@@ -4,7 +4,7 @@ import Icon from "./Icon";
 
 const ListItem = ({ name, family, onPress }) => {
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity onPress={onPress} style={styles.mainContainer}>
       <View style={styles.container}>
         <View style={{ width: 50, justifyContent: 'center', alignItems: 'center' }}>
           <Icon family={family} name={name} size={30} />
@@ -20,25 +20,33 @@ const ListItem = ({ name, family, onPress }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    paddingLeft: 20,
-    paddingVertical: 15,
+  mainContainer: {
+    flex: 1,
+    width: "49.5%",
+    marginRight: 10,
     alignItems: "center",
-    borderBottomWidth: 1,
-    borderBottomColor: "#e3e3e3",
+    justifyContent: "center",
+  },
+  container: {
+    textAlign: "center",
+    paddingVertical: 15,
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 6,
+    backgroundColor: "#fafafa",
+    width: "100%",
   },
   textView: {
     flexDirection: "column",
-    marginLeft: 20,
   },
   name: {
     fontSize: 18,
-    fontWeight: "bold",
+    fontWeight: "500",
   },
   family: {
     fontSize: 13,
     fontWeight: "normal",
+    color: "#7e7e7e",
   },
 });
 
