@@ -2,7 +2,7 @@ import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Dimensions, StatusBar, View } from "react-native";
-import { version } from "@expo/vector-icons/package.json";
+import packageJson from "@expo/vector-icons/package.json";
 import {
   AntDesign,
   Octicons,
@@ -16,7 +16,6 @@ import {
   MaterialIcons,
   MaterialCommunityIcons,
   SimpleLineIcons,
-  Ocitcons,
   Zocial,
   Fontisto,
 } from "@expo/vector-icons";
@@ -46,16 +45,12 @@ const ShowHeader = IsPwa || !IsSmallScreen;
 
 const linking = {
   config: {
-    Index: {
-      initialRouteName: "List",
-      path: "/",
       screens: {
         List: "/",
         Help: "help",
         Details: {
           path: ":family/:name",
         },
-      },
     },
   },
 };
@@ -78,7 +73,7 @@ function Browsing() {
         name="List"
         component={List}
         options={{
-          title: `@expo/vector-icons@${version}`,
+          title: `@expo/vector-icons@${packageJson.version}`,
         }}
       />
       <BrowsingStack.Screen name="Details" component={Detail} />
