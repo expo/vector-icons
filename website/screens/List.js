@@ -198,9 +198,6 @@ const IconList = React.memo(({ query, filters, navigation }) => {
   }, [query, filters]);
 
   const [icons, setIcons] = useState([]);
-  console.log('====================================');
-  console.log(icons);
-  console.log('====================================');
 
   const renderItem = React.useCallback(
     ({ item }) => {
@@ -294,12 +291,8 @@ const styles = StyleSheet.create({
     color: "#fff",
     outlineWidth: 0,
   },
-  focussed: {
+  focused: {
     borderBottomColor: "#fff",
-    borderBottomWidth: 1,
-  },
-  icon: {
-    width: 30,
     height: 30,
     textAlign: "center",
   },
