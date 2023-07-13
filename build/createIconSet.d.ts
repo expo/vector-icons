@@ -21,6 +21,12 @@ export interface IconProps<GLYPHS extends string> extends TextProps {
      *
      */
     color?: string | OpaqueColorValue;
+    /**
+     * Callback that gets called when an icon is not part of the icon family
+     *
+     * @param iconName The invalid icon name
+     */
+    onIconNotFound?(iconName: string): void;
 }
 export interface IconButtonProps<GLYPHS extends string> extends IconProps<GLYPHS>, ViewProps, TouchableHighlightProps {
     /**
