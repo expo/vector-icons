@@ -1,18 +1,11 @@
 import React, { PureComponent } from 'react';
-import {
-  NativeModules,
-  Platform,
-  PixelRatio,
-  processColor,
-  Text,
-} from 'react-native';
+import PropTypes from 'prop-types';
+import { Platform, PixelRatio, processColor, Text } from 'react-native';
 
 import ensureNativeModuleAvailable from './ensure-native-module-available';
 import createIconSourceCache from './create-icon-source-cache';
 import createIconButtonComponent from './icon-button';
-
-export const NativeIconAPI =
-  NativeModules.RNVectorIconsManager || NativeModules.RNVectorIconsModule;
+import NativeIconAPI from './NativeRNVectorIcons';
 
 export const DEFAULT_ICON_SIZE = 12;
 export const DEFAULT_ICON_COLOR = 'black';
@@ -35,22 +28,21 @@ export default function createIconSet(
     default: fontFamily,
   });
 
+  const IconNamePropType = PropTypes.oneOf(Object.keys(glyphMap));
+
   class Icon extends PureComponent {
-    root = null;
+    static propTypes = {
+      allowFontScaling: PropTypes.bool,
+      name: IconNamePropType,
+      size: PropTypes.number,
+      color: PropTypes.any, // eslint-disable-line react/forbid-prop-types
+      children: PropTypes.node,
+      style: PropTypes.any, // eslint-disable-line react/forbid-prop-types
+    };
 
     static defaultProps = {
       size: DEFAULT_ICON_SIZE,
       allowFontScaling: false,
-    };
-
-    setNativeProps(nativeProps) {
-      if (this.root) {
-        this.root.setNativeProps(nativeProps);
-      }
-    }
-
-    handleRef = ref => {
-      this.root = ref;
     };
 
     render() {
@@ -73,7 +65,6 @@ export default function createIconSet(
       };
 
       props.style = [styleDefaults, style, styleOverrides, fontStyle || {}];
-      props.ref = this.handleRef;
 
       return (
         <Text selectable={false} {...props}>

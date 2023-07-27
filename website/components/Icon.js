@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   AntDesign,
   Entypo,
@@ -6,6 +6,7 @@ import {
   Feather,
   FontAwesome,
   FontAwesome5,
+  FontAwesome6,
   Foundation,
   Ionicons,
   MaterialIcons,
@@ -14,66 +15,70 @@ import {
   Octicons,
   Zocial,
   Fontisto,
-} from '@expo/vector-icons';
+} from "@expo/vector-icons";
 
 export default class Icon extends Component {
   render() {
     let Icon = Ionicons;
 
     switch (this.props.family) {
-      case 'AntDesign':
+      case "AntDesign":
         Icon = AntDesign;
         break;
 
-      case 'Entypo':
+      case "Entypo":
         Icon = Entypo;
         break;
 
-      case 'EvilIcons':
+      case "EvilIcons":
         Icon = EvilIcons;
         break;
 
-      case 'Feather':
+      case "Feather":
         Icon = Feather;
         break;
 
-      case 'FontAwesome':
+      case "FontAwesome":
         Icon = FontAwesome;
         break;
 
-      case 'FontAwesome5':
+      case "FontAwesome5":
         Icon = FontAwesome5;
         break;
 
-      case 'Foundation':
+      case "FontAwesome6":
+        Icon = FontAwesome6;
+        break;
+
+      case "Foundation":
         Icon = Foundation;
         break;
 
-      case 'Ionicons':
+      case "Ionicons":
         Icon = Ionicons;
         break;
 
-      case 'MaterialIcons':
+      case "MaterialIcons":
         Icon = MaterialIcons;
         break;
 
-      case 'MaterialCommunityIcons':
+      case "MaterialCommunityIcons":
         Icon = MaterialCommunityIcons;
         break;
 
-      case 'SimpleLineIcons':
+      case "SimpleLineIcons":
         Icon = SimpleLineIcons;
         break;
 
-      case 'Octicons':
+      case "Octicons":
         Icon = Octicons;
         break;
 
-      case 'Zocial':
+      case "Zocial":
         Icon = Zocial;
         break;
 
-      case 'Fontisto':
+      case "Fontisto":
         Icon = Fontisto;
         break;
 
@@ -85,7 +90,7 @@ export default class Icon extends Component {
       <Icon
         name={this.props.name}
         size={this.props.size}
-        color={this.props.color || '#000'}
+        color={this.props.color || "#000"}
       />
     );
   }

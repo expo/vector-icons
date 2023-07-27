@@ -11,6 +11,8 @@ import {
   Feather,
   FontAwesome,
   FontAwesome5,
+  FontAwesome6,
+  FontAwesome6Pro,
   Foundation,
   Ionicons,
   MaterialIcons,
@@ -106,6 +108,7 @@ export default function App() {
         <Feather name="activity" size={24} color="black" />
         <FontAwesome name="glass" size={24} color="black" />
         <FontAwesome5 name="500px" size={24} color="black" />
+        <FontAwesome6 name="500px" size={24} color="black" />
         <Foundation name="address-book" size={24} color="black" />
         <Ionicons name="ios-add" size={24} color="black" />
         <MaterialIcons name="3d-rotation" size={24} color="black" />
