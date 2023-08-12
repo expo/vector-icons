@@ -9,6 +9,8 @@ import {
   TextStyle,
   ViewStyle,
 } from "react-native";
+// @ts-expect-error: AssetRegistry is not typed
+import { getAssetByID } from "react-native/Libraries/Image/AssetRegistry";
 
 import createIconSet from "./vendor/react-native-vector-icons/lib/create-icon-set";
 import createIconButtonComponent from "./vendor/react-native-vector-icons/lib/icon-button";
@@ -122,7 +124,10 @@ export default function <G extends string, FN extends string>(
     _icon?: any;
 
     state = {
-      fontIsLoaded: Font.isLoaded(fontName),
+      // If `getAssetByID` returns `null`, the call path is probably from react-native-vector-icons
+      // that the `expoAssetId` parameter is a string font name. e.g. `MaterialIcons.ttf`.
+      // We just pass the font to react-native-vector-icons without checking if it's loaded.
+      fontIsLoaded: Font.isLoaded(fontName) || !getAssetByID(expoAssetId),
     };
 
     async componentDidMount() {
