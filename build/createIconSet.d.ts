@@ -59,7 +59,7 @@ export interface IconButtonProps<GLYPHS extends string> extends IconProps<GLYPHS
      */
     backgroundColor?: string | OpaqueColorValue;
 }
-export declare type GlyphMap<G extends string> = {
+export type GlyphMap<G extends string> = {
     [K in G]: number | string;
 };
 export interface Icon<G extends string, FN extends string> {
@@ -75,3 +75,4 @@ export interface Icon<G extends string, FN extends string> {
     new (props: IconProps<G>): React.Component<IconProps<G>>;
 }
 export default function <G extends string, FN extends string>(glyphMap: GlyphMap<G>, fontName: FN, expoAssetId: any, fontStyle?: any): Icon<G, FN>;
+//# sourceMappingURL=createIconSet.d.ts.map

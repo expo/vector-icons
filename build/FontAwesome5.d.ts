@@ -6,3 +6,4 @@ export declare const FA5Style: {
 };
 declare const iconSet: any;
 export default iconSet;
+//# sourceMappingURL=FontAwesome5.d.ts.map

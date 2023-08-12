@@ -17,3 +17,4 @@ export { default as createIconSet } from "./createIconSet";
 export { default as createIconSetFromFontello } from "./createIconSetFromFontello";
 export { default as createIconSetFromIcoMoon } from "./createIconSetFromIcoMoon";
 export { default as createMu } from "./createIconSetFromIcoMoon";
+//# sourceMappingURL=Icons.d.ts.map
