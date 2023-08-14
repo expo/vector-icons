@@ -62,6 +62,19 @@ export default function createMultiStyleIconSet(styles, optionsInput = {}) {
     }
     function createStyledIconClass(selectClass = '') {
         class IconClass extends PureComponent {
+            static defaultProps = styleNames.reduce((acc, name) => {
+                acc[name] = false;
+                return acc;
+            }, {});
+            static font = Object.values(styles).reduce((acc, style) => {
+                acc[style.fontFamily] = style.fontFile;
+                return acc;
+            }, {});
+            static Button;
+            static StyledIconSet = getStyledIconSet;
+            static getFontFamily = getFontFamily;
+            static getRawGlyphMap = getRawGlyphMap;
+            static hasIcon = hasIcon;
             render() {
                 const selectedIconSet = getIconSetForProps(this.props);
                 const SelectedIconClass = selectIconClass(selectedIconSet, selectClass);
@@ -69,18 +82,6 @@ export default function createMultiStyleIconSet(styles, optionsInput = {}) {
                 return React.createElement(SelectedIconClass, props);
             }
         }
-        IconClass.defaultProps = styleNames.reduce((acc, name) => {
-            acc[name] = false;
-            return acc;
-        }, {});
-        IconClass.font = Object.values(styles).reduce((acc, style) => {
-            acc[style.fontFamily] = style.fontFile;
-            return acc;
-        }, {});
-        IconClass.StyledIconSet = getStyledIconSet;
-        IconClass.getFontFamily = getFontFamily;
-        IconClass.getRawGlyphMap = getRawGlyphMap;
-        IconClass.hasIcon = hasIcon;
         return IconClass;
     }
     const Icon = createStyledIconClass();

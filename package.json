@@ -40,6 +40,6 @@
   "devDependencies": {
     "@types/react-native": "~0.64",
     "expo-font": "^10.0.5",
-    "expo-module-scripts": "^1.0.0"
+    "expo-module-scripts": "^3.0.11"
   }
 }
