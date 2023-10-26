@@ -5,6 +5,7 @@ export { default as Feather } from "./Feather";
 export { default as Fontisto } from "./Fontisto";
 export { default as FontAwesome } from "./FontAwesome";
 export { default as FontAwesome5 } from "./FontAwesome5";
+export { default as FontAwesome6 } from "./FontAwesome6";
 export { default as Foundation } from "./Foundation";
 export { default as Ionicons } from "./Ionicons";
 export { default as MaterialCommunityIcons } from "./MaterialCommunityIcons";

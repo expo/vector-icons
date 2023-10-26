@@ -5,6 +5,7 @@ export const IconFamilies = {
   Feather: require("@expo/vector-icons/build/vendor/react-native-vector-icons/glyphmaps/Feather.json"),
   FontAwesome: require("@expo/vector-icons/build/vendor/react-native-vector-icons/glyphmaps/FontAwesome.json"),
   FontAwesome5: require("@expo/vector-icons/build/vendor/react-native-vector-icons/glyphmaps/FontAwesome5Free.json"),
+  FontAwesome6: require("@expo/vector-icons/build/vendor/react-native-vector-icons/glyphmaps/FontAwesome6Free.json"),
   Foundation: require("@expo/vector-icons/build/vendor/react-native-vector-icons/glyphmaps/Foundation.json"),
   Ionicons: require("@expo/vector-icons/build/vendor/react-native-vector-icons/glyphmaps/Ionicons.json"),
   MaterialIcons: require("@expo/vector-icons/build/vendor/react-native-vector-icons/glyphmaps/MaterialIcons.json"),

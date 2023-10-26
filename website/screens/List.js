@@ -24,6 +24,7 @@ const DefaultIconFamilyFilters = {
   Feather: false,
   FontAwesome: false,
   FontAwesome5: false,
+  FontAwesome6: false,
   Foundation: false,
   Ionicons: false,
   MaterialIcons: false,
@@ -96,7 +97,7 @@ function _SearchBar(props, ref) {
   return (
     <View style={styles.searchContainer}>
       <Ionicons
-        name="md-search"
+        name="search"
         size={30}
         color="#FFFFFF"
         style={styles.icon}
