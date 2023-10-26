@@ -1,5 +1,5 @@
 import { Platform } from 'react-native';
-import createMultiStyleIconSet from './createMultiStyleIconSet';
+import createMultiStyleIconSet, { MultiStyleIcon } from './createMultiStyleIconSet';
 import { GlyphMap } from './createIconSet';
 
 export const FA5Style = {
@@ -14,7 +14,7 @@ export function createFA5IconSet<G extends string, K extends string>(
     metadata: Record<K, G[]>,
     fonts,
     pro = false
-) {
+): MultiStyleIcon<G> {
   const metadataKeys = Object.keys(metadata);
   const fontFamily = `FontAwesome5${pro ? 'Pro' : 'Free'}`;
 
@@ -55,7 +55,7 @@ export function createFA5IconSet<G extends string, K extends string>(
   const lightIcons = createFontAwesomeStyle('Light', '100');
   const regularIcons = createFontAwesomeStyle('Regular', '400');
   const solidIcons = createFontAwesomeStyle('Solid', '700');
-  const Icon = createMultiStyleIconSet(
+  const Icon = createMultiStyleIconSet<G>(
     {
       brand: brandIcons,
       light: lightIcons,

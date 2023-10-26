@@ -9,12 +9,12 @@ declare type FontStyle<G extends string> = {
 declare type FontStyles<G extends string> = {
     [key: string]: FontStyle<G>;
 };
-declare type MultiStyleIcon<G extends string, FS extends FontStyles<G>> = {
+export declare type MultiStyleIcon<G extends string, FS extends FontStyles<G> = FontStyles<G>> = {
     defaultProps: any;
     Button: ComponentClass<IconButtonProps<G>>;
     getRawGlyphMap: () => GlyphMap<G>;
     getFontFamily: () => string;
     new (props: IconProps<G> & Partial<Record<keyof FS, boolean>>): React.Component<IconProps<G>>;
 };
-export default function createMultiStyleIconSet<G extends string, FS extends FontStyles<G>>(styles: FS, optionsInput?: {}): MultiStyleIcon<G, FS>;
+export default function createMultiStyleIconSet<G extends string, FS extends FontStyles<G> = FontStyles<G>>(styles: FS, optionsInput?: {}): MultiStyleIcon<G, FS>;
 export {};

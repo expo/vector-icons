@@ -7,7 +7,9 @@ const fontMap = {
     Solid: require('./vendor/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf'),
     Brand: require('./vendor/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf'),
 };
-const iconSet = createFA5IconSet(glyphMap, metadata, fontMap, false);
+const iconSet = createFA5IconSet(glyphMap, 
+// @ts-ignore
+metadata, fontMap, false);
 export { FA5Style };
 export default iconSet;
 //# sourceMappingURL=FontAwesome5.js.map
