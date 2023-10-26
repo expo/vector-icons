@@ -1,15 +1,12 @@
 import { Platform } from 'react-native';
 import createMultiStyleIconSet from './createMultiStyleIconSet';
+import { GlyphMap } from './createIconSet';
 
-export const FA5Style = {
+export const FA6Style = {
   regular: 'regular',
   light: 'light',
   solid: 'solid',
   brand: 'brand',
-};
-
-export const FA6Style = {
-  ...FA5Style,
   sharpLight: 'light',
   sharp: 'regular',
   sharpSolid: 'solid',
@@ -17,9 +14,14 @@ export const FA6Style = {
   thin: 'light',
 };
 
-export function createMultiStyleFAiconSet(glyphMap, metadata = {}, fonts, version: number, pro = false) {
+export function createFA6IconSet<G extends string, K extends string>(
+    glyphMap: GlyphMap<G>,
+    metadata: Record<K, G[]>,
+    fonts,
+    pro = false
+) {
   const metadataKeys = Object.keys(metadata);
-  const fontFamily = `FontAwesome${version}${pro ? 'Pro' : 'Free'}`;
+  const fontFamily = `FontAwesome6${pro ? 'Pro' : 'Free'}`;
 
   function fallbackFamily(glyph) {
     for (let i = 0; i < metadataKeys.length; i += 1) {
@@ -35,8 +37,7 @@ export function createMultiStyleFAiconSet(glyphMap, metadata = {}, fonts, versio
   function glyphValidator(glyph, style) {
     let family = style === 'brand' ? 'brands' : style;
     family = style === 'sharpSolid' ? 'sharp-solid' : family;
-    if (metadataKeys.indexOf(family) === -1) return false;
-    return metadata[family].indexOf(glyph) !== -1;
+    return family in metadata && metadata[family].indexOf(glyph) !== -1;
   }
 
   function createFontAwesomeStyle(style, fontWeight, family = fontFamily) {

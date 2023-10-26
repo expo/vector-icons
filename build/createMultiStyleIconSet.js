@@ -47,9 +47,9 @@ export default function createMultiStyleIconSet(styles, optionsInput = {}) {
         if (styleNames.indexOf(style) === -1) {
             return iconSets[options.defaultStyle];
         }
-        return !name
-            ? iconSets[styleFromProps({ [style]: true })]
-            : getIconSetForProps({ name, [style]: true });
+        return name
+            ? getIconSetForProps({ name, [style]: true })
+            : iconSets[styleFromProps({ [style]: true })];
     }
     function getFontFamily(style = options.defaultStyle) {
         return getStyledIconSet(style).getFontFamily();

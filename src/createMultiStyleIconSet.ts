@@ -1,22 +1,30 @@
-import React, { PureComponent } from 'react';
+import React, { ComponentClass, PureComponent } from 'react';
 
-import createIconSet from './createIconSet';
+import createIconSet, { GlyphMap, IconButtonProps, IconProps } from './createIconSet';
 
-type FontStyle = {
+type FontStyle<G extends string> = {
   fontFamily: string;
   fontFile: any;
-  glyphMap: any;
+  glyphMap: GlyphMap<G>;
   fontStyle: any;
 };
 
-type FontStyles = {
-  [key: string]: FontStyle;
-};
+type FontStyles<G extends string> = {
+  [key: string]: FontStyle<G>;
+}
 
-export default function createMultiStyleIconSet(
-  styles: FontStyles,
+type MultiStyleIcon<G extends string, FS extends FontStyles<G>> = {
+  defaultProps: any;
+  Button: ComponentClass<IconButtonProps<G>>;
+  getRawGlyphMap: () => GlyphMap<G>;
+  getFontFamily: () => string;
+  new(props: IconProps<G> & Partial<Record<keyof FS, boolean>>): React.Component<IconProps<G>>;
+}
+
+export default function createMultiStyleIconSet<G extends string, FS extends FontStyles<G>>(
+  styles: FS,
   optionsInput = {}
-): any {
+) {
   const styleNames = Object.keys(styles);
 
   if (styleNames.length === 0) {
@@ -87,9 +95,9 @@ export default function createMultiStyleIconSet(
       return iconSets[options.defaultStyle];
     }
 
-    return !name
-      ? iconSets[styleFromProps({ [style]: true })]
-      : getIconSetForProps({ name, [style]: true });
+    return name
+      ? getIconSetForProps({ name, [style]: true })
+      : iconSets[styleFromProps({[style]: true})];
   }
 
   function getFontFamily(style = options.defaultStyle) {
@@ -117,6 +125,7 @@ export default function createMultiStyleIconSet(
       }, {});
 
       static Button: any;
+      static glyphMap: GlyphMap<G>;
 
       static StyledIconSet = getStyledIconSet;
       static getFontFamily = getFontFamily;
@@ -137,5 +146,5 @@ export default function createMultiStyleIconSet(
 
   const Icon = createStyledIconClass();
   Icon.Button = createStyledIconClass('Button');
-  return Icon;
+  return Icon as unknown as MultiStyleIcon<G, FS>;
 }

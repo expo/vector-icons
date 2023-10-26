@@ -1,4 +1,4 @@
-import { createMultiStyleFAiconSet } from './createIconSetFromMultiStyleFontAwesome';
+import { createFA5IconSet, FA5Style } from './createIconSetFromFontAwesome5';
 
 import glyphMap from './vendor/react-native-vector-icons/glyphmaps/FontAwesome5Free.json';
 import metadata from './vendor/react-native-vector-icons/glyphmaps/FontAwesome5Free_meta.json';
@@ -9,13 +9,12 @@ const fontMap = {
   Brand: require('./vendor/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf'),
 };
 
-export const FA5Style = {
-  regular: 'regular',
-  light: 'light',
-  solid: 'solid',
-  brand: 'brand',
-};
+const iconSet = createFA5IconSet(
+    glyphMap,
+    metadata,
+    fontMap,
+    false,
+);
 
-const iconSet = createMultiStyleFAiconSet(glyphMap, metadata, fontMap, 5, false);
-
+export { FA5Style };
 export default iconSet;

@@ -1,4 +1,4 @@
-import { createMultiStyleFAiconSet } from './createIconSetFromMultiStyleFontAwesome';
+import { createFA6IconSet, FA6Style } from './createIconSetFromFontAwesome6';
 
 import glyphMap from './vendor/react-native-vector-icons/glyphmaps/FontAwesome6Free.json';
 import metadata from './vendor/react-native-vector-icons/glyphmaps/FontAwesome6Free_meta.json';
@@ -14,18 +14,12 @@ const fontMap = {
   Thin: require('./vendor/react-native-vector-icons/Fonts/FontAwesome6_Regular.ttf'),
 };
 
-export const FA6Style = {
-  regular: 'regular',
-  light: 'light',
-  solid: 'solid',
-  brand: 'brand',
-  sharpLight: 'light',
-  sharp: 'regular',
-  sharpSolid: 'solid',
-  duotone: 'duotone',
-  thin: 'light',
-};
+const iconSet = createFA6IconSet(
+    glyphMap,
+    metadata,
+    fontMap,
+    false,
+);
 
-const iconSet = createMultiStyleFAiconSet(glyphMap, metadata, fontMap, 6, false);
-
+export { FA6Style };
 export default iconSet;
