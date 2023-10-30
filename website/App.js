@@ -1,4 +1,3 @@
-import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Dimensions, StatusBar, View } from "react-native";
@@ -83,13 +82,10 @@ function Browsing() {
   );
 }
 
-const Stack = createStackNavigator();
 function Navigation() {
   return (
     <NavigationContainer linking={linking}>
-      <Stack.Navigator headerMode="none">
-        <Stack.Screen name="Index" component={Browsing} />
-      </Stack.Navigator>
+      <Browsing />
     </NavigationContainer>
   );
 }
@@ -109,7 +105,7 @@ export default function App() {
         <FontAwesome5 name="500px" size={24} color="black" />
         <FontAwesome6 name="chart-column" size={24} color="black" />
         <Foundation name="address-book" size={24} color="black" />
-        <Ionicons name="ios-add" size={24} color="black" />
+        <Ionicons name="add" size={24} color="black" />
         <MaterialIcons name="3d-rotation" size={24} color="black" />
         <MaterialCommunityIcons name="access-point" size={24} color="black" />
         <SimpleLineIcons name="user" size={24} color="black" />

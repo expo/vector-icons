@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {
   StyleSheet,
   View,
@@ -33,25 +33,23 @@ const Detail = ({ route, navigation }) => {
   };
 
   useEffect(() => {
-    hotshot;
+    new Hotshot({
+      combos: [
+        {
+          keyCodes: [27], // back to icon search pressing 'esc' key.
+          callback: () => setTimeout(() => navigation.goBack(), 16),
+        },
+        {
+          keyCodes: [49], // copy Import code pressing '1' key.
+          callback: () => setTimeout(() => handleCopyImport(), 16),
+        },
+        {
+          keyCodes: [50], // copy Use code pressing '2' key.
+          callback: () => setTimeout(() => handleCopyUse(), 16),
+        },
+      ],
+    });
   }, []);
-
-  const hotshot = new Hotshot({
-    combos: [
-      {
-        keyCodes: [27], // back to icon search pressing 'esc' key.
-        callback: () => setTimeout(() => navigation.goBack(), 16),
-      },
-      {
-        keyCodes: [49], // copy Import code pressing '1' key.
-        callback: () => setTimeout(() => handleCopyImport(), 16),
-      },
-      {
-        keyCodes: [50], // copy Use code pressing '2' key.
-        callback: () => setTimeout(() => handleCopyUse(), 16),
-      },
-    ],
-  });
 
   return (
     <View
