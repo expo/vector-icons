@@ -67,7 +67,7 @@ const Detail = ({ route, navigation }) => {
           <View style={{ flexDirection: 'column', alignItems: 'center' }}>
             <View style={styles.viewImportDesc}>
               <Text style={styles.title}>1. Import the icon family</Text>
-              <CopyButton onPress={handleCopyImport} buttonName="copy" />
+              <CopyButton copied={copyColorImp} onPress={handleCopyImport} buttonName="copy" />
             </View>
             <View
               style={[
@@ -83,7 +83,7 @@ const Detail = ({ route, navigation }) => {
           <View style={styles.viewCopyDesc}>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
               <Text style={styles.title}>2. Render the component</Text>
-              <CopyButton onPress={handleCopyUse} buttonName="copy" />
+              <CopyButton copied={copyColorRen} onPress={handleCopyUse} buttonName="copy" />
             </View>
 
             <View
