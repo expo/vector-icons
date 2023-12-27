@@ -13,6 +13,7 @@
     "build:dev": "expo-module build",
     "clean": "expo-module clean",
     "test": "expo-module test",
+    "lint": "expo-module lint",
     "prepare": "expo-module prepare && npm run generate-lazy && npm run copy-vendor",
     "prepublishOnly": "expo-module prepublishOnly",
     "expo-module": "expo-module"
@@ -38,7 +39,10 @@
   "homepage": "https://expo.github.io/vector-icons",
   "devDependencies": {
     "@types/react-native": "~0.64",
+    "eslint": "^8.56.0",
+    "eslint-config-universe": "^12.0.0",
     "expo-font": "^10.0.5",
-    "expo-module-scripts": "^1.0.0"
+    "expo-module-scripts": "^2.1.1",
+    "prettier": "^3.1.1"
   }
 }

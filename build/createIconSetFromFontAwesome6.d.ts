@@ -11,3 +11,4 @@ declare const FA6Style: {
 };
 declare function createFA6iconSet(glyphMap: any, metadata: {} | undefined, fonts: any, pro?: boolean): any;
 export { createFA6iconSet, FA6Style };
+//# sourceMappingURL=createIconSetFromFontAwesome6.d.ts.map

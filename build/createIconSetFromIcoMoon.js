@@ -1,8 +1,8 @@
-import createIconSet from "./createIconSet";
+import createIconSet from './createIconSet';
 export default function (config, expoFontName, expoAssetId) {
     const glyphMap = {};
-    config.icons.forEach(icon => {
-        icon.properties.name.split(/\s*,\s*/g).forEach(name => {
+    config.icons.forEach((icon) => {
+        icon.properties.name.split(/\s*,\s*/g).forEach((name) => {
             glyphMap[name] = icon.properties.code;
         });
     });

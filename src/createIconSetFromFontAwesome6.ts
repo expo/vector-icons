@@ -1,4 +1,5 @@
 import { Platform } from 'react-native';
+
 import createMultiStyleIconSet from './createMultiStyleIconSet';
 
 const FA6Style = {
@@ -63,34 +64,14 @@ function createFA6iconSet(glyphMap, metadata = {}, fonts, pro = false) {
     };
   }
 
-  const brandIcons = createFontAwesomeStyle(
-    'Brands',
-    '400',
-    'FontAwesome6Brands'
-  );
+  const brandIcons = createFontAwesomeStyle('Brands', '400', 'FontAwesome6Brands');
   const lightIcons = createFontAwesomeStyle('Light', '300');
   const regularIcons = createFontAwesomeStyle('Regular', '400');
   const solidIcons = createFontAwesomeStyle('Solid', '900');
-  const sharpLightIcons = createFontAwesomeStyle(
-    'Sharp_Light',
-    '300',
-    'FontAwesome6Sharp'
-  );
-  const sharpIcons = createFontAwesomeStyle(
-    'Sharp_Regular',
-    '400',
-    'FontAwesome6Sharp'
-  );
-  const sharpSolidIcons = createFontAwesomeStyle(
-    'Sharp_Solid',
-    '900',
-    'FontAwesome6Sharp'
-  );
-  const duotoneIcons = createFontAwesomeStyle(
-    'Duotone',
-    '900',
-    'FontAwesome6Duotone'
-  );
+  const sharpLightIcons = createFontAwesomeStyle('Sharp_Light', '300', 'FontAwesome6Sharp');
+  const sharpIcons = createFontAwesomeStyle('Sharp_Regular', '400', 'FontAwesome6Sharp');
+  const sharpSolidIcons = createFontAwesomeStyle('Sharp_Solid', '900', 'FontAwesome6Sharp');
+  const duotoneIcons = createFontAwesomeStyle('Duotone', '900', 'FontAwesome6Duotone');
   const thinIcons = createFontAwesomeStyle('Thin', '100');
   const Icon = createMultiStyleIconSet(
     {

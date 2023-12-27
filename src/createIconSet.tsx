@@ -1,5 +1,5 @@
-import * as Font from "expo-font";
-import React, { ComponentClass } from "react";
+import * as Font from 'expo-font';
+import React, { ComponentClass } from 'react';
 import {
   Text,
   TextProps,
@@ -8,15 +8,15 @@ import {
   OpaqueColorValue,
   TextStyle,
   ViewStyle,
-} from "react-native";
+} from 'react-native';
 
-import createIconSet from "./vendor/react-native-vector-icons/lib/create-icon-set";
-import createIconButtonComponent from "./vendor/react-native-vector-icons/lib/icon-button";
+import createIconSet from './vendor/react-native-vector-icons/lib/create-icon-set';
+import createIconButtonComponent from './vendor/react-native-vector-icons/lib/icon-button';
 
 export {
   DEFAULT_ICON_COLOR,
   DEFAULT_ICON_SIZE,
-} from "./vendor/react-native-vector-icons/lib/create-icon-set";
+} from './vendor/react-native-vector-icons/lib/create-icon-set';
 
 export interface IconProps<GLYPHS extends string> extends TextProps {
   /**
@@ -129,6 +129,7 @@ export default function <G extends string, FN extends string>(
       this._mounted = true;
       if (!this.state.fontIsLoaded) {
         await Font.loadAsync(font);
+        /* eslint-disable react/no-did-mount-set-state */
         this._mounted && this.setState({ fontIsLoaded: true });
       }
     }
@@ -145,9 +146,7 @@ export default function <G extends string, FN extends string>(
 
     render() {
       if (__DEV__ && this.props.name && !(this.props.name in glyphMap)) {
-        console.warn(
-          `"${this.props.name}" is not a valid icon name for family "${fontName}"`
-        );
+        console.warn(`"${this.props.name}" is not a valid icon name for family "${fontName}"`);
       }
 
       if (!this.state.fontIsLoaded) {

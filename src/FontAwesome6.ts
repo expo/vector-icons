@@ -1,5 +1,4 @@
 import { createFA6iconSet } from './createIconSetFromFontAwesome6';
-
 import glyphMap from './vendor/react-native-vector-icons/glyphmaps/FontAwesome6Free.json';
 import metadata from './vendor/react-native-vector-icons/glyphmaps/FontAwesome6Free_meta.json';
 

@@ -1,55 +1,52 @@
-import * as Font from "expo-font";
-import React from "react";
-import { Text, } from "react-native";
-import createIconSet from "./vendor/react-native-vector-icons/lib/create-icon-set";
-import createIconButtonComponent from "./vendor/react-native-vector-icons/lib/icon-button";
-export { DEFAULT_ICON_COLOR, DEFAULT_ICON_SIZE, } from "./vendor/react-native-vector-icons/lib/create-icon-set";
+import * as Font from 'expo-font';
+import React from 'react';
+import { Text, } from 'react-native';
+import createIconSet from './vendor/react-native-vector-icons/lib/create-icon-set';
+import createIconButtonComponent from './vendor/react-native-vector-icons/lib/icon-button';
+export { DEFAULT_ICON_COLOR, DEFAULT_ICON_SIZE, } from './vendor/react-native-vector-icons/lib/create-icon-set';
 export default function (glyphMap, fontName, expoAssetId, fontStyle) {
-    var _a;
     const font = { [fontName]: expoAssetId };
     const RNVIconComponent = createIconSet(glyphMap, fontName, null, fontStyle);
-    return _a = class Icon extends React.Component {
-            constructor() {
-                super(...arguments);
-                this._mounted = false;
-                this.state = {
-                    fontIsLoaded: Font.isLoaded(fontName),
-                };
+    return class Icon extends React.Component {
+        static defaultProps = RNVIconComponent.defaultProps;
+        static Button = createIconButtonComponent(Icon);
+        static glyphMap = glyphMap;
+        static getRawGlyphMap = () => glyphMap;
+        static getFontFamily = () => fontName;
+        static loadFont = () => Font.loadAsync(font);
+        static font = font;
+        _mounted = false;
+        _icon;
+        state = {
+            fontIsLoaded: Font.isLoaded(fontName),
+        };
+        async componentDidMount() {
+            this._mounted = true;
+            if (!this.state.fontIsLoaded) {
+                await Font.loadAsync(font);
+                /* eslint-disable react/no-did-mount-set-state */
+                this._mounted && this.setState({ fontIsLoaded: true });
             }
-            async componentDidMount() {
-                this._mounted = true;
-                if (!this.state.fontIsLoaded) {
-                    await Font.loadAsync(font);
-                    this._mounted && this.setState({ fontIsLoaded: true });
-                }
+        }
+        componentWillUnmount() {
+            this._mounted = false;
+        }
+        setNativeProps(props) {
+            if (this._icon) {
+                this._icon.setNativeProps(props);
             }
-            componentWillUnmount() {
-                this._mounted = false;
+        }
+        render() {
+            if (__DEV__ && this.props.name && !(this.props.name in glyphMap)) {
+                console.warn(`"${this.props.name}" is not a valid icon name for family "${fontName}"`);
             }
-            setNativeProps(props) {
-                if (this._icon) {
-                    this._icon.setNativeProps(props);
-                }
+            if (!this.state.fontIsLoaded) {
+                return React.createElement(Text, null);
             }
-            render() {
-                if (__DEV__ && this.props.name && !(this.props.name in glyphMap)) {
-                    console.warn(`"${this.props.name}" is not a valid icon name for family "${fontName}"`);
-                }
-                if (!this.state.fontIsLoaded) {
-                    return <Text />;
-                }
-                return (<RNVIconComponent ref={(view) => {
+            return (React.createElement(RNVIconComponent, { ref: (view) => {
                     this._icon = view;
-                }} {...this.props}/>);
-            }
-        },
-        _a.defaultProps = RNVIconComponent.defaultProps,
-        _a.Button = createIconButtonComponent(_a),
-        _a.glyphMap = glyphMap,
-        _a.getRawGlyphMap = () => glyphMap,
-        _a.getFontFamily = () => fontName,
-        _a.loadFont = () => Font.loadAsync(font),
-        _a.font = font,
-        _a;
+                }, ...this.props }));
+        }
+    };
 }
 //# sourceMappingURL=createIconSet.js.map

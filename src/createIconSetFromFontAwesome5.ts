@@ -1,4 +1,5 @@
 import { Platform } from 'react-native';
+
 import createMultiStyleIconSet from './createMultiStyleIconSet';
 
 export const FA5Style = {
@@ -30,7 +31,7 @@ export function createFA5iconSet(glyphMap, metadata = {}, fonts, pro = false) {
   }
 
   function createFontAwesomeStyle(styleName, fontWeight, family = fontFamily) {
-    let fontFile = fonts[styleName];
+    const fontFile = fonts[styleName];
 
     return {
       fontFamily: `${family}-${styleName}`,
@@ -60,7 +61,7 @@ export function createFA5iconSet(glyphMap, metadata = {}, fonts, pro = false) {
       defaultStyle: 'regular',
       fallbackFamily,
       glyphValidator,
-    },
+    }
   );
 
   return Icon;

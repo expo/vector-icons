@@ -11,3 +11,4 @@ export declare const FA6Style: {
 };
 declare const iconSet: any;
 export default iconSet;
+//# sourceMappingURL=FontAwesome6.d.ts.map

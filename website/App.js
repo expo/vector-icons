@@ -108,7 +108,7 @@ export default function App() {
         <EvilIcons name="archive" size={24} color="black" />
         <Feather name="activity" size={24} color="black" />
         <FontAwesome name="glass" size={24} color="black" />
-        <FontAwesome5 name="0" size={24} color="black" />
+        <FontAwesome5 name="adjust" size={24} color="black" />
         <FontAwesome6 name="500px" size={24} color="black" />
         <Foundation name="address-book" size={24} color="black" />
         <Ionicons name="accessibility" size={24} color="black" />
