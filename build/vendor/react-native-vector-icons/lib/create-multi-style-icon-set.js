@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 import createIconSet, {
   DEFAULT_ICON_COLOR,
@@ -90,6 +91,15 @@ export default function createMultiStyleIconSet(styles, optionsInput = {}) {
     return getStyledIconSet(style, name).getImageSource(name, size, color);
   }
 
+  function getImageSourceSync(
+    name,
+    size = DEFAULT_ICON_SIZE,
+    color = DEFAULT_ICON_COLOR,
+    style = options.defaultStyle
+  ) {
+    return getStyledIconSet(style, name).getImageSourceSync(name, size, color);
+  }
+
   function getFontFamily(style = options.defaultStyle) {
     return getStyledIconSet(style).getFontFamily();
   }
@@ -104,6 +114,11 @@ export default function createMultiStyleIconSet(styles, optionsInput = {}) {
 
   function createStyledIconClass(selectClass = '') {
     class IconClass extends PureComponent {
+      static propTypes = styleNames.reduce((acc, name) => {
+        acc[name] = PropTypes.bool;
+        return acc;
+      }, {});
+
       static defaultProps = styleNames.reduce((acc, name) => {
         acc[name] = false;
         return acc;
@@ -125,6 +140,7 @@ export default function createMultiStyleIconSet(styles, optionsInput = {}) {
   Icon.Button = createStyledIconClass('Button');
   Icon.getStyledIconSet = getStyledIconSet;
   Icon.getImageSource = getImageSource;
+  Icon.getImageSourceSync = getImageSourceSync;
   Icon.getFontFamily = getFontFamily;
   Icon.getRawGlyphMap = getRawGlyphMap;
   Icon.hasIcon = hasIcon;

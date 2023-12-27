@@ -45,6 +45,12 @@ Object.defineProperty(exports, "FontAwesome5", {
     return _FontAwesome2.default;
   }
 });
+Object.defineProperty(exports, "FontAwesome6", {
+  enumerable: true,
+  get: function () {
+    return _FontAwesome3.default;
+  }
+});
 Object.defineProperty(exports, "Foundation", {
   enumerable: true,
   get: function () {
@@ -111,12 +117,6 @@ Object.defineProperty(exports, "createIconSetFromIcoMoon", {
     return _createIconSetFromIcoMoon.default;
   }
 });
-Object.defineProperty(exports, "createMu", {
-  enumerable: true,
-  get: function () {
-    return _createIconSetFromIcoMoon.default;
-  }
-});
 
 var _AntDesign = _interopRequireDefault(require("./AntDesign"));
 
@@ -131,6 +131,8 @@ var _Fontisto = _interopRequireDefault(require("./Fontisto"));
 var _FontAwesome = _interopRequireDefault(require("./FontAwesome"));
 
 var _FontAwesome2 = _interopRequireDefault(require("./FontAwesome5"));
+
+var _FontAwesome3 = _interopRequireDefault(require("./FontAwesome6"));
 
 var _Foundation = _interopRequireDefault(require("./Foundation"));
 

@@ -6,6 +6,7 @@ import {
   Feather,
   FontAwesome,
   FontAwesome5,
+  FontAwesome6,
   Foundation,
   Ionicons,
   MaterialIcons,
@@ -18,7 +19,7 @@ import {
 
 export default class Icon extends Component {
   render() {
-    let Icon = Ionicons;
+    let Icon;
 
     switch (this.props.family) {
       case 'AntDesign':
@@ -43,6 +44,10 @@ export default class Icon extends Component {
 
       case 'FontAwesome5':
         Icon = FontAwesome5;
+        break;
+
+      case 'FontAwesome6':
+        Icon = FontAwesome6;
         break;
 
       case 'Foundation':

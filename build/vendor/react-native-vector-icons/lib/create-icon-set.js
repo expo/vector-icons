@@ -1,11 +1,5 @@
 import React, { PureComponent } from 'react';
-import {
-  NativeModules,
-  Platform,
-  PixelRatio,
-  processColor,
-  Text,
-} from 'react-native';
+import {Platform, PixelRatio, processColor, Text, NativeModules} from 'react-native';
 
 import ensureNativeModuleAvailable from './ensure-native-module-available';
 import createIconSourceCache from './create-icon-source-cache';
@@ -43,16 +37,6 @@ export default function createIconSet(
       allowFontScaling: false,
     };
 
-    setNativeProps(nativeProps) {
-      if (this.root) {
-        this.root.setNativeProps(nativeProps);
-      }
-    }
-
-    handleRef = ref => {
-      this.root = ref;
-    };
-
     render() {
       const { name, size, color, style, children, ...props } = this.props;
 
@@ -73,7 +57,6 @@ export default function createIconSet(
       };
 
       props.style = [styleDefaults, style, styleOverrides, fontStyle || {}];
-      props.ref = this.handleRef;
 
       return (
         <Text selectable={false} {...props}>

@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { useMediaQuery } from "react-responsive";
-import Hotshot from "hotshot";
 
 const Key = (props) => (
   <Text

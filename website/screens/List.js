@@ -5,14 +5,13 @@ import React, {
   useImperativeHandle,
   forwardRef,
 } from "react";
-import { StyleSheet, View, FlatList, TextInput, Text } from "react-native";
+import { StyleSheet, View, FlatList, TextInput } from "react-native";
 import { useDebouncedCallback } from "use-debounce";
 import { useMediaQuery } from "react-responsive";
 import { IconsArray } from "../IconConstants";
 import ListItem from "../components/ListItem";
 import FilterButton from "../components/FilterButton";
 import ClearButton from "../components/ClearButton";
-import HelpButton from "../components/HelpButton";
 import { Ionicons } from "@expo/vector-icons";
 import Hotshot from "hotshot";
 import CheckBox from "../components/CheckBox";
@@ -24,6 +23,7 @@ const DefaultIconFamilyFilters = {
   Feather: false,
   FontAwesome: false,
   FontAwesome5: false,
+  FontAwesome6: false,
   Foundation: false,
   Ionicons: false,
   MaterialIcons: false,
@@ -117,7 +117,8 @@ function _SearchBar(props, ref) {
 const SearchBar = React.memo(forwardRef(_SearchBar));
 
 function List({ navigation }) {
-  const inputRef = useRef();
+  const inputRef = useRef(null);
+  const filterBarRef = useRef(null);
   const [query, setQuery] = useState("");
   const [barOpen, setBarOpen] = useState(false);
   const [filters, setFilters] = useState({});
@@ -146,9 +147,6 @@ function List({ navigation }) {
     setBarOpen(!barOpen);
   };
 
-  const filterBarRef = useRef(null);
-  const isDesktop = useMediaQuery({ query: "(min-width: 900px)" });
-
   const MemoizedFilterToggles = React.useMemo(
     () => (
       <View style={styles.filterContainer}>
@@ -157,9 +155,10 @@ function List({ navigation }) {
             buttonColor={barOpen ? "#447181" : "#515460"}
             onPress={handleFilterButton}
           />
-
           <View style={{ marginLeft: 10 }}>
-            <ClearButton onPress={() => filterBarRef.current.clear()} />
+            <ClearButton
+              disabled={!Object.values(filters).reduce((acc, currentValue) => acc || currentValue, false)}
+              onPress={() => filterBarRef.current.clear()} />
           </View>
         </View>
       </View>
@@ -178,7 +177,6 @@ function List({ navigation }) {
           onFiltersChange={setFilters}
         />
       </View>
-
       <IconList query={query} filters={filters} navigation={navigation} />
     </View>
   );
@@ -226,14 +224,6 @@ const IconRow = React.memo(({ item, navigation }) => {
     />
   );
 });
-
-function contains(target, pattern) {
-  let value = 0;
-  pattern.forEach((word) => {
-    value = value + target.includes(word);
-  });
-  return value === 1;
-}
 
 function getIconsForQuery(query, iconFamilyFilters) {
   const isFamilyFilterActive =

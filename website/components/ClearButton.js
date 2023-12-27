@@ -2,9 +2,9 @@ import React from 'react';
 import { StyleSheet, TouchableOpacity, Text } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
-const ClearButton = ({ onPress }) => {
+const ClearButton = ({ onPress, disabled }) => {
   return (
-    <TouchableOpacity onPress={onPress} style={styles.clearButton}>
+    <TouchableOpacity onPress={onPress} style={[styles.clearButton, disabled && styles.clearButtonDisabled]} disabled={disabled}>
       <AntDesign
         name="close"
         size={16}
@@ -29,6 +29,9 @@ const styles = StyleSheet.create({
     width: 120,
     paddingVertical: 5,
   },
+  clearButtonDisabled: {
+    opacity: 0.6
+  }
 });
 
 export default ClearButton;
