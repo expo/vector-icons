@@ -9,7 +9,6 @@ const ClearButton = ({ onPress, disabled }) => {
         name="close"
         size={16}
         color="#fff"
-        style={{ marginRight: 5 }}
       />
       <Text style={styles.clearText}>Clear filters</Text>
     </TouchableOpacity>
@@ -26,6 +25,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#515460',
+    borderRadius: 4,
+    gap: 5,
     width: 120,
     paddingVertical: 5,
   },

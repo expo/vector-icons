@@ -7,7 +7,6 @@ import React, {
 } from "react";
 import { StyleSheet, View, FlatList, TextInput } from "react-native";
 import { useDebouncedCallback } from "use-debounce";
-import { useMediaQuery } from "react-responsive";
 import { IconsArray } from "../IconConstants";
 import ListItem from "../components/ListItem";
 import FilterButton from "../components/FilterButton";
@@ -96,8 +95,8 @@ function _SearchBar(props, ref) {
   return (
     <View style={styles.searchContainer}>
       <Ionicons
-        name="md-search"
-        size={30}
+        name="search-outline"
+        size={28}
         color="#FFFFFF"
         style={styles.icon}
       />
@@ -150,16 +149,14 @@ function List({ navigation }) {
   const MemoizedFilterToggles = React.useMemo(
     () => (
       <View style={styles.filterContainer}>
-        <View style={{ flexDirection: "row" }}>
+        <View style={{ flexDirection: "row", gap: 12 }}>
           <FilterButton
-            buttonColor={barOpen ? "#447181" : "#515460"}
+            barOpen={barOpen}
             onPress={handleFilterButton}
           />
-          <View style={{ marginLeft: 10 }}>
-            <ClearButton
-              disabled={!Object.values(filters).reduce((acc, currentValue) => acc || currentValue, false)}
-              onPress={() => filterBarRef.current.clear()} />
-          </View>
+          <ClearButton
+            disabled={!Object.values(filters).reduce((acc, currentValue) => acc || currentValue, false)}
+            onPress={() => filterBarRef.current.clear()} />
         </View>
       </View>
     ),
@@ -252,21 +249,26 @@ const styles = StyleSheet.create({
   },
   input: {
     padding: 10,
+    paddingLeft: 42,
     width: "100%",
     fontSize: 18,
     color: "#fff",
     outlineColor: "#2A2C33",
+    borderWidth: 1,
+    borderColor: "#515460",
+    borderRadius: 4,
   },
   icon: {
-    width: 30,
-    height: 30,
     textAlign: "center",
+    position: "absolute",
+    marginLeft: 8,
+    pointerEvents: "none",
   },
   filterContainer: {
     height: 40,
     alignItems: "flex-end",
     backgroundColor: "#2A2C33",
-    paddingHorizontal: 20,
+    paddingHorizontal: 10,
   },
   displayContainer: {
     backgroundColor: "#ececec",

@@ -3,7 +3,7 @@ import { Platform, StyleSheet, Text } from 'react-native';
 
 const FamilyImport = ({ family }) => {
   return (
-    <Text style={styles.instructions} selectable>
+    <Text style={styles.instructions}>
       {`import { ${family} } from '@expo/vector-icons';`} </Text>
   );
 };
@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '400',
     marginVertical: 10,
+    userSelect: 'text'
   },
 });
 
