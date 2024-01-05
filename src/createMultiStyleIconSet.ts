@@ -13,10 +13,7 @@ type FontStyles = {
   [key: string]: FontStyle;
 };
 
-export default function createMultiStyleIconSet(
-  styles: FontStyles,
-  optionsInput = {}
-): any {
+export default function createMultiStyleIconSet(styles: FontStyles, optionsInput = {}): any {
   const styleNames = Object.keys(styles);
 
   if (styleNames.length === 0) {
@@ -46,9 +43,7 @@ export default function createMultiStyleIconSet(
   function styleFromProps(props) {
     return Object.keys(props).reduce(
       (result, propName) =>
-        styleNames.indexOf(propName) !== -1 && props[propName] === true
-          ? propName
-          : result,
+        styleNames.indexOf(propName) !== -1 && props[propName] === true ? propName : result,
       options.defaultStyle
     );
   }

@@ -1,19 +1,14 @@
-import createIconSet from "./createIconSet";
+import createIconSet from './createIconSet';
 
 export default function (config, expoFontName, expoAssetId) {
   const glyphMap = {};
-  config.icons.forEach(icon => {
-    icon.properties.name.split(/\s*,\s*/g).forEach(name => {
+  config.icons.forEach((icon) => {
+    icon.properties.name.split(/\s*,\s*/g).forEach((name) => {
       glyphMap[name] = icon.properties.code;
     });
   });
 
-  const fontFamily =
-    expoFontName || config.preferences.fontPref.metadata.fontFamily;
+  const fontFamily = expoFontName || config.preferences.fontPref.metadata.fontFamily;
 
-  return createIconSet<string, string>(
-    glyphMap,
-    fontFamily,
-    expoAssetId || `${fontFamily}.ttf`
-  );
+  return createIconSet<string, string>(glyphMap, fontFamily, expoAssetId || `${fontFamily}.ttf`);
 }

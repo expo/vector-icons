@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, Text, Pressable } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const CheckBox = ({
@@ -8,12 +8,10 @@ const CheckBox = ({
   onPress,
 }) => {
   return (
-    <TouchableWithoutFeedback onPress={() => onPress(label)}>
-      <View style={styles.container}>
-        <MaterialCommunityIcons name={icon} size={18} color="black" />
-        <Text style={styles.label}>{label}</Text>
-      </View>
-    </TouchableWithoutFeedback>
+    <Pressable onPress={() => onPress(label)} style={styles.container}>
+      <MaterialCommunityIcons name={icon} size={20} color="black" />
+      <Text style={styles.label}>{label}</Text>
+    </Pressable>
   );
 };
 
@@ -24,6 +22,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     marginBottom: 10,
+    cursor: 'pointer',
   },
   label: {
     marginLeft: 3,

@@ -2,14 +2,13 @@ import React from 'react';
 import { StyleSheet, TouchableOpacity, Text } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
-const ClearButton = ({ onPress }) => {
+const ClearButton = ({ onPress, disabled }) => {
   return (
-    <TouchableOpacity onPress={onPress} style={styles.clearButton}>
+    <TouchableOpacity onPress={onPress} style={[styles.clearButton, disabled && styles.clearButtonDisabled]} disabled={disabled}>
       <AntDesign
         name="close"
         size={16}
         color="#fff"
-        style={{ marginRight: 5 }}
       />
       <Text style={styles.clearText}>Clear filters</Text>
     </TouchableOpacity>
@@ -26,9 +25,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#515460',
+    borderRadius: 4,
+    gap: 5,
     width: 120,
     paddingVertical: 5,
   },
+  clearButtonDisabled: {
+    opacity: 0.6
+  }
 });
 
 export default ClearButton;

@@ -25,7 +25,7 @@ export function createFA5iconSet(glyphMap, metadata = {}, fonts, pro = false) {
         return metadata[family].indexOf(glyph) !== -1;
     }
     function createFontAwesomeStyle(styleName, fontWeight, family = fontFamily) {
-        let fontFile = fonts[styleName];
+        const fontFile = fonts[styleName];
         return {
             fontFamily: `${family}-${styleName}`,
             fontFile,

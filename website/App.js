@@ -11,6 +11,7 @@ import {
   Feather,
   FontAwesome,
   FontAwesome5,
+  FontAwesome6,
   Foundation,
   Ionicons,
   MaterialIcons,
@@ -59,9 +60,9 @@ const BrowsingStack = createStackNavigator();
 function Browsing() {
   return (
     <BrowsingStack.Navigator
-      mode="modal"
-      headerMode={ShowHeader ? "float" : "none"}
       screenOptions={{
+        presentation: "modal",
+        headerMode: ShowHeader ? "float" : "none",
         headerStyle: {
           backgroundColor: "#000",
           borderBottomColor: "#000",
@@ -86,7 +87,9 @@ const Stack = createStackNavigator();
 function Navigation() {
   return (
     <NavigationContainer linking={linking}>
-      <Stack.Navigator headerMode="none">
+      <Stack.Navigator screenOptions={{
+        headerMode: "none",
+      }}>
         <Stack.Screen name="Index" component={Browsing} />
       </Stack.Navigator>
     </NavigationContainer>
@@ -105,9 +108,10 @@ export default function App() {
         <EvilIcons name="archive" size={24} color="black" />
         <Feather name="activity" size={24} color="black" />
         <FontAwesome name="glass" size={24} color="black" />
-        <FontAwesome5 name="500px" size={24} color="black" />
+        <FontAwesome5 name="adjust" size={24} color="black" />
+        <FontAwesome6 name="500px" size={24} color="black" />
         <Foundation name="address-book" size={24} color="black" />
-        <Ionicons name="ios-add" size={24} color="black" />
+        <Ionicons name="accessibility" size={24} color="black" />
         <MaterialIcons name="3d-rotation" size={24} color="black" />
         <MaterialCommunityIcons name="access-point" size={24} color="black" />
         <SimpleLineIcons name="user" size={24} color="black" />

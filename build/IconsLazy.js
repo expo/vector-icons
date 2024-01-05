@@ -27,12 +27,6 @@ Object.defineProperty(exports, "Feather", {
     return _Feather.default;
   }
 });
-Object.defineProperty(exports, "Fontisto", {
-  enumerable: true,
-  get: function () {
-    return _Fontisto.default;
-  }
-});
 Object.defineProperty(exports, "FontAwesome", {
   enumerable: true,
   get: function () {
@@ -43,6 +37,18 @@ Object.defineProperty(exports, "FontAwesome5", {
   enumerable: true,
   get: function () {
     return _FontAwesome2.default;
+  }
+});
+Object.defineProperty(exports, "FontAwesome6", {
+  enumerable: true,
+  get: function () {
+    return _FontAwesome3.default;
+  }
+});
+Object.defineProperty(exports, "Fontisto", {
+  enumerable: true,
+  get: function () {
+    return _Fontisto.default;
   }
 });
 Object.defineProperty(exports, "Foundation", {
@@ -87,12 +93,6 @@ Object.defineProperty(exports, "Zocial", {
     return _Zocial.default;
   }
 });
-Object.defineProperty(exports, "createMultiStyleIconSet", {
-  enumerable: true,
-  get: function () {
-    return _createMultiStyleIconSet.default;
-  }
-});
 Object.defineProperty(exports, "createIconSet", {
   enumerable: true,
   get: function () {
@@ -111,49 +111,31 @@ Object.defineProperty(exports, "createIconSetFromIcoMoon", {
     return _createIconSetFromIcoMoon.default;
   }
 });
-Object.defineProperty(exports, "createMu", {
+Object.defineProperty(exports, "createMultiStyleIconSet", {
   enumerable: true,
   get: function () {
-    return _createIconSetFromIcoMoon.default;
+    return _createMultiStyleIconSet.default;
   }
 });
-
 var _AntDesign = _interopRequireDefault(require("./AntDesign"));
-
 var _Entypo = _interopRequireDefault(require("./Entypo"));
-
 var _EvilIcons = _interopRequireDefault(require("./EvilIcons"));
-
 var _Feather = _interopRequireDefault(require("./Feather"));
-
 var _Fontisto = _interopRequireDefault(require("./Fontisto"));
-
 var _FontAwesome = _interopRequireDefault(require("./FontAwesome"));
-
 var _FontAwesome2 = _interopRequireDefault(require("./FontAwesome5"));
-
+var _FontAwesome3 = _interopRequireDefault(require("./FontAwesome6"));
 var _Foundation = _interopRequireDefault(require("./Foundation"));
-
 var _Ionicons = _interopRequireDefault(require("./Ionicons"));
-
 var _MaterialCommunityIcons = _interopRequireDefault(require("./MaterialCommunityIcons"));
-
 var _MaterialIcons = _interopRequireDefault(require("./MaterialIcons"));
-
 var _Octicons = _interopRequireDefault(require("./Octicons"));
-
 var _SimpleLineIcons = _interopRequireDefault(require("./SimpleLineIcons"));
-
 var _Zocial = _interopRequireDefault(require("./Zocial"));
-
 var _createMultiStyleIconSet = _interopRequireDefault(require("./createMultiStyleIconSet"));
-
 var _createIconSet = _interopRequireDefault(require("./createIconSet"));
-
 var _createIconSetFromFontello = _interopRequireDefault(require("./createIconSetFromFontello"));
-
 var _createIconSetFromIcoMoon = _interopRequireDefault(require("./createIconSetFromIcoMoon"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //# sourceMappingURL=IconsLazy.js.map
