@@ -4,9 +4,6 @@
     "start": "expo start --web",
     "build": "expo export:web"
   },
-  "resolutions": {
-    "@expo/vector-icons": "../"
-  },
   "dependencies": {
     "@expo/webpack-config": "^19.0.0",
     "@react-native-community/masked-view": "^0.1.11",
