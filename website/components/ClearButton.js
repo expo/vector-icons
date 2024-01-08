@@ -1,17 +1,18 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+import PressableOpacity from "./PressableOpacity";
 
 const ClearButton = ({ onPress, disabled }) => {
   return (
-    <TouchableOpacity onPress={onPress} style={[styles.clearButton, disabled && styles.clearButtonDisabled]} disabled={disabled}>
+    <PressableOpacity onPress={onPress} style={[styles.clearButton, disabled && styles.clearButtonDisabled]} disabled={disabled}>
       <AntDesign
         name="close"
         size={16}
         color="#fff"
       />
       <Text style={styles.clearText}>Clear filters</Text>
-    </TouchableOpacity>
+    </PressableOpacity>
   );
 };
 

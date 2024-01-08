@@ -137,7 +137,7 @@ function List({ navigation }) {
     });
   }, [inputRef.current]);
 
-  const [handleOnChange] = useDebouncedCallback(
+  const debouncedCallback = useDebouncedCallback(
     (query) => setQuery(query),
     250
   );
@@ -166,7 +166,7 @@ function List({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={{ position: "relative", zIndex: 1000 }}>
-        <SearchBar onChangeText={handleOnChange} ref={inputRef} />
+        <SearchBar onChangeText={debouncedCallback} ref={inputRef} />
         {MemoizedFilterToggles}
         <FilterBar
           isVisible={barOpen}

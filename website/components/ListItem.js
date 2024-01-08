@@ -1,21 +1,21 @@
 import React from "react";
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import Icon from "./Icon";
+import PressableOpacity from "./PressableOpacity";
 
 const ListItem = ({ name, family, onPress }) => {
   return (
-    <TouchableOpacity onPress={onPress}>
+    <PressableOpacity onPress={onPress}>
       <View style={styles.container}>
         <View style={{ width: 50, justifyContent: 'center', alignItems: 'center' }}>
           <Icon family={family} name={name} size={30} />
         </View>
-
         <View style={styles.textView}>
           <Text style={styles.name}>{name}</Text>
           <Text style={styles.family}>{family}</Text>
         </View>
       </View>
-    </TouchableOpacity>
+    </PressableOpacity>
   );
 };
 

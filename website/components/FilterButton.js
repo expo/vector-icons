@@ -1,10 +1,11 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+import PressableOpacity from "./PressableOpacity";
 
 const FilterButton = ({ barOpen, onPress }) => {
   return (
-    <TouchableOpacity
+    <PressableOpacity
       onPress={onPress}
       style={[styles.filterButton, barOpen && styles.filterButtonActive]}>
       <AntDesign
@@ -13,7 +14,7 @@ const FilterButton = ({ barOpen, onPress }) => {
         color={barOpen ? "#000" : "#fff"}
       />
       <Text style={[styles.filterText, barOpen && styles.filterTextActive]}>Filters</Text>
-    </TouchableOpacity>
+    </PressableOpacity>
   );
 };
 

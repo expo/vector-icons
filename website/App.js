@@ -77,7 +77,13 @@ function Browsing() {
           title: `@expo/vector-icons@${packageJson.version}`,
         }}
       />
-      <BrowsingStack.Screen name="Details" component={Detail} />
+      <BrowsingStack.Screen
+        name="Details"
+        component={Detail}
+        options={({ route }) => ({
+          title: `Icon details - "${route.params.name}" from ${route.params.family}`,
+        })}
+      />
       <BrowsingStack.Screen name="Help" component={Help} />
     </BrowsingStack.Navigator>
   );
@@ -87,9 +93,7 @@ const Stack = createStackNavigator();
 function Navigation() {
   return (
     <NavigationContainer linking={linking}>
-      <Stack.Navigator screenOptions={{
-        headerMode: "none",
-      }}>
+      <Stack.Navigator screenOptions={{ headerMode: "none" }}>
         <Stack.Screen name="Index" component={Browsing} />
       </Stack.Navigator>
     </NavigationContainer>
@@ -109,7 +113,7 @@ export default function App() {
         <Feather name="activity" size={24} color="black" />
         <FontAwesome name="glass" size={24} color="black" />
         <FontAwesome5 name="adjust" size={24} color="black" />
-        <FontAwesome6 name="500px" size={24} color="black" />
+        <FontAwesome6 name="fill-drip" size={24} color="black" />
         <Foundation name="address-book" size={24} color="black" />
         <Ionicons name="accessibility" size={24} color="black" />
         <MaterialIcons name="3d-rotation" size={24} color="black" />

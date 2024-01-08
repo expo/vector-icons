@@ -1,12 +1,13 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import PressableOpacity from "./PressableOpacity";
 
-const CopyButton = ({ onPress, buttonName }) => {
+const CopyButton = ({ onPress, buttonName = 'COPY' }) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={onPress} style={{ alignSelf: 'center' }}>
+      <PressableOpacity onPress={onPress} style={{ alignSelf: 'center' }}>
         <Text style={styles.copy}>{buttonName}</Text>
-      </TouchableOpacity>
+      </PressableOpacity>
     </View>
   );
 };
@@ -14,14 +15,14 @@ const CopyButton = ({ onPress, buttonName }) => {
 const styles = StyleSheet.create({
   container: {},
   copy: {
-    marginLeft: 10,
-    fontWeight: '400',
+    marginLeft: 14,
+    fontWeight: '600',
     fontSize: 14,
-    paddingHorizontal: 6,
-    paddingVertical: 1,
-    borderWidth: 1,
-    borderRadius: 3,
-    borderColor: '#000',
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 4,
+    color: '#fff',
+    backgroundColor: '#06bcee',
   },
 });
 
