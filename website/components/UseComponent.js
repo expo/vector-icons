@@ -19,6 +19,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '400',
     marginVertical: 10,
+    padding: 14,
+    borderWidth: 1,
+    borderColor: "#e3e3e3",
+    borderRadius: 4,
+    backgroundColor: "#fff",
   },
 });
 

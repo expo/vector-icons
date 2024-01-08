@@ -6,24 +6,26 @@ export const IconFamilies = {
   FontAwesome: require("@expo/vector-icons/build/vendor/react-native-vector-icons/glyphmaps/FontAwesome.json"),
   FontAwesome5: require("@expo/vector-icons/build/vendor/react-native-vector-icons/glyphmaps/FontAwesome5Free.json"),
   FontAwesome6: require("@expo/vector-icons/build/vendor/react-native-vector-icons/glyphmaps/FontAwesome6Free.json"),
+  Fontisto: require("@expo/vector-icons/build/vendor/react-native-vector-icons/glyphmaps/Fontisto.json"),
   Foundation: require("@expo/vector-icons/build/vendor/react-native-vector-icons/glyphmaps/Foundation.json"),
   Ionicons: require("@expo/vector-icons/build/vendor/react-native-vector-icons/glyphmaps/Ionicons.json"),
   MaterialIcons: require("@expo/vector-icons/build/vendor/react-native-vector-icons/glyphmaps/MaterialIcons.json"),
   MaterialCommunityIcons: require("@expo/vector-icons/build/vendor/react-native-vector-icons/glyphmaps/MaterialCommunityIcons.json"),
-  SimpleLineIcons: require("@expo/vector-icons/build/vendor/react-native-vector-icons/glyphmaps/SimpleLineIcons.json"),
   Octicons: require("@expo/vector-icons/build/vendor/react-native-vector-icons/glyphmaps/Octicons.json"),
+  SimpleLineIcons: require("@expo/vector-icons/build/vendor/react-native-vector-icons/glyphmaps/SimpleLineIcons.json"),
   Zocial: require("@expo/vector-icons/build/vendor/react-native-vector-icons/glyphmaps/Zocial.json"),
-  Fontisto: require("@expo/vector-icons/build/vendor/react-native-vector-icons/glyphmaps/Fontisto.json"),
 };
 
 export const IconsArray = Object.keys(IconFamilies).reduce((arr, family) => {
   let icons = IconFamilies[family];
-  Object.keys(icons).forEach((iconName) => {
-    arr.push({
-      name: iconName,
-      value: icons[iconName],
-      family,
-    });
-  });
-  return arr;
+  return [
+    ...arr,
+    ...Object.entries(icons).map(([iconName, glyphValue]) => {
+      return {
+        name: iconName,
+        value: glyphValue,
+        family,
+      };
+    })
+  ];
 }, []);

@@ -1,10 +1,11 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+import PressableOpacity from "./PressableOpacity";
 
 const HelpButton = ({ onPress }) => {
   return (
-    <TouchableOpacity onPress={onPress} style={styles.helpButton}>
+    <PressableOpacity onPress={onPress} style={styles.helpButton}>
       <AntDesign
         name="questioncircleo"
         size={16}
@@ -12,7 +13,7 @@ const HelpButton = ({ onPress }) => {
         style={{ marginRight: 5 }}
       />
       <Text style={styles.helpText}>Help</Text>
-    </TouchableOpacity>
+    </PressableOpacity>
   );
 };
 

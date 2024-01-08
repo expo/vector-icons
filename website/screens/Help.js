@@ -1,6 +1,7 @@
 import React from "react";
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import { useMediaQuery } from "react-responsive";
+import PressableOpacity from "../components/PressableOpacity";
 
 const Key = (props) => (
   <Text
@@ -56,9 +57,9 @@ const Help = ({ navigation }) => {
         </Text>
       </View>
 
-      <TouchableOpacity onPress={() => navigation.goBack()}>
+      <PressableOpacity onPress={() => navigation.goBack()}>
         <Text style={styles.button}>Back</Text>
-      </TouchableOpacity>
+      </PressableOpacity>
     </View>
   );
 };

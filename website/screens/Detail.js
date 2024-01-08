@@ -3,7 +3,6 @@ import {
   StyleSheet,
   View,
   Text,
-  TouchableOpacity,
   Clipboard,
 } from 'react-native';
 import Icon from '../components/Icon';
@@ -12,6 +11,7 @@ import UseComponent from '../components/UseComponent';
 import { useMediaQuery } from 'react-responsive';
 import CopyButton from '../components/CopyButton';
 import Hotshot from 'hotshot';
+import PressableOpacity from "../components/PressableOpacity";
 
 const Detail = ({ route, navigation }) => {
   const { family, name } = route.params;
@@ -56,56 +56,50 @@ const Detail = ({ route, navigation }) => {
   return (
     <View
       style={[styles.container, { marginHorizontal: isDesktop ? 200 : 10 }]}>
-      <View style={{ padding: 20 }}>
-        <View style={styles.iconName}>
-          <Text style={{ fontSize: 30 }}>{name}</Text>
-
-          <View style={{ marginLeft: 10, marginTop: 10 }}>
-            <Icon family={family} name={name} size={40} />
+      <View style={{ paddingVertical: 24 }}>
+        <View style={styles.iconWrapper}>
+          <View style={styles.iconContainer}>
+            <Icon family={family} name={name} size={48} />
           </View>
+          <Text style={styles.iconName}>{name}</Text>
+          <Text style={styles.iconFamilyName}>{family}</Text>
         </View>
-
         <View style={styles.viewDesc}>
           <View style={{ flexDirection: 'column', alignItems: 'center' }}>
             <View style={styles.viewImportDesc}>
               <Text style={styles.title}>1. Import the icon family</Text>
-              <CopyButton onPress={handleCopyImport} buttonName="copy" />
+              <CopyButton onPress={handleCopyImport} />
             </View>
             <View
               style={[
                 styles.copyView,
                 {
-                  backgroundColor: copyColorImp ? '#CCCCCC' : null,
+                  backgroundColor: copyColorImp ? '#ddd' : null,
                 },
               ]}>
               <FamilyImport family={family} />
             </View>
           </View>
-
           <View style={styles.viewCopyDesc}>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
               <Text style={styles.title}>2. Render the component</Text>
-              <CopyButton onPress={handleCopyUse} buttonName="copy" />
+              <CopyButton onPress={handleCopyUse} />
             </View>
-
             <View
               style={[
                 styles.copyView,
                 {
-                  backgroundColor: copyColorRen ? '#CCCCCC' : null,
+                  backgroundColor: copyColorRen ? '#ddd' : null,
                 },
               ]}>
               <UseComponent family={family} name={name} />
             </View>
           </View>
         </View>
-
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <PressableOpacity onPress={() => navigation.goBack()}>
           <Text style={styles.button}>BACK</Text>
-        </TouchableOpacity>
+        </PressableOpacity>
       </View>
-
-      <View></View>
     </View>
   );
 };
@@ -113,29 +107,45 @@ const Detail = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     marginTop: 10,
-    borderWidth: 1,
-    borderRadius: 10,
-    borderColor: 'rgba(0,0,0,0.1)',
-    backgroundColor: '#fafafa',
   },
   title: {
     fontSize: 24,
-    fontWeight: '600',
+    fontWeight: '500',
     userSelect: 'none',
+    marginBottom: 2,
   },
   button: {
     alignSelf: 'center',
     paddingHorizontal: 40,
     paddingVertical: 10,
-    borderWidth: 1,
     borderRadius: 3,
-    borderColor: '#000',
+    backgroundColor: '#ddd',
     fontWeight: '600',
   },
-  iconName: {
+  iconWrapper: {
     flexDirection: 'column',
     alignItems: 'center',
     marginBottom: 20,
+  },
+  iconContainer: {
+    marginLeft: 10,
+    marginBottom: 16,
+    width: 96,
+    height: 96,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderRadius: 10,
+    borderColor: '#e3e3e3',
+    backgroundColor: '#fff',
+  },
+  iconName: {
+    fontSize: 30,
+    fontWeight: '600',
+    marginBottom: 6,
+  },
+  iconFamilyName: {
+    color: '600',
   },
   viewDesc: {
     flexDirection: 'column',
@@ -156,6 +166,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   copyView: {
+    marginTop: 4,
     paddingHorizontal: 10,
     borderRadius: 10,
   },
