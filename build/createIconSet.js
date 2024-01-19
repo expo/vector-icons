@@ -41,11 +41,11 @@ export default function (glyphMap, fontName, expoAssetId, fontStyle) {
                 console.warn(`"${this.props.name}" is not a valid icon name for family "${fontName}"`);
             }
             if (!this.state.fontIsLoaded) {
-                return React.createElement(Text, null);
+                return <Text />;
             }
-            return (React.createElement(RNVIconComponent, { ref: (view) => {
+            return (<RNVIconComponent ref={(view) => {
                     this._icon = view;
-                }, ...this.props }));
+                }} {...this.props}/>);
         }
     };
 }
