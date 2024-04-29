@@ -45,5 +45,8 @@
     "expo-font": "^11.10.0",
     "expo-module-scripts": "^3.4.0",
     "prettier": "^3.1.1"
+  },
+  "dependencies": {
+    "prop-types": "^15.8.1"
   }
 }
