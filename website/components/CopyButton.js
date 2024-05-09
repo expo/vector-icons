@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     color: '#fff',
     backgroundColor: '#06bcee',
+    userSelect: 'none'
   },
 });
 
