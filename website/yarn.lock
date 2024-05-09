@@ -1559,6 +1559,13 @@
   resolved "https://registry.yarnpkg.com/@expo/vector-icons/-/vector-icons-14.0.0.tgz#48ce0aa5c05873b07c0c78bfe16c870388f4de9a"
   integrity sha512-5orm59pdnBQlovhU9k4DbjMUZBHNlku7IRgFY56f7pcaaCnXq9yaLJoOQl9sMwNdFzf4gnkTyHmR5uN10mI9rA==
 
+"@expo/vector-icons@^14.0.1":
+  version "14.0.1"
+  resolved "https://registry.yarnpkg.com/@expo/vector-icons/-/vector-icons-14.0.1.tgz#c0b338548c374af862425d8fd1a4287d3fb7df12"
+  integrity sha512-7oIe1RRWmRQXNxmewsuAaIRNAQfkig7EFTuI5T8PCI7T4q/rS5iXWvlzAEXndkzSOSs7BAANrLyj7AtpEhTksg==
+  dependencies:
+    prop-types "^15.8.1"
+
 "@expo/webpack-config@^19.0.0":
   version "19.0.0"
   resolved "https://registry.yarnpkg.com/@expo/webpack-config/-/webpack-config-19.0.0.tgz#d8ce69bdb9a99089bb0672a7dc01dc96bebad390"
