@@ -5,7 +5,7 @@
     "build": "expo export:web"
   },
   "dependencies": {
-    "@expo/vector-icons": "^14.0.1",
+    "@expo/vector-icons": "^14.0.2",
     "@expo/webpack-config": "^19.0.0",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-navigation/native": "^6.1.9",
