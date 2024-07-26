@@ -21,7 +21,7 @@ const Detail = ({ route, navigation }) => {
   let isDesktop = useMediaQuery({ query: '(min-width: 900px)' });
 
   const handleCopyImport = () => {
-    Clipboard.setString(`import { ${family} } from '@expo/vector-icons';`);
+    Clipboard.setString(`import ${family} from '@expo/vector-icons/${family}';`);
     setCopyColorImp(true);
     setCopyColorRen(false);
   };
