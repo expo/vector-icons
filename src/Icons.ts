@@ -1,3 +1,5 @@
+"use client";
+
 export { default as AntDesign } from './AntDesign';
 export { default as Entypo } from './Entypo';
 export { default as EvilIcons } from './EvilIcons';

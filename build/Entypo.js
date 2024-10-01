@@ -1,3 +1,4 @@
+"use client";
 import createIconSet from './createIconSet';
 import font from './vendor/react-native-vector-icons/Fonts/Entypo.ttf';
 import glyphMap from './vendor/react-native-vector-icons/glyphmaps/Entypo.json';
