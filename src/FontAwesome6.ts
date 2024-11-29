@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { createFA6iconSet } from './createIconSetFromFontAwesome6';
 import glyphMap from './vendor/react-native-vector-icons/glyphmaps/FontAwesome6Free.json';
