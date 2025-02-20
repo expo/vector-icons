@@ -46,5 +46,10 @@
     "expo-module-scripts": "^3.4.0",
     "prettier": "^3.1.1"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "peerDependencies": {
+    "expo-font": "*",
+    "react": ">= 15.7.0",
+    "react-native": "*"
+  }
 }
