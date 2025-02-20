@@ -49,7 +49,7 @@
   "dependencies": {},
   "peerDependencies": {
     "expo-font": "*",
-    "react": ">= 15.7.0",
+    "react": "*",
     "react-native": "*"
   }
 }
