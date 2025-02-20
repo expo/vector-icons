@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 
 import createIconSet, {
   DEFAULT_ICON_COLOR,
@@ -114,10 +113,7 @@ export default function createMultiStyleIconSet(styles, optionsInput = {}) {
 
   function createStyledIconClass(selectClass = '') {
     class IconClass extends PureComponent {
-      static propTypes = styleNames.reduce((acc, name) => {
-        acc[name] = PropTypes.bool;
-        return acc;
-      }, {});
+      // NOTE(@expo/vector-icons): Modified to remove propTypes
 
       static defaultProps = styleNames.reduce((acc, name) => {
         acc[name] = false;
