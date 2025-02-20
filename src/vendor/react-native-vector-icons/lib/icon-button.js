@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 import { pick, omit } from './object-utils';
 
@@ -67,18 +66,7 @@ const TOUCHABLE_PROP_NAMES = [
 
 export default function createIconButtonComponent(Icon) {
   return class IconButton extends PureComponent {
-    static propTypes = {
-      backgroundColor: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number,
-      ]),
-      borderRadius: PropTypes.number,
-      color: PropTypes.any, // eslint-disable-line react/forbid-prop-types
-      size: PropTypes.number,
-      iconStyle: PropTypes.any, // eslint-disable-line react/forbid-prop-types
-      style: PropTypes.any, // eslint-disable-line react/forbid-prop-types
-      children: PropTypes.node,
-    };
+    // NOTE(@expo/vector-icons): Modified to remove propTypes
 
     static defaultProps = {
       backgroundColor: IOS7_BLUE,
