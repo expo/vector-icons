@@ -128,9 +128,7 @@ export default function <G extends string, FN extends string>(
       // @ts-ignore
       // eslint-disable-next-line import/namespace
       if (typeof Font.renderToImageAsync !== 'function') {
-        throw new Error(
-          'Expo Font.renderToImageAsync is not available. Please use expo install expo-font@~11.0.0'
-        );
+        console.warn(`Font.renderToImageAsync is not available. Please update expo-font.`);
       }
       // @ts-ignore
       // eslint-disable-next-line import/namespace
