@@ -8,6 +8,7 @@ import {
   OpaqueColorValue,
   TextStyle,
   ViewStyle,
+  ColorValue,
 } from 'react-native';
 
 import createIconSet from './vendor/react-native-vector-icons/lib/create-icon-set';
@@ -95,6 +96,7 @@ export interface Icon<G extends string, FN extends string> {
   glyphMap: GlyphMap<G>;
   getRawGlyphMap: () => GlyphMap<G>;
   getFontFamily: () => FN;
+  getImageSource: (name: G, size: number, color: ColorValue) => Promise<string>;
   loadFont: () => Promise<void>;
   font: { [x: string]: any };
   new (props: IconProps<G>): React.Component<IconProps<G>>;
@@ -117,6 +119,27 @@ export default function <G extends string, FN extends string>(
     static getFontFamily = () => fontName;
     static loadFont = () => Font.loadAsync(font);
     static font = font;
+    static getImageSource = async (name: G, size: number, color: ColorValue) => {
+      if (__DEV__ && !(name in glyphMap)) {
+        console.warn(`"${name}" is not a valid icon name for family "${fontName}"`);
+        return null;
+      }
+      await Font.loadAsync(font);
+      // @ts-ignore
+      // eslint-disable-next-line import/namespace
+      if (typeof Font.renderToImageAsync !== 'function') {
+        throw new Error(
+          'Expo Font.renderToImageAsync is not available. Please use expo install expo-font@~11.0.0'
+        );
+      }
+      // @ts-ignore
+      // eslint-disable-next-line import/namespace
+      return Font.renderToImageAsync(String.fromCodePoint(glyphMap[name] as number), {
+        fontFamily: fontName,
+        color: color as string,
+        size,
+      });
+    };
 
     _mounted = false;
     _icon?: any;

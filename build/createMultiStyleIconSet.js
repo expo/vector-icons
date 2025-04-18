@@ -58,6 +58,10 @@ export default function createMultiStyleIconSet(styles, optionsInput = {}) {
     function hasIcon(name, style = options.defaultStyle) {
         return options.glyphValidator(name, style);
     }
+    async function getImageSource(name, size, color) {
+        const family = options.fallbackFamily(name);
+        return iconSets[family].getImageSource(name, size, color);
+    }
     function createStyledIconClass(selectClass = '') {
         class IconClass extends PureComponent {
             static defaultProps = styleNames.reduce((acc, name) => {
@@ -72,6 +76,7 @@ export default function createMultiStyleIconSet(styles, optionsInput = {}) {
             static StyledIconSet = getStyledIconSet;
             static getFontFamily = getFontFamily;
             static getRawGlyphMap = getRawGlyphMap;
+            static getImageSource = getImageSource;
             static hasIcon = hasIcon;
             render() {
                 const selectedIconSet = getIconSetForProps(this.props);

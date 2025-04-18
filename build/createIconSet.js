@@ -15,6 +15,25 @@ export default function (glyphMap, fontName, expoAssetId, fontStyle) {
         static getFontFamily = () => fontName;
         static loadFont = () => Font.loadAsync(font);
         static font = font;
+        static getImageSource = async (name, size, color) => {
+            if (__DEV__ && !(name in glyphMap)) {
+                console.warn(`"${name}" is not a valid icon name for family "${fontName}"`);
+                return null;
+            }
+            await Font.loadAsync(font);
+            // @ts-ignore
+            // eslint-disable-next-line import/namespace
+            if (typeof Font.renderToImageAsync !== 'function') {
+                throw new Error('Expo Font.renderToImageAsync is not available. Please use expo install expo-font@~11.0.0');
+            }
+            // @ts-ignore
+            // eslint-disable-next-line import/namespace
+            return Font.renderToImageAsync(String.fromCodePoint(glyphMap[name]), {
+                fontFamily: fontName,
+                color: color,
+                size,
+            });
+        };
         _mounted = false;
         _icon;
         state = {
