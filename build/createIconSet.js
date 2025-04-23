@@ -20,14 +20,11 @@ export default function (glyphMap, fontName, expoAssetId, fontStyle) {
                 console.warn(`"${name}" is not a valid icon name for family "${fontName}"`);
                 return null;
             }
-            await Font.loadAsync(font);
-            // @ts-ignore
-            // eslint-disable-next-line import/namespace
             if (typeof Font.renderToImageAsync !== 'function') {
                 console.warn(`Font.renderToImageAsync is not available. Please update expo-font.`);
+                return null;
             }
-            // @ts-ignore
-            // eslint-disable-next-line import/namespace
+            await Font.loadAsync(font);
             return Font.renderToImageAsync(String.fromCodePoint(glyphMap[name]), {
                 fontFamily: fontName,
                 color: color,

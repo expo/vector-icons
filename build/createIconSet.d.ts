@@ -68,7 +68,7 @@ export interface Icon<G extends string, FN extends string> {
     glyphMap: GlyphMap<G>;
     getRawGlyphMap: () => GlyphMap<G>;
     getFontFamily: () => FN;
-    getImageSource: (name: G, size: number, color: ColorValue) => Promise<string>;
+    getImageSource: (name: G, size: number, color: ColorValue) => Promise<string | null>;
     loadFont: () => Promise<void>;
     font: {
         [x: string]: any;

@@ -96,7 +96,7 @@ export interface Icon<G extends string, FN extends string> {
   glyphMap: GlyphMap<G>;
   getRawGlyphMap: () => GlyphMap<G>;
   getFontFamily: () => FN;
-  getImageSource: (name: G, size: number, color: ColorValue) => Promise<string>;
+  getImageSource: (name: G, size: number, color: ColorValue) => Promise<string | null>;
   loadFont: () => Promise<void>;
   font: { [x: string]: any };
   new (props: IconProps<G>): React.Component<IconProps<G>>;
@@ -124,14 +124,11 @@ export default function <G extends string, FN extends string>(
         console.warn(`"${name}" is not a valid icon name for family "${fontName}"`);
         return null;
       }
-      await Font.loadAsync(font);
-      // @ts-ignore
-      // eslint-disable-next-line import/namespace
       if (typeof Font.renderToImageAsync !== 'function') {
         console.warn(`Font.renderToImageAsync is not available. Please update expo-font.`);
+        return null;
       }
-      // @ts-ignore
-      // eslint-disable-next-line import/namespace
+      await Font.loadAsync(font);
       return Font.renderToImageAsync(String.fromCodePoint(glyphMap[name] as number), {
         fontFamily: fontName,
         color: color as string,
