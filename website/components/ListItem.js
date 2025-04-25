@@ -5,7 +5,7 @@ import PressableOpacity from "./PressableOpacity";
 
 const ListItem = ({ name, family, onPress }) => {
   return (
-    <PressableOpacity onPress={onPress}>
+    <PressableOpacity onPress={onPress} style={{ flex: 1 }}>
       <View style={styles.container}>
         <View style={{ width: 50, justifyContent: 'center', alignItems: 'center' }}>
           <Icon family={family} name={name} size={30} />
@@ -26,7 +26,8 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     alignItems: "center",
     borderBottomWidth: 1,
-    borderBottomColor: "#e3e3e3",
+    borderRightWidth: 1,
+    borderColor: "#e3e3e3",
   },
   textView: {
     flexDirection: "column",

@@ -5,7 +5,13 @@ import React, {
   useImperativeHandle,
   forwardRef,
 } from "react";
-import { StyleSheet, View, FlatList, TextInput } from "react-native";
+import {
+  StyleSheet,
+  View,
+  FlatList,
+  TextInput,
+  useWindowDimensions
+} from "react-native";
 import { useDebouncedCallback } from "use-debounce";
 import { IconsArray } from "../IconConstants";
 import ListItem from "../components/ListItem";
@@ -193,18 +199,31 @@ const IconList = React.memo(({ query, filters, navigation }) => {
     [navigation]
   );
 
+  const { width } = useWindowDimensions();
+
+  const numColumns = React.useMemo(() => {
+    return getNumColumns(width);
+  }, [width]);
+
   return (
     <FlatList
       style={{ flex: 1 }}
       data={icons}
       renderItem={renderItem}
       keyExtractor={keyExtractor}
+      numColumns={numColumns}
+      key={numColumns}
     />
   );
 });
 
 function keyExtractor(item) {
   return `${item.family}-${item.name}`;
+}
+
+function getNumColumns(width, columnWidth = 300) {
+  const numColumns = Math.floor(width / columnWidth);
+  return Math.max(numColumns, 1);
 }
 
 const IconRow = React.memo(({ item, navigation }) => {
