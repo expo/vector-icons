@@ -11,8 +11,8 @@ const ListItem = ({ name, family, onPress }) => {
           <Icon family={family} name={name} size={30} />
         </View>
         <View style={styles.textView}>
-          <Text style={styles.name}>{name}</Text>
-          <Text style={styles.family}>{family}</Text>
+          <Text numberOfLines={1} style={styles.name}>{name}</Text>
+          <Text numberOfLines={1} style={styles.family}>{family}</Text>
         </View>
       </View>
     </PressableOpacity>
@@ -32,6 +32,8 @@ const styles = StyleSheet.create({
   textView: {
     flexDirection: "column",
     marginLeft: 20,
+    marginRight: 10,
+    flex: 1,
   },
   name: {
     fontSize: 18,
