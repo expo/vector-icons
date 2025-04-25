@@ -194,6 +194,7 @@ const IconList = React.memo(({ query, filters, navigation }) => {
 
   const renderItem = React.useCallback(
     ({ item }) => {
+      if (!item) return <View style={{ flex: 1 }} />;
       return <IconRow item={item} navigation={navigation} />;
     },
     [navigation]
@@ -205,10 +206,14 @@ const IconList = React.memo(({ query, filters, navigation }) => {
     return getNumColumns(width);
   }, [width]);
 
+  const paddedIconList = React.useMemo(() => {
+    return padList(icons, numColumns);
+  }, [icons, numColumns]);
+
   return (
     <FlatList
       style={{ flex: 1 }}
-      data={icons}
+      data={paddedIconList}
       renderItem={renderItem}
       keyExtractor={keyExtractor}
       numColumns={numColumns}
@@ -217,13 +222,18 @@ const IconList = React.memo(({ query, filters, navigation }) => {
   );
 });
 
-function keyExtractor(item) {
-  return `${item.family}-${item.name}`;
+function keyExtractor(item, index) {
+  return item ? `${item.family}-${item.name}` : `empty-${index}`;
 }
 
 function getNumColumns(width, columnWidth = 300) {
   const numColumns = Math.floor(width / columnWidth);
   return Math.max(numColumns, 1);
+}
+
+function padList(data = [], numColumns) {
+  const missing = data.length % numColumns;
+  return missing > 0 ? [...data, ...Array(missing).fill(null)] : data;
 }
 
 const IconRow = React.memo(({ item, navigation }) => {
