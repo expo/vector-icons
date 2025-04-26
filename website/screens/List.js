@@ -233,10 +233,13 @@ function getNumColumns(width, columnWidth = 300) {
   return Math.max(numColumns, 1);
 }
 
-function padList(data = [], numColumns) {
-  const remainderInLastRow = data.length % numColumns;
-  const emptyItemsToAdd = Math.max(numColumns - remainderInLastRow, 0);
-  return [...data, ...Array(emptyItemsToAdd).fill(null)];
+function padList(items = [], itemsPerRow) {
+  if (!Number.isInteger(itemsPerRow) || itemsPerRow <= 0) return items;
+
+  const remainerInLastRow = items.length % itemsPerRow;
+  if (remainerInLastRow === 0) return items;
+
+  return [...items, ...Array(itemsPerRow - remainerInLastRow).fill(null)];
 }
 
 const IconItem = React.memo(({ item, navigation }) => {
