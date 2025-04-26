@@ -194,8 +194,10 @@ const IconList = React.memo(({ query, filters, navigation }) => {
 
   const renderItem = React.useCallback(
     ({ item }) => {
-      if (!item) return <View style={{ flex: 1 }} />;
-      return <IconRow item={item} navigation={navigation} />;
+      if (!item) {
+        return <View style={styles.emptyItem} />;
+      }
+      return <IconItem item={item} navigation={navigation} />;
     },
     [navigation]
   );
@@ -206,14 +208,14 @@ const IconList = React.memo(({ query, filters, navigation }) => {
     return getNumColumns(width);
   }, [width]);
 
-  const paddedIconList = React.useMemo(() => {
+  const data = React.useMemo(() => {
     return padList(icons, numColumns);
   }, [icons, numColumns]);
 
   return (
     <FlatList
       style={{ flex: 1 }}
-      data={paddedIconList}
+      data={data}
       renderItem={renderItem}
       keyExtractor={keyExtractor}
       numColumns={numColumns}
@@ -232,11 +234,11 @@ function getNumColumns(width, columnWidth = 300) {
 }
 
 function padList(data = [], numColumns) {
-  const missing = data.length % numColumns;
-  return missing > 0 ? [...data, ...Array(missing).fill(null)] : data;
+  const emptyItemsInLastRow = data.length % numColumns;
+  return emptyItemsInLastRow > 0 ? [...data, ...Array(emptyItemsInLastRow).fill(null)] : data;
 }
 
-const IconRow = React.memo(({ item, navigation }) => {
+const IconItem = React.memo(({ item, navigation }) => {
   return (
     <ListItem
       family={item.family}
@@ -317,6 +319,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginBottom: 10,
     alignSelf: "center",
+  },
+  emptyItem: {
+    flex: 1,
   },
 });
 
