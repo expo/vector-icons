@@ -234,8 +234,9 @@ function getNumColumns(width, columnWidth = 300) {
 }
 
 function padList(data = [], numColumns) {
-  const emptyItemsInLastRow = data.length % numColumns;
-  return emptyItemsInLastRow > 0 ? [...data, ...Array(emptyItemsInLastRow).fill(null)] : data;
+  const remainderInLastRow = data.length % numColumns;
+  const emptyItemsToAdd = remainderInLastRow > 0 ? numColumns - remainderInLastRow : 0;
+  return [...data, ...Array(emptyItemsToAdd).fill(null)];
 }
 
 const IconItem = React.memo(({ item, navigation }) => {
