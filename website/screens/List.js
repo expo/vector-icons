@@ -235,7 +235,7 @@ function getNumColumns(width, columnWidth = 300) {
 
 function padList(data = [], numColumns) {
   const remainderInLastRow = data.length % numColumns;
-  const emptyItemsToAdd = remainderInLastRow > 0 ? numColumns - remainderInLastRow : 0;
+  const emptyItemsToAdd = Math.max(numColumns - remainderInLastRow, 0);
   return [...data, ...Array(emptyItemsToAdd).fill(null)];
 }
 
