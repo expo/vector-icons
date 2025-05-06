@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { ColorValue } from 'react-native';
 
 import createIconSet from './createIconSet';
 
@@ -99,6 +100,11 @@ export default function createMultiStyleIconSet(styles: FontStyles, optionsInput
     return options.glyphValidator(name, style);
   }
 
+  async function getImageSource(name: string, size: number, color: ColorValue) {
+    const family = options.fallbackFamily(name);
+    return iconSets[family].getImageSource(name, size, color);
+  }
+
   function createStyledIconClass(selectClass = '') {
     class IconClass extends PureComponent {
       static defaultProps = styleNames.reduce((acc, name) => {
@@ -116,6 +122,7 @@ export default function createMultiStyleIconSet(styles: FontStyles, optionsInput
       static StyledIconSet = getStyledIconSet;
       static getFontFamily = getFontFamily;
       static getRawGlyphMap = getRawGlyphMap;
+      static getImageSource = getImageSource;
       static hasIcon = hasIcon;
 
       render() {

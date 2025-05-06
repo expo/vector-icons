@@ -1,5 +1,5 @@
 import React, { ComponentClass } from 'react';
-import { TextProps, TouchableHighlightProps, ViewProps, OpaqueColorValue, TextStyle, ViewStyle } from 'react-native';
+import { TextProps, TouchableHighlightProps, ViewProps, OpaqueColorValue, TextStyle, ViewStyle, ColorValue } from 'react-native';
 export { DEFAULT_ICON_COLOR, DEFAULT_ICON_SIZE, } from './vendor/react-native-vector-icons/lib/create-icon-set';
 export interface IconProps<GLYPHS extends string> extends TextProps {
     /**
@@ -68,6 +68,7 @@ export interface Icon<G extends string, FN extends string> {
     glyphMap: GlyphMap<G>;
     getRawGlyphMap: () => GlyphMap<G>;
     getFontFamily: () => FN;
+    getImageSource: (name: G, size: number, color: ColorValue) => Promise<string | null>;
     loadFont: () => Promise<void>;
     font: {
         [x: string]: any;
