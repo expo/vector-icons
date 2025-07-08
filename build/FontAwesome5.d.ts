@@ -5,5 +5,8 @@ export declare const FA5Style: {
     brand: string;
 };
 declare const iconSet: any;
+/**
+ * @deprecated use `@react-native-vector-icons/fontawesome5` instead.
+ */
 export default iconSet;
 //# sourceMappingURL=FontAwesome5.d.ts.map

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { createFA5iconSet } from './createIconSetFromFontAwesome5';
 import glyphMap from './vendor/react-native-vector-icons/glyphmaps/FontAwesome5Free.json';
@@ -20,4 +20,7 @@ export const FA5Style = {
 
 const iconSet = createFA5iconSet(glyphMap, metadata, fontMap, false);
 
+/**
+ * @deprecated use `@react-native-vector-icons/fontawesome5` instead.
+ */
 export default iconSet;

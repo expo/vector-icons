@@ -9,6 +9,9 @@ export const FA5Style = {
   brand: 'brand',
 };
 
+/**
+ * @deprecated in favor of `createIconSet` from `@react-native-vector-icons/common`
+ */
 export function createFA5iconSet(glyphMap, metadata = {}, fonts, pro = false) {
   const metadataKeys = Object.keys(metadata);
   const fontFamily = `FontAwesome5${pro ? 'Pro' : 'Free'}`;

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { createFA6iconSet } from './createIconSetFromFontAwesome6';
 import glyphMap from './vendor/react-native-vector-icons/glyphmaps/FontAwesome6Free.json';
@@ -30,4 +30,7 @@ export const FA6Style = {
 
 const iconSet = createFA6iconSet(glyphMap, metadata, fontMap, false);
 
+/**
+ * @deprecated use `@react-native-vector-icons/fontawesome6` instead.
+ */
 export default iconSet;

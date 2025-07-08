@@ -11,6 +11,9 @@ const FA6Style = {
     duotone: 'duotone',
     thin: 'thin',
 };
+/**
+ * @deprecated in favor of `createIconSet` from `@react-native-vector-icons/common`
+ */
 function createFA6iconSet(glyphMap, metadata = {}, fonts, pro = false) {
     const metadataKeys = Object.keys(metadata);
     const fontFamily = `FontAwesome6${pro ? 'Pro' : 'Free'}`;

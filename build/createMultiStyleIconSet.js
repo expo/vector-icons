@@ -1,5 +1,8 @@
 import React, { PureComponent } from 'react';
 import createIconSet from './createIconSet';
+/**
+ * @deprecated in favor of `createIconSet` from `@react-native-vector-icons/common`
+ */
 export default function createMultiStyleIconSet(styles, optionsInput = {}) {
     const styleNames = Object.keys(styles);
     if (styleNames.length === 0) {

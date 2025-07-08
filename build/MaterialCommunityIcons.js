@@ -1,6 +1,9 @@
-"use client";
+'use client';
 import createIconSet from './createIconSet';
 import font from './vendor/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf';
 import glyphMap from './vendor/react-native-vector-icons/glyphmaps/MaterialCommunityIcons.json';
+/**
+ * @deprecated use `@react-native-vector-icons/material-design-icons` instead.
+ */
 export default createIconSet(glyphMap, 'material-community', font);
 //# sourceMappingURL=MaterialCommunityIcons.js.map

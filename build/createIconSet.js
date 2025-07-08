@@ -4,6 +4,9 @@ import { Text, PixelRatio, } from 'react-native';
 import createIconSet from './vendor/react-native-vector-icons/lib/create-icon-set';
 import createIconButtonComponent from './vendor/react-native-vector-icons/lib/icon-button';
 export { DEFAULT_ICON_COLOR, DEFAULT_ICON_SIZE, } from './vendor/react-native-vector-icons/lib/create-icon-set';
+/**
+ * @deprecated use `@react-native-vector-icons/common` instead.
+ */
 export default function (glyphMap, fontName, expoAssetId, fontStyle) {
     const font = { [fontName]: expoAssetId };
     const RNVIconComponent = createIconSet(glyphMap, fontName, null, fontStyle);
