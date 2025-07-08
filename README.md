@@ -1,6 +1,11 @@
 # @expo/vector-icons
 
-This library is a compatibility layer around [@oblador/react-native-vector-icons](https://github.com/oblador/react-native-vector-icons) to work with the Expo asset system. If you're using React Native without Expo, you have no need for this library -- carry on! (or maybe [check out Expo](https://expo.dev/)).
+> [!TIP]
+> As of Expo SDK 54, we recommend using [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons) instead of `@expo/vector-icons`. `react-native-vector-icons` is a popular library which includes the same features (and more!), latest icon sets and more modular packages. Read the [migration guide](https://expo.fyi/migrating-from-expo-vector-icons) to learn more.
+> 
+> This library will continue to receive bugfixes for the foreseeable future, but we recommend using `react-native-vector-icons` for all projects.
+
+This library was a compatibility layer around [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons) to work with the Expo asset system. If you're using React Native without Expo, you have no need for this library — carry on! (or maybe [check out Expo](https://expo.dev/)).
 
 ## Resources
 
@@ -20,7 +25,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default class IconExample extends React.Component {
   render() {
-    return <Ionicons name='md-checkmark-circle' size={32} color='green' />;
+    return <Ionicons name="md-checkmark-circle" size={32} color="green" />;
   }
 }
 ```
