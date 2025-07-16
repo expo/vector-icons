@@ -9,6 +9,7 @@ import {
   TextStyle,
   ViewStyle,
   ColorValue,
+  PixelRatio,
 } from 'react-native';
 
 import createIconSet from './vendor/react-native-vector-icons/lib/create-icon-set';
@@ -96,7 +97,11 @@ export interface Icon<G extends string, FN extends string> {
   glyphMap: GlyphMap<G>;
   getRawGlyphMap: () => GlyphMap<G>;
   getFontFamily: () => FN;
-  getImageSource: (name: G, size: number, color: ColorValue) => Promise<string | null>;
+  getImageSource: (
+    name: G,
+    size: number,
+    color: ColorValue
+  ) => Promise<{ uri: string; scale: number } | null>;
   loadFont: () => Promise<void>;
   font: { [x: string]: any };
   new (props: IconProps<G>): React.Component<IconProps<G>>;
@@ -129,11 +134,15 @@ export default function <G extends string, FN extends string>(
         return null;
       }
       await Font.loadAsync(font);
-      return Font.renderToImageAsync(String.fromCodePoint(glyphMap[name] as number), {
-        fontFamily: fontName,
-        color: color as string,
-        size,
-      });
+      const imagePath = await Font.renderToImageAsync(
+        String.fromCodePoint(glyphMap[name] as number),
+        {
+          fontFamily: fontName,
+          color: color as string,
+          size,
+        }
+      );
+      return { uri: imagePath, scale: PixelRatio.get() };
     };
 
     _mounted = false;

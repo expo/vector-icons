@@ -1,6 +1,6 @@
 import * as Font from 'expo-font';
 import React from 'react';
-import { Text, } from 'react-native';
+import { Text, PixelRatio, } from 'react-native';
 import createIconSet from './vendor/react-native-vector-icons/lib/create-icon-set';
 import createIconButtonComponent from './vendor/react-native-vector-icons/lib/icon-button';
 export { DEFAULT_ICON_COLOR, DEFAULT_ICON_SIZE, } from './vendor/react-native-vector-icons/lib/create-icon-set';
@@ -25,11 +25,12 @@ export default function (glyphMap, fontName, expoAssetId, fontStyle) {
                 return null;
             }
             await Font.loadAsync(font);
-            return Font.renderToImageAsync(String.fromCodePoint(glyphMap[name]), {
+            const imagePath = await Font.renderToImageAsync(String.fromCodePoint(glyphMap[name]), {
                 fontFamily: fontName,
                 color: color,
                 size,
             });
+            return { uri: imagePath, scale: PixelRatio.get() };
         };
         _mounted = false;
         _icon;
