@@ -5,14 +5,14 @@ import PressableOpacity from "./PressableOpacity";
 
 const ListItem = ({ name, family, onPress }) => {
   return (
-    <PressableOpacity onPress={onPress}>
+    <PressableOpacity onPress={onPress} style={{ flex: 1 }}>
       <View style={styles.container}>
         <View style={{ width: 50, justifyContent: 'center', alignItems: 'center' }}>
           <Icon family={family} name={name} size={30} />
         </View>
         <View style={styles.textView}>
-          <Text style={styles.name}>{name}</Text>
-          <Text style={styles.family}>{family}</Text>
+          <Text numberOfLines={1} style={styles.name}>{name}</Text>
+          <Text numberOfLines={1} style={styles.family}>{family}</Text>
         </View>
       </View>
     </PressableOpacity>
@@ -26,11 +26,14 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     alignItems: "center",
     borderBottomWidth: 1,
-    borderBottomColor: "#e3e3e3",
+    borderRightWidth: 1,
+    borderColor: "#e3e3e3",
   },
   textView: {
     flexDirection: "column",
     marginLeft: 20,
+    marginRight: 10,
+    flex: 1,
   },
   name: {
     fontSize: 18,
