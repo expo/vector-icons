@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import createIconSet from './createIconSet';
 import font from './vendor/react-native-vector-icons/Fonts/AntDesign.ttf';
