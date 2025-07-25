@@ -14,6 +14,9 @@ type FontStyles = {
   [key: string]: FontStyle;
 };
 
+/**
+ * @deprecated in favor of `createIconSet` from `@react-native-vector-icons/common`
+ */
 export default function createMultiStyleIconSet(styles: FontStyles, optionsInput = {}): any {
   const styleNames = Object.keys(styles);
 
