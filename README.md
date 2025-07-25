@@ -1,6 +1,11 @@
 # @expo/vector-icons
 
-This library is a compatibility layer around [@oblador/react-native-vector-icons](https://github.com/oblador/react-native-vector-icons) to work with the Expo asset system. If you're using React Native without Expo, you have no need for this library -- carry on! (or maybe [check out Expo](https://expo.dev/)).
+> [!TIP]
+> As of Expo SDK 54, we recommend using packages from [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons) instead of `@expo/vector-icons`. `react-native-vector-icons` repository (not to be confused with the [deprecated package](https://www.npmjs.com/package/react-native-vector-icons)) offers a set of popular libraries which include the same features (and more!), latest icon sets and more modular packages. Read the [migration guide](https://expo.fyi/migrating-from-expo-vector-icons) to learn more.
+> 
+> This library will continue to receive updates for the near future, but we recommend using icon families from `@react-native-vector-icons` for both new and existing projects.
+
+This library was a compatibility layer around [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons) to work with the Expo asset system. If you're using React Native without Expo, you have no need for this library — carry on! (or maybe [check out Expo](https://expo.dev/)).
 
 ## Resources
 
@@ -20,7 +25,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default class IconExample extends React.Component {
   render() {
-    return <Ionicons name='md-checkmark-circle' size={32} color='green' />;
+    return <Ionicons name="md-checkmark-circle" size={32} color="green" />;
   }
 }
 ```
@@ -39,7 +44,7 @@ I'll be honest with you, it's not straightforward. You should set aside about an
 4. Run `git diff **/*.js` - do any of the changes look like they should be synced over to the equivalent `.ts` files in `src`?/
 
 - ToolBarAndroid and TabBarIOS are not included in @expo/vector-icons
-- Neither are the native vendor font loading or image source related methods.
+- Neither are the native vendor font loading methods.
 - Probably there won't be anything important. The main thing to look out for are user-facing API changes, the `@expo/vector-icons` internals are different enough that you don't need to worry about it.
 - Were any dependencies added? Check imports against those in the current package.json, see why they were added - maybe they support the `bin` scripts, in which case we need them.
 - TypeScript/Flow types for Icon/Icon.Button components may need to be updated.
