@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import { createFA5iconSet } from './createIconSetFromFontAwesome5';
 import glyphMap from './vendor/react-native-vector-icons/glyphmaps/FontAwesome5Free.json';
 import metadata from './vendor/react-native-vector-icons/glyphmaps/FontAwesome5Free_meta.json';
@@ -15,5 +15,8 @@ export const FA5Style = {
     brand: 'brand',
 };
 const iconSet = createFA5iconSet(glyphMap, metadata, fontMap, false);
+/**
+ * @deprecated use `@react-native-vector-icons/fontawesome5` instead.
+ */
 export default iconSet;
 //# sourceMappingURL=FontAwesome5.js.map

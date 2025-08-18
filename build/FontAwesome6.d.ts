@@ -10,5 +10,8 @@ export declare const FA6Style: {
     thin: string;
 };
 declare const iconSet: any;
+/**
+ * @deprecated use `@react-native-vector-icons/fontawesome6` instead.
+ */
 export default iconSet;
 //# sourceMappingURL=FontAwesome6.d.ts.map

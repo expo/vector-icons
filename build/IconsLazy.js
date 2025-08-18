@@ -1,5 +1,5 @@
 "use strict";
-"use client";
+'use client';
 
 Object.defineProperty(exports, "__esModule", {
   value: true

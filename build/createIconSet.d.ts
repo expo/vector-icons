@@ -78,5 +78,8 @@ export interface Icon<G extends string, FN extends string> {
     };
     new (props: IconProps<G>): React.Component<IconProps<G>>;
 }
+/**
+ * @deprecated use `@react-native-vector-icons/common` instead.
+ */
 export default function <G extends string, FN extends string>(glyphMap: GlyphMap<G>, fontName: FN, expoAssetId: any, fontStyle?: any): Icon<G, FN>;
 //# sourceMappingURL=createIconSet.d.ts.map

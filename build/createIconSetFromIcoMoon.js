@@ -1,4 +1,7 @@
 import createIconSet from './createIconSet';
+/**
+ * @deprecated in favor of `@react-native-vector-icons/icomoon`
+ */
 export default function (config, expoFontName, expoAssetId) {
     const glyphMap = {};
     config.icons.forEach((icon) => {
