@@ -115,6 +115,7 @@ export default function <G extends string, FN extends string>(
 ): Icon<G, FN> {
   const font = { [fontName]: expoAssetId };
   const RNVIconComponent = createIconSet(glyphMap, fontName, null, fontStyle);
+  let didWarn = false;
 
   return class Icon extends React.Component<IconProps<G>> {
     static defaultProps = RNVIconComponent.defaultProps;
@@ -124,7 +125,11 @@ export default function <G extends string, FN extends string>(
     static getFontFamily = () => fontName;
     static loadFont = () => Font.loadAsync(font);
     static font = font;
-    static getImageSource = async (name: G, size: number, color: ColorValue) => {
+    static getImageSource = async (
+      name: G,
+      size: number,
+      color: ColorValue
+    ): Promise<{ uri: string; width: number; height: number; scale: number } | null> => {
       if (__DEV__ && !(name in glyphMap)) {
         console.warn(`"${name}" is not a valid icon name for family "${fontName}"`);
         return null;
@@ -134,7 +139,7 @@ export default function <G extends string, FN extends string>(
         return null;
       }
       await Font.loadAsync(font);
-      const imagePath = await Font.renderToImageAsync(
+      const imagePathAndDimensions = await Font.renderToImageAsync(
         String.fromCodePoint(glyphMap[name] as number),
         {
           fontFamily: fontName,
@@ -142,7 +147,24 @@ export default function <G extends string, FN extends string>(
           size,
         }
       );
-      return { uri: imagePath, scale: PixelRatio.get() };
+      if (typeof imagePathAndDimensions === 'string') {
+        if (__DEV__ && !didWarn) {
+          didWarn = true;
+          console.warn(
+            '@expo/vector-icons: Font.renderToImageAsync() did not return image dimensions, because an outdated version of expo-font was used. Random width and height are reported instead of real image dimension. Update expo-font to resolve this.'
+          );
+        }
+        const dimensions = Math.random() * 100 + 50;
+        return {
+          uri: imagePathAndDimensions,
+          width: dimensions,
+          height: dimensions,
+          scale: PixelRatio.get(),
+        };
+      } else {
+        const { uri, width, height } = imagePathAndDimensions;
+        return { uri, width, height, scale: PixelRatio.get() };
+      }
     };
 
     _mounted = false;
