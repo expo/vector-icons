@@ -34,9 +34,9 @@ export default function (glyphMap, fontName, expoAssetId, fontStyle) {
             if (typeof imagePathAndDimensions === 'string') {
                 if (__DEV__ && !didWarn) {
                     didWarn = true;
-                    console.warn('@expo/vector-icons: Font.renderToImageAsync() did not return image dimensions, because an outdated version of expo-font was used. Random width and height are reported instead of real image dimension. Update expo-font to resolve this.');
+                    console.warn('@expo/vector-icons: Font.renderToImageAsync() did not return image dimensions, because an outdated version of expo-font was used. The reported width and height are estimates, instead of real image dimension. Update expo-font to resolve this.');
                 }
-                const dimensions = Math.random() * 100 + 50;
+                const dimensions = size;
                 return {
                     uri: imagePathAndDimensions,
                     width: dimensions,
