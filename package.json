@@ -48,7 +48,7 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "expo-font": ">=13.2.0",
+    "expo-font": ">=14.0.4",
     "react": "*",
     "react-native": "*"
   }

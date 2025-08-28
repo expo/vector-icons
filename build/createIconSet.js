@@ -7,6 +7,7 @@ export { DEFAULT_ICON_COLOR, DEFAULT_ICON_SIZE, } from './vendor/react-native-ve
 export default function (glyphMap, fontName, expoAssetId, fontStyle) {
     const font = { [fontName]: expoAssetId };
     const RNVIconComponent = createIconSet(glyphMap, fontName, null, fontStyle);
+    let didWarn = false;
     return class Icon extends React.Component {
         static defaultProps = RNVIconComponent.defaultProps;
         static Button = createIconButtonComponent(Icon);
@@ -25,12 +26,28 @@ export default function (glyphMap, fontName, expoAssetId, fontStyle) {
                 return null;
             }
             await Font.loadAsync(font);
-            const imagePath = await Font.renderToImageAsync(String.fromCodePoint(glyphMap[name]), {
+            const imagePathAndDimensions = await Font.renderToImageAsync(String.fromCodePoint(glyphMap[name]), {
                 fontFamily: fontName,
                 color: color,
                 size,
             });
-            return { uri: imagePath, scale: PixelRatio.get() };
+            if (typeof imagePathAndDimensions === 'string') {
+                if (__DEV__ && !didWarn) {
+                    didWarn = true;
+                    console.warn('@expo/vector-icons: Font.renderToImageAsync() did not return image dimensions, because an outdated version of expo-font was used. The reported width and height are estimates, instead of real image dimension. Update expo-font to resolve this.');
+                }
+                const dimensions = size;
+                return {
+                    uri: imagePathAndDimensions,
+                    width: dimensions,
+                    height: dimensions,
+                    scale: PixelRatio.get(),
+                };
+            }
+            else {
+                const { uri, width, height } = imagePathAndDimensions;
+                return { uri, width, height, scale: PixelRatio.get() };
+            }
         };
         _mounted = false;
         _icon;
