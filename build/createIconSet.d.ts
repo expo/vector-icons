@@ -62,16 +62,19 @@ export interface IconButtonProps<GLYPHS extends string> extends IconProps<GLYPHS
 export type GlyphMap<G extends string> = {
     [K in G]: number | string;
 };
+export type ImageSource = {
+    uri: string;
+    width: number;
+    height: number;
+    scale: number;
+};
 export interface Icon<G extends string, FN extends string> {
     defaultProps: any;
     Button: ComponentClass<IconButtonProps<G>>;
     glyphMap: GlyphMap<G>;
     getRawGlyphMap: () => GlyphMap<G>;
     getFontFamily: () => FN;
-    getImageSource: (name: G, size: number, color: ColorValue) => Promise<{
-        uri: string;
-        scale: number;
-    } | null>;
+    getImageSource: (name: G, size: number, color: ColorValue) => Promise<ImageSource | null>;
     loadFont: () => Promise<void>;
     font: {
         [x: string]: any;

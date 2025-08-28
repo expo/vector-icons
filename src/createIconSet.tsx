@@ -91,17 +91,15 @@ export interface IconButtonProps<GLYPHS extends string>
 
 export type GlyphMap<G extends string> = { [K in G]: number | string };
 
+export type ImageSource = { uri: string; width: number; height: number; scale: number };
+
 export interface Icon<G extends string, FN extends string> {
   defaultProps: any;
   Button: ComponentClass<IconButtonProps<G>>;
   glyphMap: GlyphMap<G>;
   getRawGlyphMap: () => GlyphMap<G>;
   getFontFamily: () => FN;
-  getImageSource: (
-    name: G,
-    size: number,
-    color: ColorValue
-  ) => Promise<{ uri: string; scale: number } | null>;
+  getImageSource: (name: G, size: number, color: ColorValue) => Promise<ImageSource | null>;
   loadFont: () => Promise<void>;
   font: { [x: string]: any };
   new (props: IconProps<G>): React.Component<IconProps<G>>;
@@ -129,7 +127,7 @@ export default function <G extends string, FN extends string>(
       name: G,
       size: number,
       color: ColorValue
-    ): Promise<{ uri: string; width: number; height: number; scale: number } | null> => {
+    ): Promise<ImageSource | null> => {
       if (__DEV__ && !(name in glyphMap)) {
         console.warn(`"${name}" is not a valid icon name for family "${fontName}"`);
         return null;
