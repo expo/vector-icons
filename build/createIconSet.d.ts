@@ -77,9 +77,9 @@ export interface Icon<G extends string, FN extends string> {
     getImageSource: (name: G, size: number, color: ColorValue) => Promise<ImageSource | null>;
     loadFont: () => Promise<void>;
     font: {
-        [x: string]: any;
+        [x in FN]: number | string;
     };
     new (props: IconProps<G>): React.Component<IconProps<G>>;
 }
-export default function <G extends string, FN extends string>(glyphMap: GlyphMap<G>, fontName: FN, expoAssetId: any, fontStyle?: any): Icon<G, FN>;
+export default function <G extends string, FN extends string>(glyphMap: GlyphMap<G>, fontName: FN, expoAssetId: number | string, fontStyle?: any): Icon<G, FN>;
 //# sourceMappingURL=createIconSet.d.ts.map

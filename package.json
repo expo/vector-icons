@@ -42,7 +42,7 @@
     "@types/react-native": "~0.64",
     "eslint": "^8.56.0",
     "eslint-config-universe": "^12.0.0",
-    "expo-font": "^13.2.1",
+    "expo-font": "14.0.4",
     "expo-module-scripts": "^3.4.0",
     "prettier": "^3.1.1"
   },
