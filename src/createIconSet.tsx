@@ -101,17 +101,17 @@ export interface Icon<G extends string, FN extends string> {
   getFontFamily: () => FN;
   getImageSource: (name: G, size: number, color: ColorValue) => Promise<ImageSource | null>;
   loadFont: () => Promise<void>;
-  font: { [x: string]: any };
+  font: { [x in FN]: number | string };
   new (props: IconProps<G>): React.Component<IconProps<G>>;
 }
 
 export default function <G extends string, FN extends string>(
   glyphMap: GlyphMap<G>,
   fontName: FN,
-  expoAssetId,
+  expoAssetId: number | string,
   fontStyle?: any
 ): Icon<G, FN> {
-  const font = { [fontName]: expoAssetId };
+  const font = { [fontName]: expoAssetId } as { [x in FN]: number | string };
   const RNVIconComponent = createIconSet(glyphMap, fontName, null, fontStyle);
   let didWarn = false;
 
@@ -137,7 +137,7 @@ export default function <G extends string, FN extends string>(
         return null;
       }
       await Font.loadAsync(font);
-      const imagePathAndDimensions = await Font.renderToImageAsync(
+      const renderToImageResult = await Font.renderToImageAsync(
         String.fromCodePoint(glyphMap[name] as number),
         {
           fontFamily: fontName,
@@ -145,7 +145,7 @@ export default function <G extends string, FN extends string>(
           size,
         }
       );
-      if (typeof imagePathAndDimensions === 'string') {
+      if (typeof renderToImageResult === 'string') {
         if (__DEV__ && !didWarn) {
           didWarn = true;
           console.warn(
@@ -154,14 +154,15 @@ export default function <G extends string, FN extends string>(
         }
         const dimensions = size;
         return {
-          uri: imagePathAndDimensions,
+          uri: renderToImageResult,
           width: dimensions,
           height: dimensions,
           scale: PixelRatio.get(),
         };
       } else {
-        const { uri, width, height } = imagePathAndDimensions;
-        return { uri, width, height, scale: PixelRatio.get() };
+        const result = renderToImageResult as ImageSource;
+        // @ts-expect-error: depending on expo-font version, `result` may or may not already include scale
+        return { scale: PixelRatio.get(), ...result };
       }
     };
 

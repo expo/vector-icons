@@ -3261,10 +3261,10 @@ expect@^29.0.0:
     jest-message-util "^29.7.0"
     jest-util "^29.7.0"
 
-expo-font@^13.2.1:
-  version "13.2.1"
-  resolved "https://registry.yarnpkg.com/expo-font/-/expo-font-13.2.1.tgz#3974d072604d1fc5492fb652f1dce35790826aa7"
-  integrity sha512-eWwgFf8Vj/vMNFlfbU07OZB4TxC6pPwJ3CuURNw2J83RUunzmOQmIuk68CRm/JPeNf6FgFTEdJc1fQNemN2pag==
+expo-font@14.0.4:
+  version "14.0.4"
+  resolved "https://registry.yarnpkg.com/expo-font/-/expo-font-14.0.4.tgz#4cb9d830cfb2c8b55b84629612c681ae34d0ba43"
+  integrity sha512-kFosGzepx4fzxQ58kwgUxBnhX9WC/2pm1h4/DiK3Hx1uq7N/kSTyDkfjlTWGMktioguzo73Sjd4kvUdr4M5Hsg==
   dependencies:
     fontfaceobserver "^2.1.0"
 

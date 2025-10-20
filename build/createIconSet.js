@@ -26,27 +26,28 @@ export default function (glyphMap, fontName, expoAssetId, fontStyle) {
                 return null;
             }
             await Font.loadAsync(font);
-            const imagePathAndDimensions = await Font.renderToImageAsync(String.fromCodePoint(glyphMap[name]), {
+            const renderToImageResult = await Font.renderToImageAsync(String.fromCodePoint(glyphMap[name]), {
                 fontFamily: fontName,
                 color: color,
                 size,
             });
-            if (typeof imagePathAndDimensions === 'string') {
+            if (typeof renderToImageResult === 'string') {
                 if (__DEV__ && !didWarn) {
                     didWarn = true;
                     console.warn('@expo/vector-icons: Font.renderToImageAsync() did not return image dimensions, because an outdated version of expo-font was used. The reported width and height are estimates, instead of real image dimension. Update expo-font to resolve this.');
                 }
                 const dimensions = size;
                 return {
-                    uri: imagePathAndDimensions,
+                    uri: renderToImageResult,
                     width: dimensions,
                     height: dimensions,
                     scale: PixelRatio.get(),
                 };
             }
             else {
-                const { uri, width, height } = imagePathAndDimensions;
-                return { uri, width, height, scale: PixelRatio.get() };
+                const result = renderToImageResult;
+                // @ts-expect-error: depending on expo-font version, `result` may or may not already include scale
+                return { scale: PixelRatio.get(), ...result };
             }
         };
         _mounted = false;
