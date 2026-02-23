@@ -5,7 +5,13 @@ import React, {
   useImperativeHandle,
   forwardRef,
 } from "react";
-import { StyleSheet, View, FlatList, TextInput } from "react-native";
+import {
+  StyleSheet,
+  View,
+  FlatList,
+  TextInput,
+  useWindowDimensions
+} from "react-native";
 import { useDebouncedCallback } from "use-debounce";
 import { IconsArray } from "../IconConstants";
 import ListItem from "../components/ListItem";
@@ -188,26 +194,55 @@ const IconList = React.memo(({ query, filters, navigation }) => {
 
   const renderItem = React.useCallback(
     ({ item }) => {
-      return <IconRow item={item} navigation={navigation} />;
+      if (!item) {
+        return <View style={styles.emptyItem} />;
+      }
+      return <IconItem item={item} navigation={navigation} />;
     },
     [navigation]
   );
 
+  const { width } = useWindowDimensions();
+
+  const numColumns = React.useMemo(() => {
+    return getNumColumns(width);
+  }, [width]);
+
+  const data = React.useMemo(() => {
+    return padList(icons, numColumns);
+  }, [icons, numColumns]);
+
   return (
     <FlatList
       style={{ flex: 1 }}
-      data={icons}
+      data={data}
       renderItem={renderItem}
       keyExtractor={keyExtractor}
+      numColumns={numColumns}
+      key={numColumns}
     />
   );
 });
 
-function keyExtractor(item) {
-  return `${item.family}-${item.name}`;
+function keyExtractor(item, index) {
+  return item ? `${item.family}-${item.name}` : `empty-${index}`;
 }
 
-const IconRow = React.memo(({ item, navigation }) => {
+function getNumColumns(width, columnWidth = 300) {
+  const numColumns = Math.floor(width / columnWidth);
+  return Math.max(numColumns, 1);
+}
+
+function padList(items = [], itemsPerRow) {
+  if (!Number.isInteger(itemsPerRow) || itemsPerRow <= 0) return items;
+
+  const remainerInLastRow = items.length % itemsPerRow;
+  if (remainerInLastRow === 0) return items;
+
+  return [...items, ...Array(itemsPerRow - remainerInLastRow).fill(null)];
+}
+
+const IconItem = React.memo(({ item, navigation }) => {
   return (
     <ListItem
       family={item.family}
@@ -288,6 +323,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginBottom: 10,
     alignSelf: "center",
+  },
+  emptyItem: {
+    flex: 1,
   },
 });
 
