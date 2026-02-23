@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
 
 # `id-token` for publishing: https://docs.npmjs.com/trusted-publishers#github-actions-configuration
 # the rest for release-please: https://github.com/googleapis/release-please-action#basic-configuration
@@ -20,20 +21,21 @@ jobs:
     steps:
       - uses: googleapis/release-please-action@16a9c90856f42705d54a6fda1823352bdc62cf38 # v4.4.0
         id: release
+        if: ${{ github.event_name == 'push' }}
         with:
           release-type: node
       # The logic below handles the npm publication:
       - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
         # these if statements ensure that a publication only occurs when
-        # a new release is created:
-        if: ${{ steps.release.outputs.release_created }}
+        # a new release is created, or when manually triggered:
+        if: ${{ steps.release.outputs.release_created || github.event_name == 'workflow_dispatch' }}
       - uses: actions/setup-node@6044e13b5dc448c55e2357c09f80417699197238 # v6.2.0
         with:
           cache: yarn
           registry-url: 'https://registry.npmjs.org'
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs.release_created || github.event_name == 'workflow_dispatch' }}
       # yarn install triggers the `prepare` lifecycle script which runs the full build
       - run: yarn install --frozen-lockfile
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs.release_created || github.event_name == 'workflow_dispatch' }}
       - run: npm publish --provenance --access public
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs.release_created || github.event_name == 'workflow_dispatch' }}
