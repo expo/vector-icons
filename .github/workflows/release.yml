@@ -38,4 +38,6 @@ jobs:
       - run: yarn install --frozen-lockfile
         if: ${{ steps.release.outputs.release_created || github.event_name == 'workflow_dispatch' }}
       - run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: '' # Clear the secret, if provided, so npm publishes via OIDC
         if: ${{ steps.release.outputs.release_created || github.event_name == 'workflow_dispatch' }}
