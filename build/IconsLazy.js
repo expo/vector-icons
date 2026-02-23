@@ -82,6 +82,12 @@ Object.defineProperty(exports, "Octicons", {
     return _Octicons.default;
   }
 });
+Object.defineProperty(exports, "Phosphor", {
+  enumerable: true,
+  get: function () {
+    return _Phosphor.default;
+  }
+});
 Object.defineProperty(exports, "SimpleLineIcons", {
   enumerable: true,
   get: function () {
@@ -131,6 +137,7 @@ var _Ionicons = _interopRequireDefault(require("./Ionicons"));
 var _MaterialCommunityIcons = _interopRequireDefault(require("./MaterialCommunityIcons"));
 var _MaterialIcons = _interopRequireDefault(require("./MaterialIcons"));
 var _Octicons = _interopRequireDefault(require("./Octicons"));
+var _Phosphor = _interopRequireDefault(require("./Phosphor"));
 var _SimpleLineIcons = _interopRequireDefault(require("./SimpleLineIcons"));
 var _Zocial = _interopRequireDefault(require("./Zocial"));
 var _createMultiStyleIconSet = _interopRequireDefault(require("./createMultiStyleIconSet"));

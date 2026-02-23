@@ -11,6 +11,7 @@ export { default as Ionicons } from './Ionicons';
 export { default as MaterialCommunityIcons } from './MaterialCommunityIcons';
 export { default as MaterialIcons } from './MaterialIcons';
 export { default as Octicons } from './Octicons';
+export { default as Phosphor } from './Phosphor';
 export { default as SimpleLineIcons } from './SimpleLineIcons';
 export { default as Zocial } from './Zocial';
 export { default as createMultiStyleIconSet } from './createMultiStyleIconSet';
