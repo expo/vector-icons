@@ -58,7 +58,7 @@ export default function createMultiStyleIconSet(styles: FontStyles, optionsInput
     const family = options.fallbackFamily(name);
 
     if (styleNames.indexOf(family) === -1) {
-      return options.defaultStyle;
+      return iconSets[options.defaultStyle];
     }
 
     return iconSets[family];
