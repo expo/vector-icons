@@ -31,8 +31,8 @@ jobs:
         if: ${{ steps.release.outputs.release_created || github.event_name == 'workflow_dispatch' }}
       - uses: actions/setup-node@6044e13b5dc448c55e2357c09f80417699197238 # v6.2.0
         with:
+          node-version: 24 # npm >= 11.5.1 (ships with Node 24) required for OIDC trusted publishing
           cache: yarn
-          registry-url: 'https://registry.npmjs.org'
         if: ${{ steps.release.outputs.release_created || github.event_name == 'workflow_dispatch' }}
       # yarn install triggers the `prepare` lifecycle script which runs the full build
       - run: yarn install --frozen-lockfile
