@@ -35,5 +35,5 @@ jobs:
       # yarn install triggers the `prepare` lifecycle script which runs the full build
       - run: yarn install --frozen-lockfile
         if: ${{ steps.release.outputs.release_created }}
-      - run: yarn npm publish --provenance
+      - run: npm publish --provenance --access public
         if: ${{ steps.release.outputs.release_created }}
